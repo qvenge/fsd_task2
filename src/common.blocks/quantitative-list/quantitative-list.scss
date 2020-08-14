@@ -1,0 +1,15 @@
+@import '../_globals/globals';
+
+.quantitative-list {
+    padding: 0;
+
+    &__ul {
+        margin: 0;
+        padding: 4px 0;
+        list-style-type: none;
+    }
+
+    &__item {
+        padding: 4px 7px 4px 15px;
+    }
+}

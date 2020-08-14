@@ -1,0 +1,16 @@
+include ../quantitative-item/quantitative-item.pug
+
+mixin quantitativeList(list, name)
+    -
+        var getName = name ? function(key) {
+            return name + '[' + key + ']';
+        } : typeof(list) === 'object' ? function(key) {
+            return key;
+        } : function() {
+            return '';
+        };
+
+    .quantitative-list&attributes(attributes)
+        ul.quantitative-list__ul.title.title_h3
+            each label, key in list
+                +quantitativeItem({ tag: 'li', label: label, name: getName(key) })(class='quantitative-list__item')
