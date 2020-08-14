@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title UI Form Elements
+    body.body.text
+        //- include includes.pug
+        //- include ../../../fsd.blocks/logo/logo.pug
+        +logo()
+        .main-container
+            .grid-container
+                .grid-container__item
+                    .ui-form-element
+                        +inputText('Text field', {type: 'text', placeholder: 'Email'})
+
+                    .ui-form-element
+                        +guestList
+
+                    .ui-form-element
+                        +roomList
+
+                    .ui-form-element
+                        +priceRange()
+
+                .grid-container__item
+                    .ui-form-element
+                        +checkboxButtons()
+                    .ui-form-element
+                        +genderSelector('Radio buttons')
+                    .ui-form-element
+                        +toggle('Получать спецпредложения', 'toggle')
+                    .ui-form-element
+                        .ui-form-element__name.title.title_h3
+                            | buttons
+                        .ui-form-element__content
+                            button.button click me
+                            button.button.button_second click me
+                            button.button.button_third click me
+                    .ui-form-element
+                .grid-container__item
+                    | some ui elements
+                

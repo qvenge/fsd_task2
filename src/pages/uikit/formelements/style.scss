@@ -1,0 +1,35 @@
+.body {
+    padding: 140px 0 0 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 72px;
+}
+
+.ui-form-element {
+    margin: 0 0 20px 0;
+    &__name {
+        margin-bottom: 5px;
+    }
+    
+    &__state {
+
+    }
+
+    &__content {
+
+        &_radio {
+            white-space: nowrap;
+        }
+
+        &_radio .radio-button:first-child {
+            margin-right: 20px;
+        }
+    }
+
+    &__item {
+
+    }
+}
