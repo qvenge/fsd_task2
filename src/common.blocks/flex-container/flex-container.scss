@@ -1,0 +1,11 @@
+.flex-container {
+    display: flex;
+
+    &__column_1-3 {
+        width: 33.33%;
+    }
+
+    &__column_1-2 {
+        width: 50%;
+    }
+}
