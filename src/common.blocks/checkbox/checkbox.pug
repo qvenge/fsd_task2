@@ -1,0 +1,6 @@
+mixin checkbox(label, toggle, inputAttributes={})
+    - inputAttributes.type = "checkbox";
+    label.checkbox(class= toggle ? 'checkbox_toggle' : '')&attributes(attributes)
+        input.checkbox__input&attributes(inputAttributes)
+        span.checkbox__checkmark
+        span.checkbox__label= label

@@ -1,0 +1,109 @@
+@import '../_globals/globals';
+
+.checkbox {
+    @extend %unselectable;
+
+    margin: 0;
+    white-space: nowrap;
+    position: relative;
+    padding: 1px 0 1px 30px;
+    cursor: pointer;
+
+    &__label {
+        color: $dark_shade_50;
+        line-height: 18px;
+    }
+
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        z-index: -1;
+        opacity: 0;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        height: 20px;
+        width: 20px;
+    }
+
+    &__checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        width: 20px;
+        height: 20px;
+        background: #FFFFFF;
+
+        border: 1px solid $dark_shade_25;
+        border-radius: 4px;
+    }
+
+    &:hover &__input ~ &__checkmark {
+        border-color: $purple;
+    }
+
+    &__input:checked ~ &__checkmark {
+        border-color: $purple;
+    }
+
+    &__checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 6px;
+        top: 4px;
+        width: 4px;
+        height: 6px;
+        border-style: solid;
+        border-width: 0 2px 2px 0;
+        border-image-slice: 1;
+        border-image-source: $primary_gradient;
+
+        @include transform(rotate(45deg));
+    }
+
+    &__input:checked ~ &__checkmark:after {
+        display: block;
+    }
+
+
+
+
+    // ============ TOGGLE ============
+
+    &_toggle {
+        padding-left: 50px;
+    }
+
+    &_toggle &__checkmark {
+        width: 40px;
+        border-radius: 10px;
+    }
+
+    &_toggle &__checkmark:after {
+        display: block;
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        width: 12px;
+        height: 12px;
+        border: none;
+        border-radius: 10px;
+        background: $dark_shade_25;
+        transform: rotate(0);
+
+        transition: left .3s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    }
+
+    &_toggle &__input:checked ~ &__checkmark:after {
+        left: 23px;
+        background: $primary_gradient;
+        // animation-name: toggle-checkmark-to-left;
+        // animation-duration: .5s;
+        // animation-fill-mode: both;
+    }
+}
