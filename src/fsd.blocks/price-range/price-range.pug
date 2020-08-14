@@ -1,0 +1,30 @@
+mixin priceRange(options={}, lable)
+    -
+        options = Object.assign({
+            min: 0,
+            names: ['minprice', 'maxprice'],
+            max: 16500,
+            values: [5000, 10000]
+        }, options);
+
+        function valueToString(value) {
+            value = String(value);
+            var result = value.slice(-3);
+
+            for (var i = -3; i > -value.length; i -= 3) {
+                result = value.slice(i - 3, i) + ' ' + result;
+            }
+
+            return result;
+        }
+
+        var value1 = valueToString(options.values[0]);
+        var value2 = valueToString(options.values[1]);
+
+
+    .price-range&attributes(attributes)
+        .price-range__clearfix.clearfix
+            .price-range__label.title.title_h3= label ? label : 'Range slider'
+            .price-range__info.subtitle
+                | #[span.price-range__min-price #{value1}]₽ - #[span.price-range__max-price #{value2}]₽
+        +rangeDoubleSlider(options)(class='price-range__slider')

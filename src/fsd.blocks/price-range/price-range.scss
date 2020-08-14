@@ -1,0 +1,15 @@
+@import '../_globals/globals';
+
+.price-range {
+    &__label {
+        float: left;
+    }
+
+    &__info {
+        float: right;
+    }
+
+    &__slider {
+        margin-top: 19px;
+    }
+}
