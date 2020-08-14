@@ -1,0 +1,3 @@
+[submodule "bem-integrator-plugin"]
+	path = bem-integrator-plugin
+	url = https://github.com/qvenge/bem-integrator-plugin.git
