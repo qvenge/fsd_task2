@@ -1,0 +1,13 @@
+@import '../_globals/globals';
+
+.guest-list {
+    &__label {
+        margin-bottom: 5px;
+    }
+    
+    &__btn-container {
+        // display: flex;
+        // justify-content: space-between;
+        padding: 16px 7px 13px 15px;
+    }
+}

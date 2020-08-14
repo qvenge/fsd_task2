@@ -1,0 +1,11 @@
+include ../../common.blocks/quantitative-list/quantitative-list.pug
+include ../../common.blocks/dropdown/dropdown.pug
+
+mixin guestList(label)
+    .guest-list&attributes(attributes)
+        .guest-list__label.title.title_h3= label ? label : 'Гости'
+        +dropdown('сколько гостей')(class='guest-list__dropdown')
+            +quantitativeList({adults: 'взрослые', children: 'дети', babies: 'младенцы'})(class='guest-list__content')
+            .guest-list__btn-container.clearfix
+                button.button.button_third.guest-list__reset-btn Очистить
+                button.button.button_third.guest-list__apply-btn Применить
