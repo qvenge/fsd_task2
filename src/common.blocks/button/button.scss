@@ -1,0 +1,52 @@
+@import '../_globals/globals';
+
+.button {
+    @extend %unselectable;
+
+    display: inline-block;
+    padding: 0 20px;
+    margin: 0;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 44px;      /* identical to box height */
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #FFFFFF;
+
+    background-color: transparent;
+    background: $primary_gradient;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+
+    outline: none;
+
+    &::-moz-focus-inner {
+        border: none;
+    }
+
+    &_second {
+        background: none;
+        border: 1px solid $purple;
+        color: $purple;
+    }
+
+
+    &_third {
+        padding: 0;
+        background: none;
+        line-height: 15px;
+        color: $purple;
+    }
+
+    &:not(&_disabled):hover {
+        opacity: 0.5;
+    }
+
+    &_disabled {
+
+    }
+}
