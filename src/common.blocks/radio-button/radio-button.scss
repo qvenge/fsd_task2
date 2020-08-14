@@ -1,0 +1,90 @@
+@import '../_globals/globals';
+
+.radio-button {
+    @extend %unselectable;
+
+    white-space: nowrap;
+    position: relative;
+    padding: 1px 0 1px 30px;
+    cursor: pointer;
+
+    &__label {
+        color: $dark_shade_50;
+        line-height: 18px;
+    }
+
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        z-index: -1;
+        opacity: 0;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        height: 20px;
+        width: 20px;
+    }
+
+    &__checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        width: 20px;
+        height: 20px;
+        background: #FFFFFF;
+        overflow: hidden;
+
+        border: 1px solid $dark_shade_25;
+        border-radius: 50%;
+    }
+
+    &:hover &__input ~ &__checkmark {
+        border-color: $purple
+    }
+
+    // &:hover &__label {
+    //     color: $dark_shade_75;
+    // }
+
+    &__input:checked ~ &__checkmark {
+        border-color: $purple;
+    }
+
+    &__input:checked ~ &__label {
+        color: $dark_shade_75;
+    }
+
+    &__checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 3px;
+        top: 3px;
+        width: 12px;
+        height: 12px;
+        border: none;
+        border-radius: 50%;
+        background: $primary_gradient;
+    }
+
+    &__input:checked ~ &__checkmark:after {
+        display: block;
+    }
+
+    &_transition &__checkmark:after {
+        transition: left .3s $timing_function;
+        display: block;
+    }
+
+
+    &_transition_left &__input:not(:checked) ~ &__checkmark:after {
+        left: 28px;
+    }
+
+    &_transition_right &__input:not(:checked) ~ &__checkmark:after {
+        left: -20px;
+    }
+}
