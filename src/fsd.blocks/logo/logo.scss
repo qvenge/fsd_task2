@@ -1,0 +1,10 @@
+@import '../_globals/globals';
+
+.logo {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    top: 30px;
+    left: 30px;
+    fill: $dark_shade_25;
+}
