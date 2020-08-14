@@ -1,0 +1,67 @@
+mixin rangeDoubleSlider(options)
+    //- options: { names: [string], values: [number], max: number, min: number }
+    -
+        function isNum(val) {
+            return typeof(val) === 'number';
+        }
+
+        var DEFAULT_MAX = 100;
+        var DEFAULT_MIN = 0;
+        var bemData = attributes['data-bem'] || {};
+        
+        if (typeof bemData === 'string') {
+            bemData = JSON.parse(bemData);
+        }
+
+        options = Object.assign({}, options, bemData['range-double-slider']);
+
+        options.names = Array.isArray(options.names) ? options.names : []; 
+        options.values = Array.isArray(options.values) ? options.values : [];
+
+        //- ===============
+        options.step = options.step > 0 ? options.step : 1;
+        options.names[0] = options.names[0] || '';
+        options.names[1] = options.names[1] || '';
+
+        var min = options.min = isNum(options.min) ? options.min 
+            : isNum(options.values[0]) ? options.values[0]
+                : isNum(options.values[1]) ? options.values[1]
+                    : isNum(options.max) ? (options.max > DEFAULT_MIN ? DEFAULT_MIN : options.max)
+                        : DEFAULT_MIN;
+
+        var max = options.max = isNum(options.max) ? options.max
+            : isNum(options.values[1]) ? options.values[1]
+                : isNum(options.values[0]) ? options.values[0]
+                    : options.min < DEFAULT_MAX ? DEFAULT_MAX
+                        : options.min;
+
+        var value1 = options.values[0] = isNum(options.values[0]) ? options.values[0] : options.min;
+        var value2 = options.values[1] = isNum(options.values[1]) ? options.values[1] : options.max;
+
+        //- =================
+        if (max < min) throw Error('RANGE-DOUBLE-SLIDER ERROR: min can\'t be greater than max');
+        if (value2 < value1) throw Error('RANGE-DOUBLE-SLIDER ERROR: second value can\'t be greater than first value');
+        if ((value1 < min || value1 > max) || (value2 < min || value2 > max)) throw Error('RANGE-DOUBLE-SLIDER ERROR:');
+
+        //- ==============
+        bemData['range-double-slider'] = options;
+        attributes['data-bem'] = bemData;
+
+        //- ==============
+        var diff = max - min;
+        var width1 = ((value1 - min) / diff) * 100 + '%';
+        var width2 = ((max - value2) / diff) * 100 + '%';
+
+
+
+    .range-double-slider&attributes(attributes)
+        .range-double-slider__strip
+        .range-double-slider__container
+            .range-double-slider__slider.range-double-slider__slider_left(style={ width: width1 })
+                output(name=options.names[0]).range-double-slider__value.range-double-slider__value_left= options.values[1]
+                .range-double-slider__circle
+            .range-double-slider__gap
+                .range-double-slider__strip.range-double-slider__strip_filled
+            .range-double-slider__slider.range-double-slider__slider_right(style={ width: width2 })
+                output(name=options.names[1]).range-double-slider__value.range-double-slider__value_right= options.values[1]
+                .range-double-slider__circle

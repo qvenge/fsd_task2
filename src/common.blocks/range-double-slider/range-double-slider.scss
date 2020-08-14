@@ -1,0 +1,107 @@
+@import '../_globals/globals';
+
+.range-double-slider {
+    @extend %unselectable;
+
+    position: relative;
+    padding: 0 14px;
+
+    &__container {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__value {
+        display: block;
+        visibility: hidden;
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
+
+    &__strip {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        height: 6px;
+        width: 100%;
+        z-index: 1;
+
+        background: #FFFFFF;
+        /* Dark 25% */
+
+        border: 1px solid $dark_shade_25;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+
+    &__slider {
+        position: relative;
+        cursor: pointer;
+        z-index: 3;
+        height: 14px;
+    }
+
+    &__slider_grabbed {
+        // will-change: width;
+    }
+
+    &__slider_left {
+        left: -14px;
+    }
+
+    &__slider_right {
+        right: -14px;
+    }
+
+    &__scale {
+        height: 100%;
+        width: 100%;
+    }
+
+    &__circle {
+        position: absolute;
+        top: 0;
+        width: 14px;
+        height: 14px;
+    }
+
+    &__slider_left &__circle {
+        right: -14px;
+    }
+
+    &__slider_right &__circle {
+        left: -14px;
+    }
+
+    &__circle::after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 12px;
+        height: 12px;
+
+        /* Secondary Gradient */
+
+        background: $secondary_gradient;
+        border: 2px solid #FFFFFF;
+        border-radius: 10px;
+    }
+
+    &__gap {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+    }
+
+    &__strip_filled {
+        border: none;
+        margin-left: -8px;
+        width: calc(100% + 14px);
+        border-radius: 0;
+        background: $secondary_gradient;
+    }
+}
