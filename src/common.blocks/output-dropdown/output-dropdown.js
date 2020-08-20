@@ -1,16 +1,16 @@
-// ================= DROPDOWN CLASS ================= 
-function Dropdown(elem) {
+// ================= OutputDropdown CLASS ================= 
+function OutputDropdown(elem) {
     this.elem = elem;
     this.display = elem.querySelector('.' + this.id + '__output');
 
     this.init();
 }
 
-Dropdown._expanded = null;
-Dropdown._listener = null;
+OutputDropdown._expanded = null;
+OutputDropdown._listener = null;
 
 (function() {
-    this.id = 'dropdown';
+    this.id = 'output-dropdown';
 
     this.init = function() {
         var self = this;
@@ -30,8 +30,8 @@ Dropdown._listener = null;
 
 
     this.open = function() {
-        if (Dropdown._expanded) Dropdown._expanded.close();
-        Dropdown._expanded = this;
+        if (OutputDropdown._expanded) OutputDropdown._expanded.close();
+        OutputDropdown._expanded = this;
         this.elem.classList.add(this.id + '_expanded');
         this.isExpanded = true;
         this._addListener();
@@ -39,7 +39,7 @@ Dropdown._listener = null;
 
 
     this.close = function() {
-        if (Dropdown._expanded === this) Dropdown._expanded = null;
+        if (OutputDropdown._expanded === this) OutputDropdown._expanded = null;
         this.elem.classList.remove(this.id + '_expanded');
         this.isExpanded = false;
         this._removeListener();
@@ -52,34 +52,34 @@ Dropdown._listener = null;
 
 
     this._addListener = function() {
-        if (!Dropdown._listener) {
+        if (!OutputDropdown._listener) {
             var self = this;
 
-            Dropdown._listener = function(event) {
+            OutputDropdown._listener = function(event) {
                 if (self.elem.contains(event.target)) {
                     return;
                 }
         
-                Dropdown._expanded.close();
+                OutputDropdown._expanded.close();
             }
 
             document.addEventListener('click', function() {
-                document.addEventListener('click', Dropdown._listener);
+                document.addEventListener('click', OutputDropdown._listener);
             }, { once: true });
         }
     };
 
 
     this._removeListener = function() {
-        if (Dropdown._listener) {
-            document.removeEventListener('click', Dropdown._listener);
-            Dropdown._listener = null;
+        if (OutputDropdown._listener) {
+            document.removeEventListener('click', OutputDropdown._listener);
+            OutputDropdown._listener = null;
         }
     };
-}).call(Dropdown.prototype);
+}).call(OutputDropdown.prototype);
 
 
-Object.defineProperties(Dropdown.prototype, {
+Object.defineProperties(OutputDropdown.prototype, {
     output: {
         get: function() {
             return this.display.textContent;
@@ -95,5 +95,5 @@ Object.defineProperties(Dropdown.prototype, {
 
 
 if (module) {
-    module.exports = Dropdown;
+    module.exports = OutputDropdown;
 }

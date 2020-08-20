@@ -12,7 +12,7 @@ proto.postInit = function() {
     var self = this;
     var reset = this.elem.querySelector('.' + this.id + '__reset-btn');
     var apply = this.elem.querySelector('.' + this.id + '__apply-btn');
-    var dropdown = this.elem.querySelector('.dropdown').bemInstances['dropdown'];
+    var dropdown = this.elem.querySelector('.output-dropdown').bemInstances['output-dropdown'];
     var list = this.elem.querySelector('.quantitative-list').bemInstances['quantitative-list'];
 
     this.elem.addEventListener('qlstatechanged', function() {

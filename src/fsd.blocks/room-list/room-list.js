@@ -17,7 +17,7 @@ proto.postInit = function() {
     }
 
     this.elem.addEventListener('qlstatechanged', function() {
-        var dropdown = self.elem.querySelector('.dropdown').bemInstances['dropdown'];
+        var dropdown = self.elem.querySelector('.output-dropdown').bemInstances['output-dropdown'];
         var list = self.elem.querySelector('.quantitative-list').bemInstances['quantitative-list'];
 
         var output = list.getState().reduce(function(memo, item) {
