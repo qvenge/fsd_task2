@@ -1,0 +1,15 @@
+mixin goodsPagination(numberOfItems, itemsPerPage)
+    -
+        var numberOfPages = Math.ceil(numberOfItems / itemsPerPage);
+        var pages = [];
+        for (var i = 1; i <= numberOfPages; ++i) pages.push('#page_' + i);
+
+        var bemParams = JSON.stringify({
+            'goods-pagination': { 
+                numberOfItems: numberOfItems,
+                itemsPerPage: itemsPerPage
+            }
+        });
+
+    .goods-pagination(data-bem=bemParams)&attributes(attributes)
+        +pagination(pages, currentPage)
