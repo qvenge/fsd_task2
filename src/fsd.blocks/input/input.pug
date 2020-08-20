@@ -1,0 +1,10 @@
+mixin input(label, options={})
+    .input&attributes(attributes)
+        if label
+            .input__label.title.title_h3= label
+        .input__field
+            if options.type === 'date'
+                +dateInput(options)
+            else
+                +textInput(options)
+    
