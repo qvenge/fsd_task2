@@ -1,0 +1,65 @@
+@import '../_globals/globals';
+
+%pagination-item {
+    @extend %unselectable;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.pagination {
+    &__container {
+        display: flex;
+    }
+
+    &__hint {
+        display: none;
+        margin-top: 9px;
+        text-align: center;
+    }
+
+    &__btn {
+        @extend %pagination-item;
+        display: none;
+        font-size: 24px;
+        background: $secondary_gradient;
+        color: #FFFFFFFF;
+    }
+
+    &__pages {
+        display: flex;
+    }
+
+    &__page,
+    &__ellipsis {
+        @extend %pagination-item;
+        display: none;
+        color: $dark_shade_50;
+        font-size: 12px;
+    }
+
+    &__ellipsis {
+        cursor: unset;
+    }
+
+    &__page_first,
+    &__page_last {
+        display: block;
+    }
+
+    &__page_current {
+        background: $primary_gradient;
+        color: #FFFFFFFF;
+        pointer-events: none;
+        cursor: unset;
+    }
+
+    &__shown-item {
+        display: block;
+    }
+}

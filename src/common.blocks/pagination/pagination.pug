@@ -1,0 +1,23 @@
+mixin pagination(pages, currentPage, hint)
+    -
+        if (!Array.isArray(pages)) {
+            throw new Error('PAGINATION ERROR: the pages argument must be an array.');
+        }
+
+        var params = JSON.stringify({
+            pages: pages,
+            currentPage: currentPage || 1
+        });
+
+    .pagination(data-params=params)&attributes(attributes)
+        .pagination__container
+            a.pagination__btn.pagination__btn_prev.material-icons arrow_back
+            .pagination__pages
+                //- .pagination__page.pagination__page_current
+            a.pagination__btn.pagination__btn_next.material-icons arrow_forward
+        if hint
+            .pagination__hint.pagination__shown-item= hint
+        else
+            .pagination__hint
+        
+            
