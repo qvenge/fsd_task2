@@ -1,0 +1,19 @@
+mixin button(text, options={})
+    -
+        var mods = [];
+
+        Object.keys(options).forEach(function(key) {
+            if (typeof options[key] === 'string') {
+                mods.push('button_' + options[key]);
+            } else if (options[key] === true) {
+                mods.push('button_' + key);
+            }
+        });
+
+        attributes.class = Array.isArray(attributes.class) 
+            ? attributes.concat(mods)
+            : (typeof attributes === 'string' ? attributes + ' ' : '') + mods.join(' ');
+
+    button.button&attributes(attributes)= text
+        if options.arrow
+            .button__arrow-icon.material-icons arrow_forward

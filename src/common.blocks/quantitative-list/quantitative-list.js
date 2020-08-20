@@ -1,5 +1,7 @@
 function QuantitativeList(elem) {
     this.elem = elem;
+
+    this.init();
 }
 
 var proto = QuantitativeList.prototype;
@@ -10,6 +12,7 @@ proto.id = 'quantitative-list';
 
 proto.init = function() {
     var self = this;
+
     this.elem.addEventListener('quantitychanged', function(event) {
         event.stopPropagation();
         self._emitQLStateChangedEvent();
@@ -18,10 +21,10 @@ proto.init = function() {
 
 
 proto.reset = function() {
-    var items = this.elem.getElementsByClassName(this.id + '__item');
+    var items = this.elem.getElementsByClassName('quantitative-item');
 
     for (var i = 0; i < items.length; ++i) {
-        var qiBlock = items[i].bemEntities['quantitative-item'];
+        var qiBlock = items[i].bemInstances['quantitative-item'];
         if (qiBlock) qiBlock.reset(false);
     }
 
@@ -30,11 +33,11 @@ proto.reset = function() {
 
 
 proto.getState = function() {
-    var items = this.elem.getElementsByClassName(this.id + '__item');
+    var items = this.elem.getElementsByClassName('quantitative-item');
     var result = [];
 
     for (var i = 0; i < items.length; ++i) {
-        var qiBlock = items[i].bemEntities['quantitative-item'];
+        var qiBlock = items[i].bemInstances['quantitative-item'];
 
         qiBlock && result.push({
             label: qiBlock.label,

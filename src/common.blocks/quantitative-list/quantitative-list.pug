@@ -13,4 +13,5 @@ mixin quantitativeList(list, name)
     .quantitative-list&attributes(attributes)
         ul.quantitative-list__ul.title.title_h3
             each label, key in list
-                +quantitativeItem({ tag: 'li', label: label, name: getName(key) })(class='quantitative-list__item')
+                .quantitative-list__item
+                    +quantitativeItem({ tag: 'li', label: label, name: getName(key) })

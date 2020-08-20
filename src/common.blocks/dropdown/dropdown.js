@@ -1,6 +1,9 @@
 // ================= DROPDOWN CLASS ================= 
 function Dropdown(elem) {
     this.elem = elem;
+    this.display = elem.querySelector('.' + this.id + '__output');
+
+    this.init();
 }
 
 Dropdown._expanded = null;
@@ -10,7 +13,6 @@ Dropdown._listener = null;
     this.id = 'dropdown';
 
     this.init = function() {
-        this.display = this.elem.querySelector('.' + this.id + '__output');
         var self = this;
         this.isExpanded = false;
 

@@ -4,10 +4,24 @@
     &__label {
         margin-bottom: 5px;
     }
+
+    &__content {
+        padding: 6px 5px 12px 14px;
+    }
     
     &__btn-container {
         // display: flex;
         // justify-content: space-between;
-        padding: 16px 7px 13px 15px;
+        margin-top: 20px;
+        line-height: 15px;
+    }
+
+    &__reset-btn {
+        float: left;
+        color: $dark_shade_50;
+    }
+
+    &__apply-btn {
+        float: right;
     }
 }

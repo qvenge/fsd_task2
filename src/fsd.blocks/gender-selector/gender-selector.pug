@@ -4,5 +4,8 @@ mixin genderSelector(label)
     .gender-selector&attributes(attributes)
         if label
             .gender-selector__label.title.title_h3= label
-        +radioButton('Мужчина', { inputAttributes: { name:'gender', value: 'male' }, transition: 'left' })(class='gender-selector__male')
-        +radioButton('Женщина', { inputAttributes: { name: 'gender', value: 'female' }, transition: 'right' })(class='gender-selector__female')
+        .gender-selector__buttons
+            .gender-selector__male
+                +radioButton('Мужчина', { inputAttributes: { name:'gender', value: 'male' }, transition: 'left' })
+            .gender-selector__female
+                +radioButton('Женщина', { inputAttributes: { name: 'gender', value: 'female' }, transition: 'right' })

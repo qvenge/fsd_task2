@@ -108,7 +108,7 @@ module.exports = {
                 './common.blocks',
                 './fsd.blocks'
             ], 
-            techs: ['scss'],
+            techs: 'scss',
             scripts: 'js'
         }),
         new MiniCssExtractPlugin({

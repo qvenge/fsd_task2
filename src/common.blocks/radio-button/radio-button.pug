@@ -3,13 +3,10 @@ mixin radioButton(label, options={})
         if (options.transition) {
             var transition = 'radio-button_transition radio-button_transition_' + options.transition;
 
-            if (typeof attributes.class === 'string') {
-                attributes.class =  attributes.class + ' ' + transition;
-            } else if (Array.isArray(attributes.class)) {
-                attributes.class.concat(transition.split(' '));
-            }
+            attributes.class = Array.isArray(attributes.class) 
+                ? attributes.class.concat(transition.split(' '))
+                : (typeof attributes.class === 'string' ? attributes.class + ' ' : '') + transition;
         }
-
         
     label.radio-button&attributes(attributes)
         input.radio-button__input(type="radio")&attributes(options.inputAttributes || {})

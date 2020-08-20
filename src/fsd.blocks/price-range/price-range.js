@@ -1,16 +1,17 @@
 function PriceRange(elem) {
     this.elem = elem;
+    this.minPrice = elem.querySelector('.' + this.id + '__min-price');
+    this.maxPrice = elem.querySelector('.' + this.id + '__max-price');
+    this.slider = null;
 }
 
 PriceRange.prototype = {
     id: 'price-range',
 
-    init: function() {
+    postInit: function() {
         var self = this;
 
-        this.minPrice = this.elem.querySelector('.' + this.id + '__min-price');
-        this.maxPrice = this.elem.querySelector('.' + this.id + '__max-price');
-        this.slider = this.elem.querySelector('.' + this.id + '__slider').bemEntities['range-double-slider'];
+        this.slider = this.elem.querySelector('.range-double-slider').bemInstances['range-double-slider'];
 
         this.elem.addEventListener('rdsvaluechanged', function(event) {
             self.minPrice.textContent = self._stringifyValue(event.detail[0]);

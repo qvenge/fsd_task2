@@ -96,7 +96,7 @@
         background: $dark_shade_25;
         transform: rotate(0);
 
-        transition: left .3s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        transition: left .2s ease-in-out;
     }
 
     &_toggle &__input:checked ~ &__checkmark:after {

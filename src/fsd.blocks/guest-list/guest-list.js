@@ -8,12 +8,12 @@ var proto = GuestList.prototype;
 proto.id = 'guest-list';
 
 
-proto.init = function() {
+proto.postInit = function() {
     var self = this;
     var reset = this.elem.querySelector('.' + this.id + '__reset-btn');
     var apply = this.elem.querySelector('.' + this.id + '__apply-btn');
-    var dropdown = this.elem.querySelector('.' + this.id + '__dropdown').bemEntities['dropdown'];
-    var list = this.elem.querySelector('.' + this.id + '__content').bemEntities['quantitative-list'];
+    var dropdown = this.elem.querySelector('.dropdown').bemInstances['dropdown'];
+    var list = this.elem.querySelector('.quantitative-list').bemInstances['quantitative-list'];
 
     this.elem.addEventListener('qlstatechanged', function() {
         var listState = list.getState();

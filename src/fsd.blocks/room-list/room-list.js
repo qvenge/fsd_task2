@@ -7,7 +7,7 @@ var proto = RoomList.prototype;
 
 proto.id = 'room-list';
 
-proto.init = function() {
+proto.postInit = function() {
     var self = this;
 
     var words = {
@@ -17,8 +17,8 @@ proto.init = function() {
     }
 
     this.elem.addEventListener('qlstatechanged', function() {
-        var dropdown = self.elem.querySelector('.' + self.id + '__dropdown').bemEntities['dropdown'];
-        var list = self.elem.querySelector('.' + self.id + '__list').bemEntities['quantitative-list'];
+        var dropdown = self.elem.querySelector('.dropdown').bemInstances['dropdown'];
+        var list = self.elem.querySelector('.quantitative-list').bemInstances['quantitative-list'];
 
         var output = list.getState().reduce(function(memo, item) {
             if (item.value === 0) return memo;

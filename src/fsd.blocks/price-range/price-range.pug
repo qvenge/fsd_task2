@@ -27,4 +27,5 @@ mixin priceRange(options={}, lable)
             .price-range__label.title.title_h3= label ? label : 'Range slider'
             .price-range__info.subtitle
                 | #[span.price-range__min-price #{value1}]₽ - #[span.price-range__max-price #{value2}]₽
-        +rangeDoubleSlider(options)(class='price-range__slider')
+        .price-range__slider
+            +rangeDoubleSlider(options)

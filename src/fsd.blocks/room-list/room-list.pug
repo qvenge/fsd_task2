@@ -4,5 +4,7 @@ include ../../common.blocks/dropdown/dropdown.pug
 mixin roomList(label)
     .room-list&attributes(attributes)
         .room-list__label.title.title_h3= label ? label : 'Удобства номера'
-        +dropdown('Комнаты')(class='room-list__dropdown')
-            +quantitativeList({bedrooms: 'спальни', beds: 'кровати', bathrooms: 'ванные комнаты'})(class='room-list__list')
+        .room-list__dropdown
+            +dropdown('Комнаты')
+                .room-list__content
+                    +quantitativeList({bedrooms: 'спальни', beds: 'кровати', bathrooms: 'ванные комнаты'})

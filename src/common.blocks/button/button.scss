@@ -4,16 +4,17 @@
     @extend %unselectable;
 
     display: inline-block;
+    position: relative;
     padding: 0 20px;
-    margin: 0;
 
+    line-height: 44px;      /* identical to box height */
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
-    line-height: 44px;      /* identical to box height */
     text-transform: uppercase;
     text-decoration: none;
+    white-space: nowrap;
     color: #FFFFFF;
 
     background-color: transparent;
@@ -28,17 +29,16 @@
         border: none;
     }
 
-    &_second {
+    &_secondary {
         background: none;
         border: 1px solid $purple;
         color: $purple;
     }
 
-
-    &_third {
+    &_tertiary {
         padding: 0;
-        background: none;
         line-height: 15px;
+        background: none;
         color: $purple;
     }
 
@@ -48,5 +48,26 @@
 
     &_disabled {
 
+    }
+
+    &_extended {
+        width: 100%;
+    }
+
+    &_arrow {
+        padding: 0 44px;
+    }
+
+    &__arrow-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+    }
+
+    &_additional {
+        color: $dark_shade_50;
     }
 }

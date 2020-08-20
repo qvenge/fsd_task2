@@ -3,6 +3,7 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
         title UI Form Elements
     body.body.text
         //- include includes.pug
@@ -12,32 +13,56 @@ html(lang="en")
             .grid-container
                 .grid-container__item
                     .ui-form-element
-                        +inputText('Text field', {type: 'text', placeholder: 'Email'})
+                        +input('Text field', {type: 'text', placeholder: 'Email'})
 
-                    .ui-form-element
+                    .ui-form-element.ui-form-element_mt_20
                         +guestList
 
-                    .ui-form-element
+                    .ui-form-element.ui-form-element_mt_20
                         +roomList
 
-                    .ui-form-element
-                        +priceRange()
+                    .ui-form-element.ui-form-element_mt_20
+                        +input('Masked text field', { type: 'date' })
 
                 .grid-container__item
                     .ui-form-element
                         +checkboxButtons()
-                    .ui-form-element
+
+                    .ui-form-element.ui-form-element_mt_40
                         +genderSelector('Radio buttons')
-                    .ui-form-element
+
+                    .ui-form-element.ui-form-element_mt_40
                         +toggle('Получать спецпредложения', 'toggle')
+
+                    .ui-form-element.ui-form-element_mt_40
+                        .ui-form-element__name.title.title_h3
+                            | like button
+                        .ui-form-element__group
+                            +likeButton(2)
+                            +likeButton(12, true)
+
+                    .ui-form-element.ui-form-element_mt_40
+                        .ui-form-element__name.title.title_h3
+                            | rate button
+                        .ui-form-element__group
+                            +rateButton()
+
+                .grid-container__item
                     .ui-form-element
+                        +priceRange()
+
+                    .ui-form-element.ui-form-element_mt_40
                         .ui-form-element__name.title.title_h3
                             | buttons
-                        .ui-form-element__content
-                            button.button click me
-                            button.button.button_second click me
-                            button.button.button_third click me
-                    .ui-form-element
-                .grid-container__item
-                    | some ui elements
-                
+                        .ui-form-element__group
+                            +button('click me')
+                            +button('click me', { type: 'secondary'})
+                            +button('click me', { type: 'tertiary' })
+                    .ui-form-element.ui-form-element_mt_30
+                        +button('Перейти к оплате', { extended: true, arrow: true })
+
+                    .ui-form-element.ui-form-element_mt_40
+                        .ui-form-element__name.title.title_h3
+                            | pagination
+                        .ui-form-element__group
+                            +goodsPagination(170, 12)

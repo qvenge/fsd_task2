@@ -9,16 +9,33 @@
 }
 
 .ui-form-element {
-    margin: 0 0 20px 0;
-    &__name {
-        margin-bottom: 5px;
+    &_mt_20 {
+        margin-top: 20px;
+    }
+
+    &_mt_30 {
+        margin-top: 30px;
+    }
+
+    &_mt_40 {
+        margin-top: 40px;
     }
     
-    &__state {
-
+    &__group {
+        display: flex;
+        margin-top: 15px;
     }
 
-    &__content {
+    &__group .like-button + .like-button {
+        margin-left: 10px;;
+    }
+
+
+    &__group .button + .button {
+        margin-left: 18px;;
+    }
+
+    &__group {
 
         &_radio {
             white-space: nowrap;
@@ -29,7 +46,7 @@
         }
     }
 
-    &__item {
-
+    &__button {
+        
     }
 }

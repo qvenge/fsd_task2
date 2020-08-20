@@ -75,7 +75,7 @@
     }
 
     &_transition &__checkmark:after {
-        transition: left .3s $timing_function;
+        transition: left .2s ease-in-out;
         display: block;
     }
 

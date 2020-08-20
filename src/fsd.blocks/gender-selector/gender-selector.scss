@@ -1,9 +1,13 @@
 .gender-selector {
     &__label {
-        margin-bottom: 13px;
+        margin-bottom: 14px;
+    }
+
+    &__buttons {
+        display: flex;
     }
 
     &__female {
-        margin-left: 16px;
+        margin-left: 20px;
     }
 }

@@ -1,5 +1,7 @@
 function RangeDoubleSlider(elem) {
     this.elem = elem;
+
+    this.init();
 }
 
 

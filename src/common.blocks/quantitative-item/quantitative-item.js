@@ -1,5 +1,9 @@
 function QuantitativeItem(elem) {
     this.elem = elem;
+    this._quantityElem = elem.querySelector('.' + this.id + '__quantity');
+    this._labelElem = elem.querySelector('.' + this.id + '__label');
+
+    this.init();
 }
 
 var proto = QuantitativeItem.prototype;
@@ -10,9 +14,6 @@ proto.id = 'quantitative-item';
 
 proto.init = function() {
     var self = this;
-
-    this._quantityElem = this.elem.querySelector('.' + this.id + '__quantity');
-    this._labelElem = this.elem.querySelector('.' + this.id + '__label');
 
     this.elem.addEventListener('click', function(event) {
         if (event.target.classList.contains(self.id + '__btn_plus')) {

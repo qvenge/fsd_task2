@@ -1,7 +1,0 @@
-mixin input(inputAttributes={})
-    -
-        Object.assign(inputAttributes, attributes);
-        var types = ['text', 'email', 'password'];
-        if (types.indexOf(inputAttributes.type) === -1) inputAttributes.type = 'text';
-
-    input(class="input")&attributes(inputAttributes)

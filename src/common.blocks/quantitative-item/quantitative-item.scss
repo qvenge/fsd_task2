@@ -11,7 +11,8 @@
     }
 
     &__label {
-        line-height: 100%;
+        line-height: 14px;
+        padding: 7px 0 9px 0;       // во славу пиксель перфекта
     }
 
     &__quantity {
@@ -20,13 +21,14 @@
     }
 
     &__btn {
+        box-sizing: border-box;
         font-size: 18px;
         font-weight: normal;
         color: $dark_shade_50;
         text-align: center;
         line-height: 28px;
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
         background: inherit;
         border: 1px solid $dark_shade_25;
         border-radius: 50%;
