@@ -2,13 +2,11 @@ function RateButton(elem) {
     this.elem = elem;
     this.value = 0;
 
-    this.init();
+    this._init();
 }
 
 RateButton.prototype = {
-    id: 'rate-button',
-
-    init: function() {
+    _init: function() {
         var self = this;
 
         this.elem.addEventListener('click', function(event) {
@@ -38,6 +36,11 @@ RateButton.prototype = {
 
 
 Object.defineProperties(RateButton.prototype, {
+    id: {
+        value: 'rate-button',
+        enumerable: true
+    },
+    
     value: {
         get: function() {
             var stars = this.elem.getElementsByClassName(this.id + '__star');
@@ -63,13 +66,11 @@ Object.defineProperties(RateButton.prototype, {
             }
 
             for (var i = 0; i < stars.length; ++i) {
-                // if (i === value - 1) {
-                //     stars[i].classList.add(this.id + '__star_checked');
-                // } else {
-                //     stars[i].classList.add(this.id + '__star_checked');
-                // }
-
-                stars[i].classList.toggle(this.id + '__star_checked', !(value - i - 1))
+                if (i === value - 1) {
+                    stars[i].classList.add(this.id + '__star_checked');
+                } else {
+                    stars[i].classList.remove(this.id + '__star_checked');
+                }
             }
         }
     }

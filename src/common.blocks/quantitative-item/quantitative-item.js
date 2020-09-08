@@ -5,16 +5,18 @@ function QuantitativeItem(elem) {
     this._minusBtn = elem.querySelector('.' + this.id + '__btn_minus');
     this._input = elem.querySelector('.' + this.id + '__input');
 
-    this.init();
+    this._init();
 }
 
 var proto = QuantitativeItem.prototype;
 
 
-proto.id = 'quantitative-item';
+proto.reset = function(doEmit) {
+    this.value = this._input.getAttribute('value');
+    if (doEmit !== false) this._emitQuantityChangedEvent();
+};
 
-
-proto.init = function() {
+proto._init = function() {
     var self = this;
 
     this.value = this._input.value;
@@ -31,12 +33,6 @@ proto.init = function() {
 };
 
 
-proto.reset = function(doEmit) {
-    this.value = this._input.getAttribute('value');
-    if (doEmit !== false) this._emitQuantityChangedEvent();
-};
-
-
 proto._emitQuantityChangedEvent = function() {
     var event = new Event('quantitychanged', { bubbles: true, cancelable: true });
     event.detail = this.value;
@@ -45,6 +41,11 @@ proto._emitQuantityChangedEvent = function() {
 
 
 Object.defineProperties(QuantitativeItem.prototype, {
+    id: {
+        value: 'quantitative-item',
+        enumerable: true
+    },
+    
     value: {
         get: function() {
             return +this._input.value;

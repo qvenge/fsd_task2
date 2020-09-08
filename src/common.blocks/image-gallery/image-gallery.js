@@ -1,15 +1,17 @@
-var BemEntity = require('../../common.blocks/_bem-entity/_bem-entity.js');
-
 function ImageGallery(elem) {
-    BemEntity.call(this);
     this.elem = elem;
+    this._init()
+}
 
-    this.addPostInitCallback(function() {
-        var imageSlider = this.elem.querySelector('.image-slider').bemInstances['image-slider'];
+ImageGallery.prototype = {
+    _init: function() {
         var self = this;
+        var imageSliderElem = this.elem.querySelector('.image-slider');
         var btnContainer = this.elem.querySelector('.' + this.id + '__bullet-btn-container');
         var prevBtn = this.elem.querySelector('.' + this.id + '__prev-image-btn');
         var nextBtn = this.elem.querySelector('.' + this.id + '__next-image-btn');
+
+        var imageSlider = window.BEM.getEntityInstance(imageSliderElem, 'image-slider');
         var btns = btnContainer.children;
 
         for (var i = 0; i < imageSlider.length; ++i) {
@@ -38,21 +40,23 @@ function ImageGallery(elem) {
             }
         });
 
-        imageSlider.elem.addEventListener('imagechanged', function(event) {
+        imageSliderElem.addEventListener('imagechanged', function(event) {
             if (event.detail.prevIndex !== undefined) {
                 btns[event.detail.prevIndex].classList.remove(self.id + '__bullet-btn_active');
             }
             btns[event.detail.index].classList.add(self.id + '__bullet-btn_active');
         });
-    });
+    }
 }
 
-ImageGallery.prototype = Object.create(BemEntity.prototype, {
+Object.defineProperties(ImageGallery.prototype, {
     id: {
         value: 'image-gallery',
         enumerable: true
     },
 });
+
+ImageGallery.prototype.constructor = ImageGallery;
 
 if (module) {
     module.exports = ImageGallery;

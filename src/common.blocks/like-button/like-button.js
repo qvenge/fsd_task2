@@ -2,13 +2,13 @@ function LikeButton(elem) {
     this.elem = elem;
     this._number = elem.getElementsByClassName(this.id + '__number')[0];
 
-    this.init();
+    this._init();
 }
 
 LikeButton.prototype = {
     id: 'like-button',
 
-    init: function() {
+    _init: function() {
         var self = this;
 
         this.elem.addEventListener('click', function(event) {

@@ -1,13 +1,11 @@
 function checkboxList(elem) {
     this.elem = elem;
 
-    this.init()
+    this._init()
 }
 
 checkboxList.prototype = {
-    id: 'checkbox-list',
-
-    init: function() {
+    _init: function() {
         var self = this;
 
         if (this.elem.classList.contains(this.id + '_expandable')) {
@@ -25,7 +23,14 @@ checkboxList.prototype = {
             });
         }
     }
-}
+};
+
+Object.defineProperties(checkboxList.prototype, {
+    id: {
+        value: 'checkbox-list',
+        enumerable: true
+    }
+});
 
 checkboxList.prototype.constructor = checkboxList;
 

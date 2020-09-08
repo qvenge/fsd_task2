@@ -3,11 +3,11 @@ mixin datePicker(options={})
     .date-picker
         .date-picker__outputs
             .date-picker__arrival
-                +labeledBlock('Прибытие')
-                    +output({ placeholder: 'ДД.ММ.ГГГГ', value: dates[0], expandable: true })
+                .date-picker__label.title.title_h3= Прибытие
+                +output({ placeholder: 'ДД.ММ.ГГГГ', value: dates[0], expandable: true })
             .date-picker__departure
-                +labeledBlock('Выезд')
-                    +output({ placeholder: 'ДД.ММ.ГГГГ', value: dates[1], expandable: true })
+                .date-picker__label.title.title_h3= Выезд
+                +output({ placeholder: 'ДД.ММ.ГГГГ', value: dates[1], expandable: true })
         .date-picker__dropdown.dropdown
             .date-picker__calendar
                 +calendar({ mode: 'range' })

@@ -1,21 +1,21 @@
 function GoodsPagination(elem) {
     this.elem = elem;
 
-    this.init();
+    this._init();
 }
 
 GoodsPagination.prototype = {
-    init: function() {
-        var params = JSON.parse(this.elem.dataset.bem)['goods-pagination'];
+    id: 'goods-pagination',
+    
+    _init: function() {
+        var paginationElem = this.elem.querySelector('.pagination');
+        var pagination = window.BEM.getEntityInstance(paginationElem, 'pagination');
+        var params = window.BEM.getParams(this.elem, this.id) || {};
+        var generateHint = this._generateHint.bind(this);
 
         this.numberOfItems = params.numberOfItems;
         this.itemsPerPage = params.itemsPerPage;
         this.lastPage = Math.ceil(this.numberOfItems / this.itemsPerPage);
-    },
-
-    postInit: function() {
-        var pagination = this.elem.querySelector('.pagination').bemInstances['pagination'];
-        var generateHint = this._generateHint.bind(this);
 
         pagination.setHint(generateHint(1));
 

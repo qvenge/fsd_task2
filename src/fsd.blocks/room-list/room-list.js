@@ -1,37 +1,4 @@
-function RoomList(elem) {
-    this.elem = elem;
-}
-
-
-var proto = RoomList.prototype;
-
-proto.id = 'room-list';
-
-proto.postInit = function() {
-    var self = this;
-
-    var words = {
-        bedrooms: ['спальня', 'спальни', 'спален'],
-        beds: ['кровать', 'кровати', 'кроватей'],
-        bathrooms: ['ванная комната', 'ванные комнаты', 'ванных комнат'],
-    }
-
-    this.elem.addEventListener('qlstatechanged', function() {
-        var dropdownOutput = self.elem.querySelector('.dropdown-output').bemInstances['dropdown-output'];
-        var list = self.elem.querySelector('.quantitative-list').bemInstances['quantitative-list'];
-
-        var output = list.getState().reduce(function(memo, item) {
-            if (item.value === 0) return memo;
-            if (memo) memo += ', ';
-            return memo + self.getOutput(item.value, words[item.name]);
-        }, '');
-
-        dropdownOutput.value = output ? output : dropdownOutput.placeholder;
-    });
-};
-
-
-proto.getOutput = function(number, words) {
+function getOutput(number, words) {
     var num = number % 100;
     if (num > 19) {
         num = num % 10;
@@ -47,7 +14,48 @@ proto.getOutput = function(number, words) {
             return number + ' ' + words[2];
         }
     }
-};
+}
+
+
+
+function RoomList(elem) {
+    this.elem = elem;
+
+    this._init()
+}
+
+
+Object.defineProperties(RoomList.prototype, {
+    id: {
+        value: 'room-list',
+        enumerable: true
+    },
+
+    _init: {
+        value: function() {
+            var listElem = this.elem.querySelector('.quantitative-list');
+            var dropdownElem = this.elem.querySelector('.dropdown-output');
+            var list = window.BEM.getEntityInstance(listElem, 'quantitative-list');
+            var dropdownOutput = window.BEM.getEntityInstance(dropdownElem, 'dropdown-output');
+
+            var words = {
+                bedrooms: ['спальня', 'спальни', 'спален'],
+                beds: ['кровать', 'кровати', 'кроватей'],
+                bathrooms: ['ванная комната', 'ванные комнаты', 'ванных комнат'],
+            }
+
+            this.elem.addEventListener('qlstatechanged', function() {
+                var output = list.getState().reduce(function(memo, item) {
+                    if (item.value === 0) return memo;
+                    if (memo) memo += ', ';
+                    return memo + getOutput(item.value, words[item.name]);
+                }, '');
+
+                dropdownOutput.value = output ? output : dropdownOutput.placeholder;
+            });
+        }
+    }
+});
 
 
 if (module) {

@@ -1,14 +1,12 @@
 function RangeDoubleSlider(elem) {
     this.elem = elem;
 
-    this.init();
+    this._init();
 }
 
 
 RangeDoubleSlider.prototype = {
-    id: 'range-double-slider',
-
-    init: function() {
+    _init: function() {
         var bemData = this.elem.dataset.bem && JSON.parse(this.elem.dataset.bem);
         var options = bemData[this.id];
 
@@ -120,6 +118,11 @@ RangeDoubleSlider.prototype = {
 
 
 Object.defineProperties(RangeDoubleSlider.prototype, {
+    id: {
+        value: 'range-double-slider',
+        enumerable: true
+    },
+    
     leftValue: {
         get: function() {
             return this.leftSlider.value;

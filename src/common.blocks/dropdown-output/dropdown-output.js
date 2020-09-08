@@ -1,19 +1,24 @@
-// ================= DropdownOutput CLASS ================= 
-var BemEntity = require('../_bem-entity/_bem-entity.js');
-
 function DropdownOutput(elem) {
-    BemEntity.call(this);
-
     this.elem = elem;
-    this._initializedCallback = [];
+    this._init();
+}
 
-    this.setPostInit(function() {
+DropdownOutput.prototype = {
+    open: function(clicked) {
+        this.dropdown.show(clicked);
+    },
+
+    close: function() {
+        this.dropdown.hide();
+    },
+
+    _init: function() {
         var self = this;
         var dropdownElem = this.elem.querySelector('.dropdown');
         var outputElem = this.elem.querySelector('.output');
 
-        this.dropdown = dropdownElem.bemInstances['dropdown'];
-        this.output = outputElem.bemInstances['output'];
+        this.dropdown = window.BEM.getEntityInstance(dropdownElem, 'dropdown');
+        this.output = window.BEM.getEntityInstance(outputElem, 'output');
         
         outputElem.addEventListener('click', function() {
             self.dropdown.isExpanded ? self.dropdown.hide() : self.dropdown.show(true);
@@ -38,33 +43,15 @@ function DropdownOutput(elem) {
                 self.elem.classList.remove(self.id + '_shrinking');
             }
         });
-    });
-}
+    }
+};
 
-DropdownOutput.prototype = Object.create(BemEntity.prototype, {
+Object.defineProperties(DropdownOutput.prototype, {
     id: {
         value: 'dropdown-output',
         enumerable: true,
         writable: false,
         configurable: false,
-    },
-
-    open: {
-        value: function(clicked) {
-            this.dropdown.show(clicked);
-        },
-        enumerable: true,
-        writable: true,
-        configurable: true,
-    },
-
-    close: {
-        value: function() {
-            this.dropdown.hide();
-        },
-        enumerable: true,
-        writable: true,
-        configurable: true,
     },
 
     value: {
@@ -84,8 +71,10 @@ DropdownOutput.prototype = Object.create(BemEntity.prototype, {
         },
         enumerable: true,
         configurable: false
-    }
+    },
 });
+
+DropdownOutput.prototype.constructor = DropdownOutput;
 
 if (module) {
     module.exports = DropdownOutput;

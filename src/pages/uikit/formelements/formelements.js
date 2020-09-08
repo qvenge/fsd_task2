@@ -1,6 +1,8 @@
 'use strict';
 require('./style.scss');
 
+window.BEM.initAllEntities();
+
 // const html = require('./some.pug');
 
 // const uiForms = document.querySelectorAll('.ui-form-element');
