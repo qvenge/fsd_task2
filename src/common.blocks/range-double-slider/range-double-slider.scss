@@ -32,7 +32,7 @@
         background: #FFFFFF;
         /* Dark 25% */
 
-        border: 1px solid $dark_shade_25;
+        border: 1px solid $third_color_25;
         box-sizing: border-box;
         border-radius: 3px;
     }
@@ -86,7 +86,7 @@
 
         /* Secondary Gradient */
 
-        background: $secondary_gradient;
+        background: $second_gradient;
         border: 2px solid #FFFFFF;
         border-radius: 10px;
     }
@@ -102,6 +102,6 @@
         margin-left: -8px;
         width: calc(100% + 14px);
         border-radius: 0;
-        background: $secondary_gradient;
+        background: $second_gradient;
     }
 }

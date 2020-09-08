@@ -1,0 +1,148 @@
+@import '../_globals/globals';
+
+.booking-card {
+    width: 380px;
+
+    background: #FFFFFF;
+    border: 1px solid $card_border;
+    box-sizing: border-box;
+    box-shadow: $card_box_shadow;
+    border-radius: 4px;
+    padding: 40px 0 30px;
+
+    &__container {
+        width: 320px;
+        margin: 0 auto;
+    }
+
+    &__room-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    &__room-number-class {
+        color: $third_color;
+    }
+
+    &__room-number {
+        @extend %font_title;
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    &__room-class {
+        @extend %font_additional;
+        text-transform: uppercase;
+        color: $main_color;
+    }
+
+    &__price {
+        color: $third_color_50;
+    }
+
+    &__price-field {
+        font-weight: bold;
+    }
+
+    &__price-per-day {
+        @extend %font_additional;
+    }
+
+    &__date-picker {
+        margin-top: 18px;
+    }
+
+    &__guests {
+        margin-top: 20px;
+    }
+
+    &__cost-list {
+        margin: 21px 0 0 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    &__cost-item {
+        display: flex;
+        justify-content: space-between;
+        line-height: 18px;
+    }
+
+    &__cost-item + &__cost-item {
+        margin-top: 16px;
+    }
+
+    &__cost-name {
+        position: relative;
+        width: 214px;
+    }
+
+    &__cost-clarification {
+        @extend %unselectable;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        right: -25px;
+
+        border: 1px solid $third_color_25;
+        border-radius: 50%;
+        box-sizing: border-box;
+
+        font-size: 12px;
+        text-align: center;
+        color: $third_color_25;
+    }
+    
+
+    &__cost-tooltip::before,
+    &__cost-tooltip::after {
+        opacity: 0;
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+
+    &__cost-tooltip:hover::before,
+    &__cost-tooltip:hover::after {
+        opacity: 1;
+    }
+
+    &__cost-tooltip::before {
+        content: attr(data-tooltip);
+        padding: 5px 10px;
+        background: $third_color_75;
+        color: #FFFFFF;
+        white-space: nowrap;
+        bottom: calc(100% + 10px);
+        left: -11px;
+        border-radius: 4px;
+    }
+
+    &__cost-tooltip::after {
+        content: "";
+        left: 4px;
+        bottom: 100%;
+        border-width: 5px;
+        border-color: $third_color_75 transparent transparent transparent;
+        border-style: solid;
+    }
+
+    &__total {
+        display: flex;
+        align-items: baseline;
+        margin-top: 30px;
+    }
+
+    &__dots {
+        flex: 1;
+        border-bottom: 1px dashed rgba(31, 32, 65, 0.25);
+        margin: 0 5px;
+    }
+
+    &__book-button {
+        margin-top: 20px;
+    }
+}

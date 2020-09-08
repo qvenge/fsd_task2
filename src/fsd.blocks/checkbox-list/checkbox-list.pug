@@ -1,0 +1,16 @@
+mixin checkboxList(label, list, expandable)
+    -
+        if (expandable) {
+            attributes.class = attributes.class ? attributes.class + ' ' : '';
+            attributes.class += 'checkbox-list_expandable';
+        }
+
+    .checkbox-list&attributes(attributes)
+        if label
+            .checkbox-list__label.title.title_h3= label
+                .checkbox-list__expand-icon.material-icons expand_more
+        .checkbox-list__ul-wrapper
+            ul.checkbox-list__ul
+                each options in list
+                    li.checkbox-list__item
+                        +checkbox(options)

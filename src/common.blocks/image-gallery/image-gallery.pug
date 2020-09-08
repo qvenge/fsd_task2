@@ -1,0 +1,7 @@
+mixin imageGallery(images, options={})
+    .image-gallery&attributes(attributes)
+        .image-gallery__image-container
+            +imageSlider(images, options)
+        .image-gallery__prev-image-btn
+        .image-gallery__next-image-btn
+        .image-gallery__bullet-btn-container

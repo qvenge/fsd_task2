@@ -1,13 +1,18 @@
 @import '../_globals/globals';
 
 .quantitative-item {
+    @extend %font_additional;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $third_color;
 
     &__control {
         display: flex;
         align-items: center;
+        position: relative;
     }
 
     &__label {
@@ -20,17 +25,26 @@
         padding: 0 12px;
     }
 
+    &__input {
+        position: absolute;
+        z-index: -1;
+        visibility: hidden;
+        height: 1px;
+        width: 1px;
+        border: none;
+    }
+
     &__btn {
         box-sizing: border-box;
         font-size: 18px;
         font-weight: normal;
-        color: $dark_shade_50;
+        color: $third_color_50;
         text-align: center;
         line-height: 28px;
         width: 30px;
         height: 30px;
         background: inherit;
-        border: 1px solid $dark_shade_25;
+        border: 1px solid $third_color_25;
         border-radius: 50%;
         cursor: pointer;
     }

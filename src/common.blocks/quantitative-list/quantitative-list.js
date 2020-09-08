@@ -1,5 +1,6 @@
 function QuantitativeList(elem) {
     this.elem = elem;
+    this._items = this.elem.getElementsByClassName('quantitative-item');
 
     this.init();
 }
@@ -14,14 +15,14 @@ proto.init = function() {
     var self = this;
 
     this.elem.addEventListener('quantitychanged', function(event) {
-        event.stopPropagation();
+        // event.stopPropagation();
         self._emitQLStateChangedEvent();
     });
 };
 
 
 proto.reset = function() {
-    var items = this.elem.getElementsByClassName('quantitative-item');
+    var items = this._items;
 
     for (var i = 0; i < items.length; ++i) {
         var qiBlock = items[i].bemInstances['quantitative-item'];
@@ -33,7 +34,7 @@ proto.reset = function() {
 
 
 proto.getState = function() {
-    var items = this.elem.getElementsByClassName('quantitative-item');
+    var items = this._items;
     var result = [];
 
     for (var i = 0; i < items.length; ++i) {
@@ -42,7 +43,7 @@ proto.getState = function() {
         qiBlock && result.push({
             label: qiBlock.label,
             name: qiBlock.outputName,
-            value: qiBlock.quantity
+            value: qiBlock.value
         });
     }
 

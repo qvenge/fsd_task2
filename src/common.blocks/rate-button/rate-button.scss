@@ -1,0 +1,37 @@
+@import '../_globals/globals';
+
+.rate-button {
+    display: flex;
+    flex-direction: row-reverse;
+
+    &__star {
+        display: block;
+        position: relative;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+
+    &__star::after {
+        content: "star_border";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: $main_gradient;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    // &__star:hover::after,
+    // &__star:hover ~ &__star::after {
+    //     text-shadow: 0 0 2px #BC9CFF;
+    //     content: "star";
+    // }
+
+    &__star:hover::after,
+    &__star:hover ~ &__star::after,
+    &__star_checked::after,
+    &__star_checked ~ &__star::after {
+        content: "star";
+    }
+}

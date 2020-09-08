@@ -1,0 +1,61 @@
+@import '../_globals/globals';
+
+.checkbox-list {
+    position: relative;
+    width: 266px;
+
+    &__expand-icon {
+        @extend %unselectable;
+        
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 15px;
+        text-align: center;
+        width: 44px;
+        color: $third_color_50;
+        transition: all .3s ease-out;
+    }
+
+    &__ul-wrapper {
+        overflow: hidden;
+        border: none;
+        padding: 0;
+        transition: all .3s ease-out;
+    }
+
+    &__ul {
+        margin: 0;
+        padding: 17px 0 0 0;
+        list-style-type: none;
+    }
+
+    &__item {
+        vertical-align: top;
+        line-height: 1px;
+        white-space: nowrap;
+        padding: 0;
+    }
+
+    &__item + &__item {
+        margin-top: 10.5px;
+    }
+
+    &_expandable:not(&_expanded) &__ul-wrapper {
+        height: 0;
+    }
+
+    &_expandable &__label {
+        cursor: pointer;
+    }
+
+    &_expandable &__expand-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    &_expanded &__expand-icon {
+        transform: rotate(180deg);
+    }
+}

@@ -1,0 +1,15 @@
+mixin calendar(options={})
+    .calendar(data-bem=JSON.stringify({ calendar: options }))&attributes(attributes)
+        .calendar__heading
+            .calendar__prev-month-btn.material-icons arrow_back
+            .calendar__month-year.title.title_h2
+            .calendar__next-month-btn.material-icons arrow_forward
+        .calendar__days
+            .calendar__day Пн
+            .calendar__day Вт
+            .calendar__day Ср
+            .calendar__day Чт
+            .calendar__day Пт
+            .calendar__day Сб
+            .calendar__day Вс
+        .calendar__dates

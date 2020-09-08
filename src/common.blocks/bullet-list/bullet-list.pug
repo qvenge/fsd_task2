@@ -1,0 +1,7 @@
+mixin bulletList(label, textlist=[])
+    .bullet-list
+        if label
+            .bullet-list__label.title.title_h3!= label
+        ul.bullet-list__ul
+            each val in textlist
+                li.bullet-list__item!= val

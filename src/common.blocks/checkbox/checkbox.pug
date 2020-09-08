@@ -1,6 +1,41 @@
-mixin checkbox(label, toggle, inputAttributes={})
-    - inputAttributes.type = "checkbox";
-    label.checkbox(class= toggle ? 'checkbox_toggle' : '')&attributes(attributes)
+mixin checkbox(labelOrOptions)
+    -
+        var inputAttributes = {};
+        var label = labelOrOptions;
+        var toggle = false;
+        var rich = false;
+        var postscript = '';
+
+        if (typeof labelOrOptions === 'object') {
+            Object.assign(inputAttributes, labelOrOptions);
+            label = labelOrOptions.label;
+            toggle = labelOrOptions.toggle;
+            rich = labelOrOptions.rich;
+            postscript = labelOrOptions.postscript || '';
+        }
+
+        delete inputAttributes.label;
+        delete inputAttributes.toggle;
+        delete inputAttributes.rich;
+        delete inputAttributes.postscript;
+
+        inputAttributes.type = 'checkbox';
+
+        attributes.class = attributes.class ? attributes.class : '';
+
+        if (toggle) {
+            attributes.class += ' checkbox_toggle';
+        }
+
+        if (rich) {
+            attributes.class += ' checkbox_rich';
+        }
+
+        //- var id = 'idcheckbox' + Math.random().toString(36).substr(2, 9);
+
+    label.checkbox&attributes(attributes)
+        span.checkbox__label!= label
+        if (rich)
+            span.checkbox__postscript!= postscript
         input.checkbox__input&attributes(inputAttributes)
         span.checkbox__checkmark
-        span.checkbox__label= label

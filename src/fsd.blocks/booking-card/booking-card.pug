@@ -1,0 +1,42 @@
+mixin bookingCard(details)
+    -
+        function valueToString(value) {
+            value = String(value);
+            var result = value.slice(-3);
+
+            for (var i = -3; i > -value.length; i -= 3) {
+                result = value.slice(i - 3, i) + ' ' + result;
+            }
+
+            return result;
+        }
+
+        var price = valueToString(details.price)
+
+    .booking-card&attributes(attributes)
+        .booking-card__container
+            .booking-card__room-info
+                .booking-card__room-number-class
+                    | #[span.booking-card__number-sign № ]#[span.booking-card__room-number #{details.number}]&nbsp;&nbsp;#[span.booking-card__room-class #{details.class || ''}]
+                .booking-card__price
+                    | #[span.booking-card__price-field #{price}₽] #[span.booking-card__price-per-day в сутки]
+            .booking-card__date-picker
+                +datePicker({ dates: details.dates })
+            .booking-card__guests
+                +guestList({adults: 3})
+            ul.booking-card__cost-list
+                li.booking-card__cost-item.booking-card__cost-item_rent(data-cost=details.price)
+                    .booking-card__cost-name #{price}₽ x 0 сутки
+                    .booking-card__cost-number 0₽
+                li.booking-card__cost-item(data-cost="-2179")
+                    .booking-card__cost-name Сбор за услуги: скидка 2 179₽
+                        .booking-card__cost-clarification.booking-card__cost-tooltip(data-tooltip="Какая-то подсказка") i
+                    .booking-card__cost-number 0₽
+                li.booking-card__cost-item(data-cost="300")
+                    .booking-card__cost-name Сбор за дополнительные услуги
+                        .booking-card__cost-clarification.booking-card__cost-tooltip(data-tooltip="Какая-то подсказка") i
+                    .booking-card__cost-number 300₽
+            .booking-card__total.title.title_h2
+                | #[.booking-card__total-label Итого]#[.booking-card__dots]#[.booking-card__total-sum 0]₽
+            .booking-card__book-button
+                +button('Забронировать', {extended: true, arrow: true})

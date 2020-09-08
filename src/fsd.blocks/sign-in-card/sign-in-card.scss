@@ -1,0 +1,35 @@
+@import '../_globals/globals';
+
+.sign-in-card {
+    width: 380px;
+    padding: 40px 0 30px;
+    background: #FFFFFF;
+    border: $card_border;
+    box-sizing: border-box;
+    box-shadow: $card_box_shadow;
+    border-radius: 4px;
+
+    &__container {
+        width: 320px;
+        margin: 0 auto;
+    }
+
+    &__email {
+        margin-top: 20px;
+    }
+
+    &__password {
+        margin-top: 10px;
+    }
+
+    &__main-button {
+        margin-top: 20px;
+    }
+
+    &__registration {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 30px;
+    }
+}

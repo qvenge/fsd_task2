@@ -1,0 +1,46 @@
+@import '../_globals/globals';
+
+.date-picker {
+    width: 320px;
+    position: relative;
+
+    &__outputs {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__label {
+        margin-bottom: 5px;
+    }
+
+    &__arrival,
+    &__departure {
+        width: 150px;
+    }
+
+    &__dropdown {
+        width: 320px;
+        margin-top: 6px;
+        box-sizing: border-box;
+        padding: 19px 0 15px 0;
+        background: #FFFFFF;
+        border: 1px solid $third_color_25;
+        box-shadow: $main_box_shadow;
+        border-radius: 4px;
+    }
+
+    &__calendar {
+        width: 280px;
+        margin: 0 auto;
+    }
+
+    &__btns {
+        display: flex;
+        margin-top: 15px;
+        justify-content: space-between;
+    }
+
+    &__reset-btn_hidden {
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,80 @@
+@import '../_globals/globals';
+
+.image-gallery {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &__image-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &__prev-image-btn,
+    &__next-image-btn {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        height: 100%;
+        width: 42px;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+        cursor: pointer;
+    }
+
+    &__prev-image-btn::after,
+    &__next-image-btn::after {
+        @extend %material-icons;
+        content: "expand_more";
+        transform: rotate(90deg);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        margin-top: -12px;
+        color: #FFFFFF;
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    &__prev-image-btn {
+        left: 0;
+    }
+
+    &__next-image-btn {
+        right: 0;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+
+    &__bullet-btn-container {
+        position: absolute;
+        z-index: 3;
+        bottom: 15px;
+        right: 15px;
+        display: flex;
+    }
+
+    &__bullet-btn {
+        width: 8px;
+        height: 8px;
+
+        border: 1px solid #FFFFFF;
+        border-radius: 50%;
+        box-sizing: border-box;
+
+        cursor: pointer;
+    }
+
+    &__bullet-btn_active {
+        background: #FFFFFF;
+        pointer-events: none;
+    }
+
+    &__bullet-btn + &__bullet-btn {
+        margin-left: 4px;
+    }
+}

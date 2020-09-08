@@ -1,0 +1,18 @@
+mixin datePicker(options={})
+    - var dates = options.dates || [];
+    .date-picker
+        .date-picker__outputs
+            .date-picker__arrival
+                +labeledBlock('Прибытие')
+                    +output({ placeholder: 'ДД.ММ.ГГГГ', value: dates[0], expandable: true })
+            .date-picker__departure
+                +labeledBlock('Выезд')
+                    +output({ placeholder: 'ДД.ММ.ГГГГ', value: dates[1], expandable: true })
+        .date-picker__dropdown.dropdown
+            .date-picker__calendar
+                +calendar({ mode: 'range' })
+                .date-picker__btns
+                    .date-picker__reset-btn
+                        +button('Очистить', { type: 'third', additional: true })
+                    .date-picker__apply-btn
+                        +button('Применить', { type: 'third' })

@@ -1,0 +1,31 @@
+.body {
+    background: #F4F4F6;
+}
+
+.main-container {
+    width: 1160px;
+}
+
+.card-page {
+    padding: 140px 0 0 0;
+    
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 40px;
+    }
+
+    &__logo {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+
+    & + & {
+        margin-top: 80px;
+    }
+
+    &__item + &__item {
+        margin-top: 40px;
+    }
+}

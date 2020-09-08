@@ -1,5 +1,3 @@
-include ../quantitative-item/quantitative-item.pug
-
 mixin quantitativeList(list, name)
     -
         var getName = name ? function(key) {
@@ -11,7 +9,16 @@ mixin quantitativeList(list, name)
         };
 
     .quantitative-list&attributes(attributes)
-        ul.quantitative-list__ul.title.title_h3
-            each label, key in list
-                .quantitative-list__item
-                    +quantitativeItem({ tag: 'li', label: label, name: getName(key) })
+        ul.quantitative-list__ul
+            each item, key in list
+                -
+                    var label = item;
+                    var value = 0;
+
+                    if (typeof item === 'object') {
+                        label = item.label;
+                        value = item.value;
+                    }
+
+                li.quantitative-list__item
+                    +quantitativeItem({ label: label, value: value, name: getName(key) })

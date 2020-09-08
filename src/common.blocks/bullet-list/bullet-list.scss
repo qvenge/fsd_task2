@@ -1,0 +1,36 @@
+@import '../_globals/globals';
+
+.bullet-list {
+    &__label {
+        margin-bottom: 13px;
+    }
+
+
+    &__ul {
+        @extend %font_body;
+        color: $third_color_75;
+        line-height: 24px;
+        margin: 0;
+        padding: 0 0 0 21px;
+        list-style-type: none;
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__item + &__item {
+        margin-top: 10px;
+    }
+
+    &__item::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: -21px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: $third_color_25;
+    }
+}

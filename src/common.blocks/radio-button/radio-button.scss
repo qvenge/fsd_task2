@@ -2,6 +2,7 @@
 
 .radio-button {
     @extend %unselectable;
+    @extend %font_body;
 
     white-space: nowrap;
     position: relative;
@@ -9,7 +10,7 @@
     cursor: pointer;
 
     &__label {
-        color: $dark_shade_50;
+        color: $third_color_50;
         line-height: 18px;
     }
 
@@ -37,24 +38,24 @@
         background: #FFFFFF;
         overflow: hidden;
 
-        border: 1px solid $dark_shade_25;
+        border: 1px solid $third_color_25;
         border-radius: 50%;
     }
 
     &:hover &__input ~ &__checkmark {
-        border-color: $purple
+        border-color: $main_color;
     }
 
     // &:hover &__label {
-    //     color: $dark_shade_75;
+    //     color: $third_color_75;
     // }
 
     &__input:checked ~ &__checkmark {
-        border-color: $purple;
+        border-color: $main_color;
     }
 
     &__input:checked ~ &__label {
-        color: $dark_shade_75;
+        color: $third_color_75;
     }
 
     &__checkmark:after {
@@ -67,7 +68,7 @@
         height: 12px;
         border: none;
         border-radius: 50%;
-        background: $primary_gradient;
+        background: $main_gradient;
     }
 
     &__input:checked ~ &__checkmark:after {

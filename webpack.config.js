@@ -9,6 +9,7 @@ const devMode = process.env.NODE_ENV !== 'production';
 const pages = [
     setPage('./pages/uikit/formelements/formelements.pug'),
     setPage('./pages/uikit/colorsandtype/colorsandtype.pug'),
+    setPage('./pages/uikit/cards/cards.pug'),
 ];
 
 module.exports = {
@@ -28,11 +29,11 @@ module.exports = {
             return '[name].bundle.js';
         },
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all',
+    //     },
+    // },
     module: {
         rules: [
             {
@@ -40,7 +41,28 @@ module.exports = {
                 use: [
                     {
                         loader: 'html-loader',
-                        options: {},
+                        options: {
+                            attributes: {
+                                list: [
+                                    {
+                                        attribute: 'src',
+                                        type: 'src'
+                                    },
+                                    {
+                                        attribute: 'srcset',
+                                        type: 'srcset'
+                                    },
+                                    {
+                                        attribute: 'data-src',
+                                        type: 'src'
+                                    },
+                                    {
+                                        attribute: 'data-srcset',
+                                        type: 'srcset'
+                                    }
+                                ]
+                            }
+                        },
                     },
                     {
                         loader: BemIntegratorPlugin.preHtmlLoader,

@@ -1,12 +1,24 @@
-mixin guestList(label)
+mixin guestList(values={})
+    -
+        var list = { 
+            adults: { label: 'взрослые', value: 0 },
+            children: { label: 'дети', value: 0 },
+            babies: { label: 'младенцы', value: 0 }
+        };
+
+        Object.keys(list).forEach(function(key) {
+            if (values.hasOwnProperty(key)) {
+                list[key].value = values[key];
+            }
+        });
+
     .guest-list&attributes(attributes)
-        .guest-list__label.title.title_h3= label ? label : 'Гости'
-        .guest-list__dropdown
-            +outputDropdown('Сколько гостей')
-                .guest-list__content
-                    +quantitativeList({adults: 'взрослые', children: 'дети', babies: 'младенцы'})
-                    .guest-list__btn-container.clearfix
-                        .guest-list__reset-btn
-                            +button('Очистить', { type: 'tertiary', additional: true })
-                        .guest-list__apply-btn
-                            +button('Применить', { type: 'tertiary' })
+        .guest-list__label.title.title_h3 Гости
+        +dropdownOutput('Сколько гостей')
+            .guest-list__content
+                +quantitativeList(list)
+                .guest-list__btn-container
+                    .guest-list__reset-btn
+                        +button('Очистить', { type: 'third', additional: true })
+                    .guest-list__apply-btn
+                        +button('Применить', { type: 'third' })

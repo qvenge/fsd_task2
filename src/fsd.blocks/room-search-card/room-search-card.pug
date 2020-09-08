@@ -1,0 +1,10 @@
+mixin roomSearchCard()
+    .room-search-card
+        .room-search-card__container
+            .room-search-card__label.title.title_h1 Найдём номера под ваши пожелания
+            .room-search-card__date-picker
+                +datePicker()
+            .room-search-card__guest-list
+                +guestList()
+            .room-search-card__button
+                +button('Подобрать номер', { extended: true, arrow: true })

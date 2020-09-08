@@ -1,10 +1,12 @@
-include ../../common.blocks/checkbox/checkbox.pug
+mixin toggle(text, label, inputAttributes={})
+    -
+        inputAttributes.label = text;
+        inputAttributes.toggle = true
 
-mixin toggle(text, label, inputAttributes)
     if label
         .toggle&attributes(attributes)
             .toggle__label.title.title_h3= label
-            +checkbox(text, true, inputAttributes)
+            +checkbox(inputAttributes)
     else
         - attributes.class = attributes.class ? ('toggle ' + attributes.class) : attributes.class;
-        +checkbox(text, true, inputAttributes)&attributes(attributes)
+        +checkbox(inputAttributes)&attributes(attributes)

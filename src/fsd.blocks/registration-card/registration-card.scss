@@ -1,0 +1,64 @@
+@import '../_globals/globals';
+
+.registration-card {
+    width: 380px;
+    height: 646px;
+
+    background: #FFFFFF;
+    border: $card_border;
+    box-sizing: border-box;
+    box-shadow: $card_box_shadow;
+    border-radius: 4px;
+
+    &__container {
+        width: 320px;
+        margin: 0 auto;
+    }
+
+    &__main-label {
+        margin-top: 39px;
+    }
+
+    &__label {
+        margin-bottom: 5px;
+    }
+
+    &__first-name {
+        margin-top: 20px;
+    }
+
+    &__second-name {
+        margin-top: 10px;
+    }
+
+    &__gender {
+        margin-top: 8px;
+    }
+
+    &__dob {
+        margin-top: 22px;
+    }
+
+    &__service-data {
+        margin-top: 20px;
+    }
+
+    &__password {
+        margin-top: 10px;
+    }
+
+    &__receive-special-offers {
+        margin-top: 10px;
+    }
+
+    &__checkout-button {
+        margin-top: 23px;
+    }
+
+    &__sign-in {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+    }
+}

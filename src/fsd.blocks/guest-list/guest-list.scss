@@ -10,18 +10,13 @@
     }
     
     &__btn-container {
-        // display: flex;
-        // justify-content: space-between;
+        display: flex;
+        justify-content: space-between;
         margin-top: 20px;
         line-height: 15px;
     }
 
-    &__reset-btn {
-        float: left;
-        color: $dark_shade_50;
-    }
-
-    &__apply-btn {
-        float: right;
+    &__reset-btn_hidden {
+        visibility: hidden;
     }
 }

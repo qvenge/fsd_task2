@@ -1,0 +1,8 @@
+mixin commentBlock(params={})
+    .comment-block&attributes(attributes)
+        img(src=params.avatar_src).comment-block__avatar
+        .comment-block__author= params.author
+        .comment-block__last-seen= params.date
+        .comment-block__like-button
+            +likeButton(12, true)
+        .comment-block__message= params.message

@@ -1,7 +1,12 @@
 mixin quantitativeItem(options)
+    -
+        var value = options.value !== undefined ? options.value : 0;
+        var name = options.name !== undefined ? options.name : '';
+
     #{options.tag ? options.tag : 'div'}.quantitative-item&attributes(attributes)
         .quantitative-item__label= options.label
         .quantitative-item__control
             .quantitative-item__btn.quantitative-item__btn_disabled.quantitative-item__btn_minus -
-            output(name=options.name).quantitative-item__quantity 0
+            .quantitative-item__quantity= value
+            input(type="number", name=name, value=value).quantitative-item__input
             .quantitative-item__btn.quantitative-item__btn_plus +

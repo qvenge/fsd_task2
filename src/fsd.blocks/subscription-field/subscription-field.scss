@@ -1,0 +1,25 @@
+@import '../_globals/globals';
+
+.subscription-field {
+    position: relative;
+    //box-sizing: border-box;
+    width: 266px;
+
+    &:hover .input {
+        border-color: $third_color_50;
+    }
+
+    &::after {
+        @extend %material-icons;
+        content: "arrow_forward";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 44px;
+        width: 44px;
+        line-height: 44px;
+        color: $main_color;
+        text-align: center;
+        cursor: pointer;
+    }
+}

@@ -17,7 +17,7 @@ proto.postInit = function() {
     }
 
     this.elem.addEventListener('qlstatechanged', function() {
-        var dropdown = self.elem.querySelector('.output-dropdown').bemInstances['output-dropdown'];
+        var dropdownOutput = self.elem.querySelector('.dropdown-output').bemInstances['dropdown-output'];
         var list = self.elem.querySelector('.quantitative-list').bemInstances['quantitative-list'];
 
         var output = list.getState().reduce(function(memo, item) {
@@ -26,7 +26,7 @@ proto.postInit = function() {
             return memo + self.getOutput(item.value, words[item.name]);
         }, '');
 
-        dropdown.output = output ? output : dropdown.defaultOutput;
+        dropdownOutput.value = output ? output : dropdownOutput.placeholder;
     });
 };
 

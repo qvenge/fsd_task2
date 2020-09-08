@@ -1,0 +1,5 @@
+mixin imageSlider(images=[], options={})
+    .image-slider(data-bem=JSON.stringify({ 'image-slider': options }))&attributes(attributes)
+        .image-slider__container
+            each src in images
+                .image-slider__image(data-src=src)

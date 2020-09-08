@@ -1,0 +1,24 @@
+mixin labeledBlock(label, options={})
+    -
+        if (typeof options.margin === 'number') {
+            var mt;
+
+            if (5 < options.margin && options.margin <= 10) {
+                mt = 10;
+            } else if (10 < options.margin && options.margin <= 15) {
+                mt = 15;
+            } else if (15 < options.margin) {
+                mt = 20;
+            }
+
+            if (mt) {
+                attributes.class = attributes.class ? (attributes.class + ' ') : '';
+                attributes.class += ('labeled-block_mt_' + mt);
+            }
+        }
+
+    .labeled-block&attributes(attributes)
+        .labeled-block__label.title.title_h3= label
+        if block
+            .labeled-block__block
+                block

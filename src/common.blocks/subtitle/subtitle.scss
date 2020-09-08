@@ -2,13 +2,8 @@
 
 
 .subtitle {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 15px;
+    @extend %font_additional;
     text-transform: uppercase;
-
-    /* Dark 50% */
-    color: $dark_shade_50;
+    text-decoration: none;
+    color: $third_color_50;
 }

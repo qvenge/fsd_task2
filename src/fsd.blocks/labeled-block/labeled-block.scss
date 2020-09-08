@@ -1,0 +1,17 @@
+.labeled-block {
+    &__label {
+        margin-bottom: 5px;
+    }
+
+    &_mt_10 &__label {
+        margin-bottom: 10px;
+    }
+
+    &_mt_15 &__label {
+        margin-bottom: 15px;
+    }
+
+    &_mt_20 &__label {
+        margin-bottom: 20px;
+    }
+}

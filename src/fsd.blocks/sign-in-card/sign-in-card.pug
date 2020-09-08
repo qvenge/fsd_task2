@@ -1,0 +1,13 @@
+mixin signInCard()
+    .sign-in-card&attributes(attributes)
+        .sign-in-card__container
+            .sign-in-card__label.title.title_h1 Войти
+            .sign-in-card__email
+                +input({type: 'email', placeholder: 'Email'})
+            .sign-in-card__password
+                +input({type: 'password', placeholder: 'Пароль'})
+            .sign-in-card__main-button
+                +button('Войти', { extended: true, arrow: true })
+            .sign-in-card__registration
+                | Нет аккаунта на Toxin?
+                +button('Создать', { type: 'second' })

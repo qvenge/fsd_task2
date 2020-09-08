@@ -1,0 +1,146 @@
+@import '../_globals/globals';
+
+.room-card {
+    width: 270px;
+    height: 257px;
+
+    background: #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: $main_box_shadow;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &__room-appearance {
+        position: relative;
+        width: 100%;
+        height: 150px;
+    }
+
+    &__image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__prev-image-btn,
+    &__next-image-btn {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        height: 100%;
+        width: 42px;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+        cursor: pointer;
+    }
+
+    &__prev-image-btn::after,
+    &__next-image-btn::after {
+        @extend %material-icons;
+        content: "expand_more";
+        transform: rotate(90deg);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        margin-top: -12px;
+        color: #FFFFFF;
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    &__prev-image-btn {
+        left: 0;
+    }
+
+    &__next-image-btn {
+        right: 0;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+
+    &__bullet-btn-container {
+        position: absolute;
+        z-index: 3;
+        bottom: 15px;
+        right: 15px;
+        display: flex;
+    }
+
+    &__bullet-btn {
+        width: 8px;
+        height: 8px;
+
+        border: 1px solid #FFFFFF;
+        border-radius: 50%;
+        box-sizing: border-box;
+
+        cursor: pointer;
+    }
+
+    &__bullet-btn_active {
+        background: #FFFFFF;
+        pointer-events: none;
+    }
+
+    &__bullet-btn + &__bullet-btn {
+        margin-left: 4px;
+    }
+
+    &__container {
+        width: 230px;
+        margin: 0 auto;
+        color: $third_color_50;
+    }
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 21px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid $third_color_10;
+    }
+
+    &__rate-reviews {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 8px;
+    }
+
+    &__room-number-class {
+        color: $third_color;
+    }
+
+    &__room-number {
+        @extend %font_title;
+        font-size: 19px;
+        line-height: 24px;
+    }
+
+    &__room-class {
+        @extend %font_additional;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: $main_color;
+    }
+
+
+
+    &__price {
+        @extend %font_additional;
+        color: $third_color_50;
+    }
+
+    &__price-field {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    &__reviews-number {
+        font-weight: bold;
+    }
+}

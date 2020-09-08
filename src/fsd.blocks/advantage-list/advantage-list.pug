@@ -1,0 +1,6 @@
+mixin advantageList(list=[])
+    .advantage-list&attributes(attributes)
+        ul.advantage-list__ul
+            each params in list
+                li.advantage-list__item
+                    +advantage(params.label, params.text, params.icon)

@@ -1,0 +1,9 @@
+mixin calendarCard()
+    .calendar-card&attributes(attributes)
+        .calendar-card__container
+            +calendar({ mode: 'range' })
+            .calendar-card__btns
+                .calendar-card__reset-btn
+                    +button('Очистить', { type: 'third', additional: true })
+                .calendar-card__apply-btn
+                    +button('Применить', { type: 'third' })

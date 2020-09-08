@@ -1,0 +1,32 @@
+@import '../_globals/globals';
+
+.room-search-card {
+    box-sizing: border-box;
+    width: 380px;
+    height: 374px;
+    background: #FFFFFF;
+    border: $card_border;
+    box-shadow: $card_box_shadow;
+    border-radius: 4px;
+
+    &__container {
+        width: 320px;
+        margin: 0 auto;
+    }
+
+    &__label {
+        margin-top: 39px;
+    }
+
+    &__date-picker {
+        margin-top: 20px;
+    }
+    
+    &__guest-list {
+        margin-top: 21px;
+    }
+
+    &__button {
+        margin-top: 30px;
+    }
+}

@@ -1,0 +1,120 @@
+@import "../_globals/globals";
+
+.calendar {
+    @extend %font_additional;
+    width: 280px;
+
+    &__heading,
+    &__days,
+    &__dates {
+        display: flex;
+    }
+
+    &__heading {
+        justify-content: space-between;
+    }
+
+    &__prev-month-btn,
+    &__next-month-btn {
+        @extend %unselectable;
+        cursor: pointer;
+        color: $main_color;
+    }
+
+
+    &__days {
+        margin-top: 30px;
+    }
+
+    &__dates {
+        @extend %unselectable;
+        flex-wrap: wrap;
+
+        // date::before z-index -1
+        position: relative;
+        z-index: 0;
+    }
+
+    &__day, 
+    &__date {
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+
+        line-height: 40px;
+        text-align: center;
+    }
+
+    &__day {
+        font-weight: bold;
+        color: $main_color;
+    }
+
+
+    &__date {
+        position: relative;
+        cursor: pointer;
+        font-weight: normal;
+        color: $third_color_50;
+        border-radius: 50%;
+    }
+
+    &__date_ranged_last::after,
+    &__date_ranged_first::after,
+    &__date::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        left: 0;
+    }
+
+    &__date::before {
+        background: $main_gradient;
+        opacity: 0;
+    }
+
+    &__date_ranged::before {
+        opacity: 0.25;
+    }
+
+    &__date_ranged_first::after {
+        background: #FFFFFF;
+        border-radius: 0 50% 50% 0;
+    }
+
+    &__date_ranged_last::after {
+        background: #FFFFFF;
+        border-radius: 50% 0 0 50%;
+    }
+
+    // &__date_ranged_last::before {
+    //     border-radius: 0 50% 50% 0;
+    // }
+
+    // &__date_ranged_first::before {
+    //     border-radius: 50% 0 0 50%;
+    // }
+
+
+    &__date_prev-month,
+    &__date_next-month {
+        color: $third_color_25;
+    }
+
+    &__date_today {
+        background: $second_gradient;
+        color: #FFFFFF;
+    }
+
+    &__date_selected {
+        background: $main_gradient;
+        color: #FFFFFF;
+    }
+
+    &__date:not(&__date_today):not(&__date_selected):hover {
+        background: $third_color_5;
+    }
+}

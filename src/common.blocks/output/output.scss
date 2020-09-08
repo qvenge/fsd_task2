@@ -1,0 +1,66 @@
+@import '../_globals/globals';
+
+.output {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 44px;
+    padding: 0 44px 0 15px;
+    border: 1px solid $third_color_25;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #FFFFFF;
+
+    transition: all 0.3s ease-in-out, border-color .1s ease-in-out;
+
+    &:hover {
+        border-color: $third_color_50;
+    }
+
+    &__expand-icon {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: center;
+        width: 44px;
+        line-height: 44px;
+        border: none;
+    }
+
+
+    &_expandable &__expand-icon {
+        display: block;
+    }
+
+
+    &__field {
+        @extend %font_body;
+        color: $third_color_75;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        padding: 8px 0 12px;
+        border: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        z-index: -1;
+        height: 1px;
+        width: 1px;
+    }
+}
+
+
+.output_expandable.output_expanded {
+    border-color: $third_color_50;
+    border-radius: 4px 4px 0 0;
+}

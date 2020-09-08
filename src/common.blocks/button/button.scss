@@ -2,23 +2,23 @@
 
 .button {
     @extend %unselectable;
+    @extend %font_additional;
 
     display: inline-block;
     position: relative;
     padding: 0 20px;
+    box-sizing: border-box;
+    height: 44px;
 
-    line-height: 44px;      /* identical to box height */
-    font-family: Montserrat;
-    font-style: normal;
+    line-height: 40px;      /* identical to box height */
     font-weight: bold;
-    font-size: 12px;
     text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;
     color: #FFFFFF;
 
     background-color: transparent;
-    background: $primary_gradient;
+    background: $main_gradient;
     border: none;
     border-radius: 22px;
     cursor: pointer;
@@ -29,17 +29,19 @@
         border: none;
     }
 
-    &_secondary {
+    &_second {
         background: none;
-        border: 1px solid $purple;
-        color: $purple;
+        border: 2px solid $main_color;
+        color: $main_color;
     }
 
-    &_tertiary {
+    &_third {
         padding: 0;
         line-height: 15px;
+        height: auto;
+        min-width: auto;
         background: none;
-        color: $purple;
+        color: $main_color;
     }
 
     &:not(&_disabled):hover {
@@ -68,6 +70,6 @@
     }
 
     &_additional {
-        color: $dark_shade_50;
+        color: $third_color_50;
     }
 }

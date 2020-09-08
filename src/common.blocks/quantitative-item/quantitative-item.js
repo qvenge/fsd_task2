@@ -2,6 +2,8 @@ function QuantitativeItem(elem) {
     this.elem = elem;
     this._quantityElem = elem.querySelector('.' + this.id + '__quantity');
     this._labelElem = elem.querySelector('.' + this.id + '__label');
+    this._minusBtn = elem.querySelector('.' + this.id + '__btn_minus');
+    this._input = elem.querySelector('.' + this.id + '__input');
 
     this.init();
 }
@@ -15,12 +17,14 @@ proto.id = 'quantitative-item';
 proto.init = function() {
     var self = this;
 
+    this.value = this._input.value;
+
     this.elem.addEventListener('click', function(event) {
         if (event.target.classList.contains(self.id + '__btn_plus')) {
-            ++self.quantity;
+            ++self.value;
             self._emitQuantityChangedEvent();
         } else if (event.target.classList.contains(self.id + '__btn_minus')) {
-            --self.quantity;
+            --self.value;
             self._emitQuantityChangedEvent();
         }
     });
@@ -28,29 +32,31 @@ proto.init = function() {
 
 
 proto.reset = function(doEmit) {
-    this.quantity = 0;
+    this.value = this._input.getAttribute('value');
     if (doEmit !== false) this._emitQuantityChangedEvent();
 };
 
 
 proto._emitQuantityChangedEvent = function() {
     var event = new Event('quantitychanged', { bubbles: true, cancelable: true });
-    event.detail = this.quantity;
+    event.detail = this.value;
     this.elem.dispatchEvent(event);
 };
 
 
 Object.defineProperties(QuantitativeItem.prototype, {
-    quantity: {
+    value: {
         get: function() {
-            return +this._quantityElem.value;
+            return +this._input.value;
         },
         set: function(value) {
-            if (value < 0) return;
-            var minusBtn = this.elem.querySelector('.' + this.id + '__btn_minus');
+            value = Number(value);
 
-            minusBtn.classList.toggle(this.id + '__btn_disabled', !value);
-            this._quantityElem.value = value;
+            if (value < 0) return;
+
+            this._minusBtn.classList.toggle(this.id + '__btn_disabled', !value);
+            this._quantityElem.textContent = value;
+            this._input.value = value;
         }
     },
 
@@ -65,10 +71,11 @@ Object.defineProperties(QuantitativeItem.prototype, {
 
     outputName: {
         get: function() {
-            return this._quantityElem.name;
+            return this._input.name;
         },
+
         set: function(name) {
-            this._quantityElem.name = name;
+            this.input.name = name;
         }
     }
 });

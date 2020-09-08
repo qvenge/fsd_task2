@@ -1,0 +1,11 @@
+mixin input(options={})
+    -
+        var types = ['text', 'email', 'password'];
+        attributes = Object.assign({}, attributes, options);
+        if (attributes.type === 'date') {
+            attributes.placeholder = 'ДД.ММ.ГГГГ';
+        }
+        if (types.indexOf(attributes.type) === -1) attributes.type = 'text';
+
+    input.input(data-bem=JSON.stringify({ input: options }))&attributes(attributes)
+    

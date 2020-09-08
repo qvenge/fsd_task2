@@ -1,12 +1,32 @@
 .body {
     padding: 140px 0 0 0;
+    min-height: 1200px;
+}
+
+.main-container {
+    width: 1160px;
+}
+
+.logo-wrapper {
+    position: absolute;
+    top: 30px;
+    left: 30px;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 72px;
+
+    & + & {
+        margin-top: 80px;
+    }
+
+    &_1-2 {
+        grid-template-columns: 1fr 2fr;
+    }
 }
+
 
 .ui-form-element {
     &_mt_20 {
@@ -44,9 +64,5 @@
         &_radio .radio-button:first-child {
             margin-right: 20px;
         }
-    }
-
-    &__button {
-        
     }
 }

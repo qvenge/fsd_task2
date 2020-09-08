@@ -3,29 +3,45 @@
 .checkbox {
     @extend %unselectable;
 
-    margin: 0;
-    white-space: nowrap;
+    display: block;
     position: relative;
-    padding: 1px 0 1px 30px;
+    box-sizing: border-box;
+    min-height: 20px;
+    padding: 0 0 0 30px;
+    line-height: 20px;
+    white-space: nowrap;
     cursor: pointer;
 
     &__label {
-        color: $dark_shade_50;
+        @extend %font_body;
+        display: block;
         line-height: 18px;
+        color: $third_color_50;
+        white-space: normal;
+        cursor: pointer;
+    }
+
+    &__postscript {
+        @extend %font_additional;
+        display: block;
+        margin-top: 5px;
+        line-height: 14px;
+        white-space: normal;
+        color: $third_color_50;
     }
 
     &__input {
+        box-sizing: border-box;
         position: absolute;
         top: 0;
         left: 0;
-        visibility: hidden;
-        z-index: -1;
+        z-index: 2;
         opacity: 0;
-        cursor: pointer;
         margin: 0;
         padding: 0;
         height: 20px;
         width: 20px;
+        cursor: pointer;
     }
 
     &__checkmark {
@@ -36,17 +52,18 @@
         width: 20px;
         height: 20px;
         background: #FFFFFF;
+        z-index: 1;
 
-        border: 1px solid $dark_shade_25;
+        border: 1px solid $third_color_25;
         border-radius: 4px;
     }
 
     &:hover &__input ~ &__checkmark {
-        border-color: $purple;
+        border-color: $main_color;
     }
 
     &__input:checked ~ &__checkmark {
-        border-color: $purple;
+        border-color: $main_color;
     }
 
     &__checkmark:after {
@@ -60,7 +77,7 @@
         border-style: solid;
         border-width: 0 2px 2px 0;
         border-image-slice: 1;
-        border-image-source: $primary_gradient;
+        border-image-source: $main_gradient;
 
         @include transform(rotate(45deg));
     }
@@ -70,12 +87,28 @@
     }
 
 
+   // ============ RICH ============
+
+   &_rich &__label {
+       font-weight: bold;
+       color: $third_color_75;
+   }
+
+
 
 
     // ============ TOGGLE ============
 
     &_toggle {
         padding-left: 50px;
+    }
+
+    &_toggle &__input {
+        width: 40px;
+    }
+
+    &_toggle &__label {
+        color: $third_color_75;
     }
 
     &_toggle &__checkmark {
@@ -93,7 +126,7 @@
         height: 12px;
         border: none;
         border-radius: 10px;
-        background: $dark_shade_25;
+        background: $third_color_25;
         transform: rotate(0);
 
         transition: left .2s ease-in-out;
@@ -101,9 +134,6 @@
 
     &_toggle &__input:checked ~ &__checkmark:after {
         left: 23px;
-        background: $primary_gradient;
-        // animation-name: toggle-checkmark-to-left;
-        // animation-duration: .5s;
-        // animation-fill-mode: both;
+        background: $main_gradient;
     }
 }

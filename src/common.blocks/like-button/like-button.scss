@@ -1,0 +1,43 @@
+@import '../_globals/globals';
+
+.like-button {
+    @extend %font_body;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 40px;
+    height: 20px;
+    border: 1px solid $third_color_25;
+    border-radius: 10px;
+    cursor: pointer;
+
+    font-size: 10px;
+    line-height: 10px;
+    color: $third_color_25;
+
+    &_liked {
+        color: $main_color;
+        border-color: $main_color;
+    }
+
+    &__heart {
+        font-size: 10px;
+        margin-left: 4px;
+    }
+
+    &__heart_liked {
+        display: none;
+    }
+
+    &__number {
+        margin-left: 6px;
+    }
+
+    &_liked &__heart {
+        display: none;
+    }
+    
+    &_liked &__heart_liked {
+        display: unset;
+    }
+}

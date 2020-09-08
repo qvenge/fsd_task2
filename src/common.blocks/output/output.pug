@@ -1,0 +1,5 @@
+mixin output(options={})
+    .output(data-bem=JSON.stringify({output: options}), class=options.expandable ? 'output_expandable' : '')&attributes(attributes)
+        .output__field.text= options.value || options.placeholder || ''
+        .output__expand-icon.material-icons expand_more
+        input.output__input(type="text", value=options.value, placeholder=options.placeholder, name=options.name)

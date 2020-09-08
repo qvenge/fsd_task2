@@ -10,12 +10,14 @@ proto.id = 'guest-list';
 
 proto.postInit = function() {
     var self = this;
-    var reset = this.elem.querySelector('.' + this.id + '__reset-btn');
-    var apply = this.elem.querySelector('.' + this.id + '__apply-btn');
-    var dropdown = this.elem.querySelector('.output-dropdown').bemInstances['output-dropdown'];
+    var resetBtn = this.elem.querySelector('.' + this.id + '__reset-btn');
+    var applyBtn = this.elem.querySelector('.' + this.id + '__apply-btn');
+    var dropdownOutput = this.elem.querySelector('.dropdown-output').bemInstances['dropdown-output'];
     var list = this.elem.querySelector('.quantitative-list').bemInstances['quantitative-list'];
 
-    this.elem.addEventListener('qlstatechanged', function() {
+    dropdownOutput.addInitializedCallback(updateOutput);
+
+    function updateOutput() {
         var listState = list.getState();
         var guestQuantity = 0;
         var babiesQuantity = 0;
@@ -28,16 +30,21 @@ proto.postInit = function() {
         guestQuantity && (output.push(self.getOutput(guestQuantity, ['гость', 'гостя', 'гостей'])));
         babiesQuantity && (output.push(self.getOutput(babiesQuantity, ['младенец', 'младенца', 'младенцов'])));
 
-        dropdown.output = output.length ? output.join(', ') : dropdown.defaultOutput;
+        dropdownOutput.value = output.join(', ');
+        resetBtn.classList.toggle(self.id + '__reset-btn_hidden', !output.length);
+    }
+
+    self.elem.addEventListener('qlstatechanged', function() {
+        updateOutput();
     });
 
-    reset.addEventListener('click', function() {
+    resetBtn.addEventListener('click', function() {
         list.reset();
-        dropdown.close();
+        dropdownOutput.close();
     });
 
-    apply.addEventListener('click', function() {
-        dropdown.close();
+    applyBtn.addEventListener('click', function() {
+        dropdownOutput.close();
     });
 };
 

@@ -1,0 +1,35 @@
+@import '../_globals/globals';
+
+.comment-block {
+    @extend %font_body;
+    position: relative;
+    padding-left: 58px;
+    color: $third_color_75;
+    line-height: 24px;
+
+    &__author {
+        font-weight: bold;
+    }
+
+    &__avatar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid #FFFFFF;
+        box-sizing: border-box;
+        box-shadow: $second_box_shadow;
+    }
+
+    &__like-button {
+        position: absolute;
+        top: 60px;
+        left: 4px;
+    }
+
+    &__message {
+        margin-top: 10px;
+    }
+}
