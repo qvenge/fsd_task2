@@ -17,9 +17,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: $main_gradient;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        @extend %text_main_gradient;
     }
 
     // &__star:hover::after,

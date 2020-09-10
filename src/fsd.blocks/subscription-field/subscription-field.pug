@@ -1,3 +1,10 @@
-mixin subscriptionField()
-    .subscription-field
+mixin subscriptionField(options={})
+    -
+        var style = {};
+
+        if (options.width) {
+            style.width = typeof options.width === 'number' ? options.width + 'px' : options.width;
+        }
+
+    .subscription-field(style=style)
         +input({type: 'email', placeholder: 'Email'})

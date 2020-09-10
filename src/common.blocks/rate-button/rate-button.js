@@ -1,6 +1,7 @@
 function RateButton(elem) {
     this.elem = elem;
-    this.value = 0;
+    this.options = window.BEM.getParams(elem, this.id) || {};
+    this.value = parseInt(this.options.value, 10) || 0;
 
     this._init();
 }

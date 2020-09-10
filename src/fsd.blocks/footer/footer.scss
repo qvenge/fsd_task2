@@ -1,0 +1,167 @@
+@import '../_globals/globals';
+
+.footer {
+    @extend %font_body;
+    line-height: 24px;
+    color: $third_color_75;
+    background: #FFFFFF;
+    box-shadow: $main_box_shadow;
+
+    &__container {
+        @extend %main_container;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    // TOP BAR STYLES
+
+    &__top-bar {
+        display: flex;
+        box-sizing: border-box;
+        // height: 372px;
+        padding: 100px 0 101px;
+        border-bottom: 1px solid $third_color_10;
+    }
+
+    &__label {
+        @extend %font_additional;
+        font-weight: bold;
+        color: $third_color;
+        text-transform: uppercase;
+        line-height: 15px;
+        padding-top: 4px;           //pixel perfect
+    }
+
+    &__company {
+        max-width: 260px;
+        margin-right: 40px;
+    }
+
+    &__company-info {
+        margin-top: 17px;
+    }
+
+    &__company-logo {
+    }
+
+    &__nav-block {
+        display: flex;
+        flex-grow: 1;
+    }
+
+    // &__nav-main,
+    // &__nav-about-us,
+    // &__support
+    &__nav {
+        width: 33.33%;
+        padding-right: 40px;        // Для сохранения расстояния между блоками
+    }
+
+    &__nav-list {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    &__nav-item {
+        line-height: 17px;
+        color: $third_color_50;
+        margin-top: 21px;
+    }
+
+    // &__menu-item + &__menu-item {
+    //     margin-top: 20px;
+    // }
+
+    &__subscription {
+        max-width: 260px;
+    }
+
+    &__subscription-info {
+        margin-top: 18px;
+    }
+
+    &__subscription-field {
+        margin-top: 23px;
+    }
+
+
+    // BOTTOM BAR STYLES
+
+    &__bottom-bar {
+        box-sizing: border-box;
+        height: 70px;
+    }
+
+    &__container_bottom {
+        align-items: center;
+    }
+
+    &__copyright {
+        line-height: 17px;
+    }
+
+    &__social {
+        @extend %text_main_gradient;
+        font-size: 24px;
+        line-height: 24px;
+        display: flex;
+    }
+
+    &__social-item {
+        display: block;
+    }
+
+    &__social-item + &__social-item {
+        width: 24px;
+        height: 24px;
+        margin-left: 20px;
+        text-align: center;
+    }
+
+
+
+
+    &_mobile {
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    &_mobile & {
+        &__company-info,
+        &__nav-block,
+        &__subscription {
+            display: none;
+        }
+
+        &__container {
+            align-items: center;
+            flex-direction: column;
+        }
+
+        // top bar
+
+        &__top-bar {
+            border-bottom: none;
+            padding-top: 120px;
+            padding-bottom: 0;
+        }
+
+        &__company {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        // bottom bar
+
+        &__bottom-bar {
+            height: auto;
+            padding-bottom: 120px;
+        }
+
+        &__social {
+            margin-top: 26px;
+        }
+    }
+}

@@ -38,6 +38,7 @@ html(lang="en")
                                     number: 888,
                                     class: 'люкс',
                                     price: 9990,
+                                    rating: 5,
                                     reviewsNumber: 145,
                                     images: ['images/room1.jpg', 'images/room2.jpg', 'images/room3.jpg', 'images/room4.jpg']
                                 }
@@ -45,6 +46,14 @@ html(lang="en")
                             +roomCard(roomDetails)
 
                         .card-page__item
-                            div(style="height: 150px")
-                                +imageGallery(['images/room1.jpg', 'images/room2.jpg', 'images/room3.jpg', 'images/room4.jpg'], { loop: false, slideshow: true, slideshowSpeed: 0.25 })
+                            -
+                                var roomDetails = {
+                                    number: 840,
+                                    price: 9900,
+                                    reviewsNumber: 65,
+                                    rating: 4,
+                                    images: ['images/room2.jpg', 'images/room1.jpg', 'images/room3.jpg', 'images/room4.jpg']
+                                }
+
+                            +roomCard(roomDetails)
 

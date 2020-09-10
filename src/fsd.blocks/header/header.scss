@@ -1,0 +1,80 @@
+@import '../_globals/globals';
+
+.header {
+    @extend %font_body;
+    color: $third_color_50;
+
+    width: 100%;
+    height: 70px;
+
+    background: #FFFFFF;
+    box-shadow: $main_box_shadow;
+
+    &__container {
+        @extend %main_container;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &__logo {
+        margin-right: auto;
+    }
+
+
+    &__nav-list {
+        display: flex;
+        align-items: baseline;
+        list-style-type: none;
+        margin: 0 20px 0 0;
+        padding: 0;
+    }
+
+    &__nav-item {
+        position: relative;
+        vertical-align: top;
+    }
+
+    &__nav-item_current {
+        font-weight: bold;
+        color: $third_color_75;
+    }
+
+    &__nav-item_expandable {
+        padding-right: 24px;
+    }
+
+    &__nav-item_expandable::after {
+        @extend %material-icons;
+        content: "expand_more";
+        position: absolute;
+        top: 1px;
+        right: 0;
+    }
+
+    &__nav-item + &__nav-item {
+        margin-left: 20px;
+    }
+
+    &__user-block {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 30px;
+        border-left: 1px solid $third_color_10;
+        padding-left: 20px;
+    }
+
+    &__username {
+    }
+
+
+    &__sign-block {
+        display: flex;
+    }
+
+    &__sign-in-btn {
+        margin-right: 20px;
+    }
+}

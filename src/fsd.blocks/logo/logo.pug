@@ -1,2 +1,5 @@
-mixin logo()
-    img(src="logo.svg", class="logo" alt="logo")&attributes(attributes)
+mixin logo(options={})
+    if options.text
+        img(src="logo_text.svg" class="logo" alt="logo" width=options.width height=options.height)&attributes(attributes)
+    else
+        img(src="logo.svg" class="logo" alt="logo" width=options.width height=options.height)&attributes(attributes)

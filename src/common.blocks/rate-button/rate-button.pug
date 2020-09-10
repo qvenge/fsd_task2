@@ -1,5 +1,6 @@
 mixin rateButton(value)
-    .rate-button&attributes(attributes)
+    - var options = { value: value };
+    .rate-button(data-bem=JSON.stringify({ 'rate-button': options }))&attributes(attributes)
         .rate-button__star.material-icons
         .rate-button__star.material-icons
         .rate-button__star.material-icons

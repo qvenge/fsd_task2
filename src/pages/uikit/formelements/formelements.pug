@@ -6,8 +6,6 @@ html(lang="en")
         link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
         title UI Form Elements
     body.body
-        //- include includes.pug
-        //- include ../../../fsd.blocks/logo/logo.pug
         .logo-wrapper
             +logo()
         .main-container
@@ -34,7 +32,7 @@ html(lang="en")
                     
                     .ui-form-element.ui-form-element_mt_40
                         +labeledBlock('Subscription text field')
-                            +subscriptionField()
+                            +subscriptionField({ width: 266 })
 
 
                 //- second column
@@ -72,8 +70,8 @@ html(lang="en")
                         .ui-form-element__name.title.title_h3
                             | buttons
                         .ui-form-element__group
-                            +button('click me')
-                            +button('click me', { type: 'second'})
+                            +button('click me', { width: 99 })
+                            +button('click me', { type: 'second', width: 99 })
                             +button('click me', { type: 'third' })
                     .ui-form-element.ui-form-element_mt_30
                         +button('Перейти к оплате', { extended: true, arrow: true })

@@ -27,5 +27,5 @@ mixin roomCard(details)
                 .room-card__price
                     | #[span.room-card__price-field #{valueToString(details.price)}₽] в сутки
             .room-card__rate-reviews
-                +rateButton()
+                +rateButton(details.rating)
                 .room-card__reviews #[span.room-card__reviews-number #{details.reviewsNumber}] Отзывов

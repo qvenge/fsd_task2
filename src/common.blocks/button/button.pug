@@ -1,9 +1,19 @@
 mixin button(text, options={})
     -
         var mods = [];
+        var style = {};
+
+        if (options.width) {
+            style.width = typeof options.width === 'number' ? options.width + 'px' : options.width;
+            mods.push('button_fixed-width');
+        }
+
+        if (options.height) {
+            style.height = typeof options.height === 'number' ? options.height + 'px' : options.height;
+        }
 
         Object.keys(options).forEach(function(key) {
-            if (typeof options[key] === 'string') {
+            if (key === 'type' && typeof options[key] === 'string') {
                 mods.push('button_' + options[key]);
             } else if (options[key] === true) {
                 mods.push('button_' + key);
@@ -14,6 +24,6 @@ mixin button(text, options={})
             ? attributes.concat(mods)
             : (typeof attributes === 'string' ? attributes + ' ' : '') + mods.join(' ');
 
-    button.button&attributes(attributes)= text
+    button(style=style).button&attributes(attributes)= text
         if options.arrow
             .button__arrow-icon.material-icons arrow_forward

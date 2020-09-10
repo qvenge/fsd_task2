@@ -4,13 +4,15 @@
     @extend %unselectable;
     @extend %font_additional;
 
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     padding: 0 20px;
     box-sizing: border-box;
     height: 44px;
 
-    line-height: 40px;      /* identical to box height */
+    line-height: 15px;      /* identical to box height */
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
@@ -27,6 +29,10 @@
 
     &::-moz-focus-inner {
         border: none;
+    }
+
+    &_fixed-width {
+        padding: 0;
     }
 
     &_second {

@@ -3,7 +3,7 @@
 .subscription-field {
     position: relative;
     //box-sizing: border-box;
-    width: 266px;
+    width: 100%;
 
     &:hover .input {
         border-color: $third_color_50;

@@ -10,6 +10,7 @@ const pages = [
     setPage('./pages/uikit/formelements/formelements.pug'),
     setPage('./pages/uikit/colorsandtype/colorsandtype.pug'),
     setPage('./pages/uikit/cards/cards.pug'),
+    setPage('./pages/uikit/headersfooters/headersfooters.pug')
 ];
 
 module.exports = {
