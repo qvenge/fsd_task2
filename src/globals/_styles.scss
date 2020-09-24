@@ -15,6 +15,10 @@ $second_box_shadow: 0px 10px 20px $third_color_10;
 $card_border: 1px solid rgba(0, 0, 0, 0.12);
 $card_box_shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
 
+$desktop_min_width: 980px;
+$table_min_width: 767px;
+$mobile_min_width: 320px;
+
 
 @mixin unify-parent($child) {
     @at-root #{selector.unify(&, $child)} {
@@ -50,10 +54,13 @@ $card_box_shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
 $timing_function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
 %main_container {
+    box-sizing: border-box;
     margin: 0 auto;
-    max-width: 1160px;
+    max-width: 1180px;
     min-width: 320px;
     width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 %text_main_gradient {
@@ -62,17 +69,13 @@ $timing_function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     -webkit-text-fill-color: transparent;
 }
 
-%font_title {
-    font-family: Quicksand, 'Open Sans';
-    font-style: normal;
-    font-weight: bold;
-}
 
 %font_body {
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
+    line-height: 24px;
 }
 
 %font_additional {
@@ -80,6 +83,34 @@ $timing_function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
+    line-height: 15px;
+}
+
+%font_title {
+    font-family: Quicksand, 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+}
+
+%font_title_h1 {
+    @extend %font_title;
+    font-size: 24px;
+    line-height: 30px;
+    text-transform: none;
+}
+
+%font_title_h2 {
+    @extend %font_title;
+    font-size: 19px;
+    line-height: 24px;
+    text-transform: none;
+}
+
+%font_title_h3 {
+    @extend %font_additional;
+    font-weight: bold;
+    line-height: 15px;
+    text-transform: uppercase;
 }
 
 

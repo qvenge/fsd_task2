@@ -1,0 +1,96 @@
+@import '../../../globals/styles';
+
+.sidebar {
+    position: relative;
+    box-sizing: border-box;
+    transition: width .3s ease-in 0s;
+
+    &_fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 1px;
+
+        z-index: 999;
+        border-right: 1px solid $third_color_10;
+        box-shadow: $main_box_shadow;
+    }
+
+    &_fixed#{& + '_open'} {
+        transition-timing-function: ease-out;
+        width: 286px;
+    }
+
+    
+    // BUTTON
+
+    &__btn {
+        display: none;
+        position: absolute;
+        z-index: 2;
+        box-sizing: border-box;
+        top: calc(50% - 80px);
+        left: 100%;
+        height: 160px;
+        width: 34px;
+        background: #ffffff;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        border-color: $third_color_10 $third_color_10 $third_color_10 #ffffff;
+        border-radius: 0 4px 4px 0;
+        box-shadow: $main_box_shadow;
+        cursor: pointer;
+    }
+
+    &_fixed &__btn {
+        display: block;
+    }
+
+    &__btn-text {
+        @extend %font_additional;
+        font-weight: bold;
+        color: $third_color;
+        position: absolute;
+        top: 68px;
+        left: -20px;
+        text-transform: uppercase;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    &__btn-text::after {
+        @extend %material-icons;
+        content: "expand_more";
+        position: absolute;
+        top: -4px;
+        left: 100%;
+        transform: rotate(180deg);
+    }
+
+    &_fixed#{& + '_open'} &__filters-btn-text::after {
+        transform: rotate(0deg);
+    }
+
+
+    // CONTENT
+
+    &__content::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__content {
+        height: 100%;
+        position: relative;
+        z-index: 3;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        background: #ffffff;
+    }
+
+    &_fixed &__content {
+        position: absolute;
+        right: 0;
+        overflow: auto;
+    }
+}

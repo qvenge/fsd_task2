@@ -1,6 +1,8 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .logo {
     display: block;
     fill: $third_color_25;
+    max-width: 100%;
+    max-height: 100%;
 }

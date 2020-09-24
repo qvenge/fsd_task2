@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-        script(src="https://kit.fontawesome.com/68e89d30e0.js" crossorigin="anonymous")
-        title Headers & Footers
-    body.body
-        .hf-page
-            .hf-page__logo
-                +logo()
-            .hf-page__item
-                +header()
-            .hf-page__item
-                +header({user: 'Юлий Цезарь'})
-            .hf-page__item
-                +footer()
-            .hf-page__item
-                +footer({ mobile: true })
+extends ../layout.pug
+
+block head
+    title Headers & Footers
+
+block content
+    .hf-page
+        .hf-page__logo
+            +logo()
+        .hf-page__item
+            +header({ current: 'about'})
+        .hf-page__item
+            +header({ user: 'Юлий Цезарь', current: 'about' })
+        .hf-page__item
+            +footer()
+        .hf-page__item
+            +footer({ mobile: true })

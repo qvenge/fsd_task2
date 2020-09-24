@@ -1,59 +1,56 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-        title Cards
-    body.body
-        .main-container
-            .card-page
-                .card-page__logo
-                    +logo()
-                .card-page__container
-                    .card-page__column
-                        .card-page__item
-                            +roomSearchCard()
-                        .card-page__item
-                            +registrationCard()
-                    .card-page__column
-                        .card-page__item
-                            -
-                                var roomDetails = {
-                                    number: 888,
-                                    class: 'люкс',
-                                    price: 9990,
-                                    dates: ['19.08.2019', '23.08.2019']
-                                }
+extends ../layout.pug
 
-                            +bookingCard(roomDetails)
-                        .card-page__item
-                            +signInCard()
-                    .card-page__column
-                        .card-page__item
-                            +calendarCard()
-                        .card-page__item
-                            -
-                                var roomDetails = {
-                                    number: 888,
-                                    class: 'люкс',
-                                    price: 9990,
-                                    rating: 5,
-                                    reviewsNumber: 145,
-                                    images: ['images/room1.jpg', 'images/room2.jpg', 'images/room3.jpg', 'images/room4.jpg']
-                                }
+block head
+    title Cards
+    
+block content
+    .main-container
+        .card-page
+            .card-page__logo
+                +logo()
+            .card-page__container
+                .card-page__column
+                    .card-page__item
+                        +roomSearchCard()
+                    .card-page__item
+                        +registrationCard()
+                .card-page__column
+                    .card-page__item
+                        -
+                            var roomDetails = {
+                                number: 888,
+                                class: 'люкс',
+                                price: 9990,
+                                dates: ['19.08.2019', '23.08.2019']
+                            }
 
-                            +roomCard(roomDetails)
+                        +bookingCard(roomDetails)
+                    .card-page__item
+                        +signInCard()
+                .card-page__column
+                    .card-page__item
+                        +calendarCard()
+                    .card-page__item
+                        -
+                            var roomDetails = {
+                                number: 888,
+                                class: 'люкс',
+                                price: 9990,
+                                rating: 5,
+                                reviewsNumber: 145,
+                                images: ['images/room1.jpg', 'images/room2.jpg', 'images/room3.jpg', 'images/room4.jpg']
+                            }
 
-                        .card-page__item
-                            -
-                                var roomDetails = {
-                                    number: 840,
-                                    price: 9900,
-                                    reviewsNumber: 65,
-                                    rating: 4,
-                                    images: ['images/room2.jpg', 'images/room1.jpg', 'images/room3.jpg', 'images/room4.jpg']
-                                }
+                        +roomCard(roomDetails)
 
-                            +roomCard(roomDetails)
+                    .card-page__item
+                        -
+                            var roomDetails = {
+                                number: 840,
+                                price: 9900,
+                                reviewsNumber: 65,
+                                rating: 4,
+                                images: ['images/room2.jpg', 'images/room1.jpg', 'images/room3.jpg', 'images/room4.jpg']
+                            }
 
+                        +roomCard(roomDetails)

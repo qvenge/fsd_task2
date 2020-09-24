@@ -1,17 +1,25 @@
-var MONTHS = [
+var MODS = ['single', 'multiple', 'range'];
+
+function Calendar(elem) {
+    this.elem = elem;
+
+    this.init();
+    this._initEvents();
+}
+
+
+Calendar.MONTHS = [
     'Январь', 'Февраль', 'Март', 'Апрель',
     'Май', 'Июнь', 'Июль', 'Август', 
     'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
 ];
 
-var MODS = ['single', 'multiple', 'range'];
-
-
-function normalizeDate(dateString) {
+Calendar.normalizeDate = function(dateString) {
     return dateString.split('.').reverse().join('-')
-}
+};
 
-function dateToString(date) {
+
+Calendar.dateToString = function(date) {
     function pad(number) {
         if (number < 10) {
             return '0' + number;
@@ -20,34 +28,25 @@ function dateToString(date) {
     }
 
     return date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate());
-}
+};
 
-function isValidDate(date) {
+
+Calendar.isValidDate = function(date) {
     return Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())
-}
+};
 
-function stringToDateAndVerify(date) {
+
+Calendar.stringToDateAndVerify = function(date) {
     if (typeof date === 'string') {
-        date = new Date(normalizeDate(date));
+        date = new Date(Calendar.normalizeDate(date));
     }
 
-    if (!isValidDate(date)) {
+    if (!Calendar.isValidDate(date)) {
         throw Error('Invalid Date');
     }
 
     return date;
-}
-
-
-
-// ======================== CALENDAR ==============================
-
-function Calendar(elem) {
-    this.elem = elem;
-
-    this.init();
-    this._initEvents();
-}
+};
 
 
 Calendar.prototype = {
@@ -69,16 +68,16 @@ Calendar.prototype = {
                 this.selectDate(date);
             }, this);
 
-            this.date = new Date(normalizeDate(this.options.dates[0]));
+            this.date = new Date(Calendar.normalizeDate(this.options.dates[0]));
         }
 
         this._update();
     },
 
     selectDate: function(date) {
-        date = stringToDateAndVerify(date);
+        date = Calendar.stringToDateAndVerify(date);
 
-        var dateString = dateToString(date);
+        var dateString = Calendar.dateToString(date);
         var targetElem = this.dateContainer.querySelector('.' + this.id + '__date[data-date="'+ dateString +'"');
 
         this._selectDate(dateString, targetElem);
@@ -86,9 +85,9 @@ Calendar.prototype = {
 
 
     unselectDate: function(date) {
-        date = stringToDateAndVerify(date);
+        date = Calendar.stringToDateAndVerify(date);
 
-        var dateString = dateToString(date);
+        var dateString = Calendar.dateToString(date);
         var targetElem = this.dateContainer.querySelector('.' + this.id + '__date[data-date="'+ dateString +'"');
 
         this._unselectDate(dateString, targetElem);
@@ -104,10 +103,9 @@ Calendar.prototype = {
         this._update();
     },
 
-    getDates: function() {
-        return Object.keys(this.selectedDates).map(function(dateString) {
-            return new Date(dateString);
-        });
+    getDates: function(toString) {
+        var dates = Object.keys(this.selectedDates)
+        return toString === true ? dates : dates.map(function(dateString) { return new Date(dateString); });
     },
 
     displayCurrentMonth: function() {
@@ -116,7 +114,7 @@ Calendar.prototype = {
     },
 
     displayDate: function(date) {
-        date = stringToDateAndVerify(date);
+        date = Calendar.stringToDateAndVerify(date);
 
         this.date = date;
         this._update();
@@ -132,7 +130,6 @@ Calendar.prototype = {
         this._clearRange();
         this.range = [];
         this.selectedDates = Object.create(null);
-        this.displayCurrentMonth();
 
         this._emitCalendarStateChangedEvent();
     },
@@ -270,20 +267,20 @@ Calendar.prototype = {
 
         var title = this.elem.querySelector('.' + this.id + '__month-year');
         var date = new Date(this.date.getFullYear(), this.date.getMonth());
-        var today = dateToString(new Date());
+        var today = Calendar.dateToString(new Date());
         var dateIterator = new Date(date.getFullYear(), date.getMonth());
         var leftShift = dateIterator.getDay() === 0 ? 6 : (dateIterator.getDay() - 1);
 
         dateIterator.setDate(dateIterator.getDate() - leftShift);
 
         // set Month Year title
-        title.textContent = MONTHS[date.getMonth()] + ' ' + date.getFullYear();
+        title.textContent = Calendar.MONTHS[date.getMonth()] + ' ' + date.getFullYear();
 
         // clean dateContainer
         while (this.dateContainer.firstChild) this.dateContainer.removeChild(this.dateContainer.lastChild);
 
         do {
-            var dateString = dateToString(dateIterator);
+            var dateString = Calendar.dateToString(dateIterator);
             var dateElem = document.createElement('DIV');
 
             dateElem.className = this.id + '__date';
@@ -351,7 +348,7 @@ Calendar.prototype = {
 
     _emitCalendarStateChangedEvent: function() {
         var event = new Event('calendarstatechanged', { bubbles: true, cancelable: true });
-        event.detail = { selectedDates: Object.keys(this.selectedDates) };
+        event.detail = { selectedDates: this.getDates(true) };
         this.elem.dispatchEvent(event);
     },
 }

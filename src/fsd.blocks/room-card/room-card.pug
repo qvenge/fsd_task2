@@ -22,10 +22,11 @@ mixin roomCard(details)
             .room-card__next-image-btn
         .room-card__container
             .room-card__info
-                .room-card__room-number-class
-                    | #[span.room-card__number-sign № ]#[span.room-card__room-number #{details.number}]&nbsp;&nbsp;#[span.room-card__room-class #{details.class}]
-                .room-card__price
-                    | #[span.room-card__price-field #{valueToString(details.price)}₽] в сутки
+                    .room-card__number-sign №
+                    .room-card__room-number #{details.number}
+                    .room-card__room-class #{details.class}
+                    .room-card__price #{valueToString(details.price)}₽
+                    .room-card__per-day в сутки
             .room-card__rate-reviews
                 +rateButton(details.rating)
                 .room-card__reviews #[span.room-card__reviews-number #{details.reviewsNumber}] Отзывов

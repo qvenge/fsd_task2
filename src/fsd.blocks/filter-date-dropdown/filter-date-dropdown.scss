@@ -1,0 +1,17 @@
+@import '../../globals/styles';
+
+.filter-date-dropdown {
+    position: relative;
+
+    &__label {
+        margin-bottom: 5px;
+    }
+
+    &__output {
+        max-width: 266px;
+    }
+
+    &__calendar-card {
+        margin-top: 6px;
+    }
+}

@@ -1,22 +1,57 @@
 mixin header(options={})
+    -
+        var navItems = {
+            about: { text: 'О нас', expandable: false, href: '#' },
+            services: { text: 'Услуги', expandable: true, href: '#' },
+            vacancies: { text: 'Вакансии', expandable: false, href: '#' },
+            news: { text: 'Новости', expandable: false, href: '#' },
+            agreements: { text: 'Соглашения', expandable: true, href: '#' },
+        };
+
+        if (options.fixed === true) {
+            if (typeof attributes.class === 'string') {
+                attributes.class += ' header_fixed';
+            } else if (Array.isArray(attributes.class)) {
+                attributes.class.push('header_fixed');
+            } else {
+                attributes.class = 'header_fixed';
+            }
+        }
+
     .header&attributes(attributes)
         .header__container
-            .header__logo
-                +logo({text: true})
-            nav.header__nav
-                ul.header__nav-list
-                    li.header__nav-item.header__nav-item_current О нас
-                    li.header__nav-item.header__nav-item_expandable Услуги
-                    li.header__nav-item Вакансии
-                    li.header__nav-item Новости
-                    li.header__nav-item.header__nav-item_expandable Соглашения
-            if options.user
-                .header__user-block
-                    .header__separator
-                    .header__username= options.user
-            else
-                .header__sign-block
-                    .header__sign-in-btn
-                        +button('Войти', { second: true, height: 34, width: 87 })
-                    .header__sign-up-btn
-                        +button('Зарегистрироваться', { height: 34, width: 196 })
+            .main-container
+                .header__content
+                    .header__logo-burger
+                        a.header__logo(href="#")
+                            +logo({text: true})
+
+                        .header__burger
+                            span
+                    .header__menu-wrapper
+                        .header__menu
+                            nav.header__nav
+                                ul.header__nav-list
+                                    each item, name in navItems
+                                        -
+                                            var classes = [];
+
+                                            if (item.expandable) {
+                                                classes.push('header__nav-link_expandable');
+                                            }
+
+                                            if (name === options.current) {
+                                                classes.push('header__nav-link_current');
+                                            }
+
+                                        li.header__nav-item
+                                            a.header__nav-link(class=classes, href=item.href)= item.text
+                            if options.user
+                                .header__user-block
+                                    .header__username= options.user
+                            else
+                                .header__sign-block
+                                    .header__sign-in-btn
+                                        +button('Войти', { second: true, height: 34, width: 87 })
+                                    .header__sign-up-btn
+                                        +button('Зарегистрироваться', { height: 34, width: 196 })

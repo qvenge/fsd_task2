@@ -1,10 +1,9 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .bullet-list {
     &__label {
         margin-bottom: 13px;
     }
-
 
     &__ul {
         @extend %font_body;

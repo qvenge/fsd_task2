@@ -1,29 +1,20 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .title {
     text-decoration: none;
 
     &_h1 {
-        @extend %font_title;
+        @extend %font_title_h1;
         color: $third_color;
-        font-size: 24px;
-        line-height: 30px;
-        text-transform: none;
     }
 
     &_h2 {
-        @extend %font_title;
+        @extend %font_title_h2;
         color: $third_color;
-        font-size: 19px;
-        line-height: 24px;
-        text-transform: none;
     }
 
     &_h3 {
-        @extend %font_additional;
-        font-weight: bold;
+        @extend %font_title_h3;
         color: $third_color;
-        line-height: 15px;
-        text-transform: uppercase;
     }
 }

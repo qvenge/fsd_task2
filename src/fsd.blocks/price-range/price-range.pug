@@ -23,9 +23,10 @@ mixin priceRange(options={}, lable)
 
 
     .price-range&attributes(attributes)
-        .price-range__clearfix.clearfix
-            .price-range__label.title.title_h3= label ? label : 'Range slider'
-            .price-range__info.subtitle
+        .price-range__header
+            .price-range__label.title.title_h3 Диапазон цены
+            .price-range__prices.subtitle
                 | #[span.price-range__min-price #{value1}]₽ - #[span.price-range__max-price #{value2}]₽
         .price-range__slider
             +rangeDoubleSlider(options)
+        .price-range__info Стоимость за сутки пребывания в номере

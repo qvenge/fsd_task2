@@ -1,8 +1,9 @@
 mixin commentBlock(params={})
     .comment-block&attributes(attributes)
-        img(src=params.avatar_src).comment-block__avatar
+        .comment-block__avatar
+            +image(params.avatar_src)
         .comment-block__author= params.author
         .comment-block__last-seen= params.date
         .comment-block__like-button
-            +likeButton(12, true)
+            +likeButton(params.likes, params.isLiked)
         .comment-block__message= params.message

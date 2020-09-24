@@ -1,4 +1,4 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .room-card {
     width: 270px;
@@ -13,7 +13,7 @@
     &__room-appearance {
         position: relative;
         width: 100%;
-        height: 150px;
+        height: 151px;
     }
 
     &__image-container {
@@ -70,8 +70,8 @@
     }
 
     &__bullet-btn {
-        width: 8px;
-        height: 8px;
+        width: 7.5px;
+        height: 7.5px;
 
         border: 1px solid #FFFFFF;
         border-radius: 50%;
@@ -86,7 +86,7 @@
     }
 
     &__bullet-btn + &__bullet-btn {
-        margin-left: 4px;
+        margin-left: 3.75px;
     }
 
     &__container {
@@ -97,21 +97,17 @@
 
     &__info {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        align-items: baseline;
         margin-top: 21px;
-        padding-bottom: 8px;
+        padding-bottom: 7px;
         border-bottom: 1px solid $third_color_10;
     }
 
-    &__rate-reviews {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-top: 8px;
+    &__room-number-class {
+        color: $third_color;
     }
 
-    &__room-number-class {
+    &__number-sign {
         color: $third_color;
     }
 
@@ -119,6 +115,8 @@
         @extend %font_title;
         font-size: 19px;
         line-height: 24px;
+        color: $third_color;
+        margin-left: 5px;
     }
 
     &__room-class {
@@ -126,18 +124,38 @@
         text-transform: uppercase;
         font-weight: bold;
         color: $main_color;
+        margin-left: 5px;
     }
 
 
 
-    &__price {
+    &__price,
+    &__per-day {
         @extend %font_additional;
+        font-size: 14px;
+        line-height: 18px;
         color: $third_color_50;
     }
 
-    &__price-field {
+    &__price {
         font-size: 14px;
+        margin-left: auto;
         font-weight: bold;
+        margin-right: 4px;
+    }
+
+    &__per-day {
+        font-size: 12px;
+        margin-right: -3px;
+    }
+
+    &__rate-reviews {
+        @extend %font_body;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 18px;
+        margin-top: 8px;
     }
 
     &__reviews-number {

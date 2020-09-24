@@ -1,52 +1,51 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Colors & type
-    body.body
-        +logo()
-        .main-container
-            .ui-frame
-                .colors
-                    .color
-                        .color__sample.color__sample_dark_100
-                        .title.title_h2.color__text Dark Shade 100%<br>
-                            span.color__code #1F2041
-                    .color
-                        .color__sample.color__sample_dark_75
-                        .title.title_h2.color__text Dark Shade 75%<br>
-                            span.color__code #1F2041
-                    .color
-                        .color__sample.color__sample_dark_50
-                        .title.title_h2.color__text Dark Shade 50%<br>
-                            span.color__code #1F2041
-                    .color
-                        .color__sample.color__sample_dark_25
-                        .title.title_h2.color__text Dark Shade 25%<br>
-                            span.color__code #1F2041
-                    .color
-                        .color__sample.color__sample_dark_5
-                        .title.title_h2.color__text Dark Shade 5%<br>
-                            span.color__code #1F2041
-                    .color
-                        .color__sample.color__sample_purple
-                        .title.title_h2.color__text Purple<br>
-                            span.color__code #BC9CFF
-                    .color
-                        .color__sample.color__sample_green
-                        .title.title_h2.color__text Green<br>
-                            span.color__code #6FCF97
-                .types
-                    .type.title.title_h1
-                        .type__name H1
-                        .type__sample This one is the sub-section or widget title
-                    .type.title.title_h2
-                        .type__name H2
-                        .type__sample Next one is the item title inside widgets
-                    .type.title.title_h3
-                        .type__name H3
-                        .type__sample This is a label or CTA text
-                    .type.text
-                        .type__name Body
-                        .type__sample This is the body text which is used for most of the design, like paragraphs, lists, etc.
+extends ../layout.pug
+
+block head
+    title Colors & type
+    
+block content
+    +logo()
+    .main-container
+        .ui-frame
+            .colors
+                .color
+                    .color__sample.color__sample_dark_100
+                    .title.title_h2.color__text Dark Shade 100%<br>
+                        span.color__code #1F2041
+                .color
+                    .color__sample.color__sample_dark_75
+                    .title.title_h2.color__text Dark Shade 75%<br>
+                        span.color__code #1F2041
+                .color
+                    .color__sample.color__sample_dark_50
+                    .title.title_h2.color__text Dark Shade 50%<br>
+                        span.color__code #1F2041
+                .color
+                    .color__sample.color__sample_dark_25
+                    .title.title_h2.color__text Dark Shade 25%<br>
+                        span.color__code #1F2041
+                .color
+                    .color__sample.color__sample_dark_5
+                    .title.title_h2.color__text Dark Shade 5%<br>
+                        span.color__code #1F2041
+                .color
+                    .color__sample.color__sample_purple
+                    .title.title_h2.color__text Purple<br>
+                        span.color__code #BC9CFF
+                .color
+                    .color__sample.color__sample_green
+                    .title.title_h2.color__text Green<br>
+                        span.color__code #6FCF97
+            .types
+                .type.title.title_h1
+                    .type__name H1
+                    .type__sample This one is the sub-section or widget title
+                .type.title.title_h2
+                    .type__name H2
+                    .type__sample Next one is the item title inside widgets
+                .type.title.title_h3
+                    .type__name H3
+                    .type__sample This is a label or CTA text
+                .type.text
+                    .type__name Body
+                    .type__sample This is the body text which is used for most of the design, like paragraphs, lists, etc.

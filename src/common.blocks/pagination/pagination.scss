@@ -1,4 +1,4 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 %pagination-item {
     @extend %unselectable;
@@ -9,10 +9,14 @@
     border-radius: 50%;
     text-decoration: none;
     outline: none;
-    cursor: pointer;
+    // cursor: pointer;
 }
 
 .pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     &__container {
         display: flex;
     }
@@ -22,7 +26,6 @@
         color: $third_color_75;
         display: none;
         margin-top: 9px;
-        text-align: center;
     }
 
     &__btn {
@@ -36,14 +39,16 @@
     &__pages {
         @extend %font_additional;
         display: flex;
-        color: $third_color_50;
     }
 
     &__page,
     &__ellipsis {
         @extend %pagination-item;
+        color: $third_color_50;
+        outline: none;
         display: none;
     }
+
 
     &__ellipsis {
         cursor: unset;
@@ -56,10 +61,11 @@
 
     &__page_current {
         background: $main_gradient;
-        color: #FFFFFFFF;
         pointer-events: none;
+        color: #FFFFFFFF;
         cursor: unset;
     }
+
 
     &__shown-item {
         display: block;

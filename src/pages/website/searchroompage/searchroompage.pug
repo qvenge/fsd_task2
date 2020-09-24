@@ -1,0 +1,56 @@
+extends ../layout.pug
+
+block code
+    - params.title = 'Search Room / Filter';
+
+//- block head
+//-     title Search Room / Filter
+
+block content
+    .sr-page
+        .main-container
+            .sr-page__content
+                .sr-page__filters-outer-container
+                    .sr-page__filters-btn 
+                        .sr-page__filters-btn-text Фильтры
+                    .sr-page__filters-inner-container
+                        .sr-page__filters
+                            .sr-page__stay-period
+                                +filterDateDropdown({ value: '19 авг - 23 авг'})
+                            .sr-page__guest-list
+                                +guestList({adults: 3, babies: 1})
+                            .sr-page__price-range
+                                +priceRange()
+                            .sr-page__checkbox-buttons
+                                - var checkboxes2 = ['Можно курить', 'Можно с питомцами', 'Можно пригласить гостей<br>(до 10 человек)']; 
+                                +checkboxList('Checkbox buttons', checkboxes2)
+                            .sr-page__availability
+                                -
+                                    var checkboxes3 = [
+                                        {
+                                            label: 'Широкий коридор',
+                                            rich: true,
+                                            postscript: 'Ширина коридоров в&nbspномере не&nbspменее&nbsp91&nbspсм.'
+                                        },
+                                        {
+                                            label: 'Помощник для инвалидов',
+                                            rich: true,
+                                            postscript: 'На&nbsp1&nbspэтаже вас&nbspвстретит специалист и&nbspпроводит до&nbspномера.'
+                                        }
+                                    ]; 
+
+                                +checkboxList('Доступность', checkboxes3)
+                            .sr-page__amenities
+                                +roomList('Удобства номера')
+                            .sr-page__additional-amenities
+                                - var checkboxes1 = ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь']; 
+                                +checkboxList('Дополнительные удобства', checkboxes1, true)
+                main.sr-page__content-container
+                    .sr-page__title.title.title_h1 Номера, которые мы для вас подобрали
+                    .sr-page__picked-rooms
+                        include rooms.pug
+                        each roomDetail in pickedRooms
+                            .sr-page__room
+                                +roomCard(roomDetail)
+                    .sr-page__pagination
+                        +goodsPagination(175, 12)

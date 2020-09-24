@@ -1,15 +1,24 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .price-range {
-    &__label {
-        float: left;
+    @extend %font_additional;
+    color: $third_color_50;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
     }
 
-    &__info {
-        float: right;
+    &__prices {
+        line-height: 15px;
     }
 
     &__slider {
         margin-top: 19px;
+    }
+
+    &__info {
+        margin-top: 10px;
+        line-height: 14px;
     }
 }

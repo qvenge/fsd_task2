@@ -1,4 +1,4 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .room-search-card {
     box-sizing: border-box;
@@ -8,9 +8,15 @@
     border: $card_border;
     box-shadow: $card_box_shadow;
     border-radius: 4px;
+    padding: 0 5px;
+
+    @media (max-width: 380px) {
+        width: 100%;
+    }
 
     &__container {
-        width: 320px;
+        width: 100%;
+        max-width: 320px;
         margin: 0 auto;
     }
 

@@ -23,7 +23,7 @@ mixin bookingCard(details)
             .booking-card__date-picker
                 +datePicker({ dates: details.dates })
             .booking-card__guests
-                +guestList({adults: 3})
+                +guestList(details.guests)
             ul.booking-card__cost-list
                 li.booking-card__cost-item.booking-card__cost-item_rent(data-cost=details.price)
                     .booking-card__cost-name #{price}₽ x 0 сутки

@@ -1,4 +1,4 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .comment-block {
     @extend %font_body;
@@ -21,6 +21,7 @@
         border: 2px solid #FFFFFF;
         box-sizing: border-box;
         box-shadow: $second_box_shadow;
+        overflow: hidden;
     }
 
     &__like-button {

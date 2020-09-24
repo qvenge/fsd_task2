@@ -1,0 +1,13 @@
+@import '../../globals/styles';
+
+.link {
+    text-decoration: none;
+
+    &:link,
+    &:visited,
+    &:focus,
+    &:hover,
+    &:active {
+        // color: inherit;
+    }
+}

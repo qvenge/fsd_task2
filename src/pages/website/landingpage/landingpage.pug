@@ -1,0 +1,19 @@
+extends ../layout.pug
+
+block code
+    -
+        params.title = 'Landing page';
+        var images = ['images/image.jpg', 'images/image2.jpg', 'images/image3.jpg'];
+
+//- block head
+//-     title Landing page
+
+block content
+    .landing-page
+        .landing-page__background
+            +imageSlider(images, { loop: true, slideshow: true, slideshowSpeed: 0.2 })
+
+        .main-container
+            main.landing-page__container
+                .landing-page__room-search
+                    +roomSearchCard()

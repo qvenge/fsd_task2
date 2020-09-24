@@ -6,4 +6,4 @@ mixin likeButton(number, isLiked)
     .like-button&attributes(attributes)
         i.like-button__heart.material-icons favorite_border
         i.like-button__heart.like-button__heart_liked.material-icons favorite
-        .like-button__number= number
+        .like-button__number= number || 0

@@ -1,5 +1,5 @@
 mixin bulletList(label, textlist=[])
-    .bullet-list
+    .bullet-list&attributes(attributes)
         if label
             .bullet-list__label.title.title_h3!= label
         ul.bullet-list__ul

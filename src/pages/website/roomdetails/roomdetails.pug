@@ -1,0 +1,86 @@
+extends ../layout.pug
+
+block code
+    -
+        params.title = 'Room details';
+
+//- block head
+//-     title Room details
+
+block content
+    .room-details
+        .room-details__room-photos-wrapper
+            .room-details__room-photos
+                .room-details__first-photo
+                    +image('images/image.jpg')
+                .room-details__second-photo
+                    +image('images/image2.jpg')
+                .room-details__third-photo
+                    +image('images/image3.jpg')
+        .main-container
+            main.room-details__content
+                .room-details__info-block
+                    .room-details__advantages
+                        .room-details__title.title.title_h2 Сведения о номере
+                        -
+                            var advantages = [
+                                {
+                                    label: 'Комфорт',
+                                    text: 'Шумопоглащающие стены',
+                                    icon: 'insert_emoticon'
+                                },
+                                {
+                                    label: 'Удобство',
+                                    text: 'Окно в каждой из спален',
+                                    icon: 'location_city'
+                                },
+                                {
+                                    label: 'Уют',
+                                    text: 'Номер оснащен камином',
+                                    icon: 'whatshot'
+                                }
+                            ]; 
+                        +advantageList(advantages)
+
+                    .room-details__impressions
+                        .room-details__title.title.title_h2 Впечатления от номера
+                        -
+                            var reviews = {
+                                great: 130,
+                                good: 65,
+                                satisfying: 65,
+                                disappointing: 0
+                            };
+                        +reviewsChart(reviews)
+
+                    .room-details__reviews
+                        .room-details__title.title.title_h2 Отзывы посетителей номера
+                        .room-details__review
+                            - var message = 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.';
+                            +commentBlock({author: 'Мурад Сарафанов', date: '5 дней назад', avatar_src: 'images/avatar_man.jpg', message: message, likes: 12, isLiked: true})
+                        .room-details__review
+                            - var message = 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент';
+                            +commentBlock({author: 'Патрисия Стёклышкова', date: 'Неделю назад', avatar_src: 'images/avatar_girl.jpg', message: message, likes: 2})
+
+                    .room-details__rules
+                        .room-details__title.title.title_h2 Правила
+                        - var blist = ['Нельзя с&nbsp;питомцами', 'Без&nbsp;вечеринок и&nbsp;мероприятий', 'Время прибытия — после 13:00,<br>а&nbsp;выезд до&nbsp;12:00'];
+                        +bulletList(null, blist)
+
+                    .room-details__cancellation
+                        .room-details__title.title.title_h2 Отмена
+                        .room-details__text
+                            | Бесплатная отмена в течение 48 ч.
+                            | После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+
+                .room-details__booking-block
+                    -
+                        var roomDetails = {
+                            number: 888,
+                            class: 'люкс',
+                            price: 9990,
+                            dates: ['19.08.2019', '23.08.2019'],
+                            guests: {adults: 3}
+                        };
+                    +bookingCard(roomDetails)
+

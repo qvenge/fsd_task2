@@ -1,4 +1,4 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .footer {
     @extend %font_body;
@@ -8,8 +8,6 @@
     box-shadow: $main_box_shadow;
 
     &__container {
-        @extend %main_container;
-        height: 100%;
         display: flex;
         justify-content: space-between;
     }
@@ -66,8 +64,12 @@
 
     &__nav-item {
         line-height: 17px;
-        color: $third_color_50;
         margin-top: 21px;
+    }
+
+    &__nav-link {
+        text-decoration: none;
+        color: $third_color_50;
     }
 
     // &__menu-item + &__menu-item {
@@ -90,6 +92,8 @@
     // BOTTOM BAR STYLES
 
     &__bottom-bar {
+        display: flex;
+        align-items: center;
         box-sizing: border-box;
         height: 70px;
     }
@@ -100,16 +104,18 @@
 
     &__copyright {
         line-height: 17px;
+        text-align: center;
     }
 
     &__social {
-        @extend %text_main_gradient;
         font-size: 24px;
         line-height: 24px;
         display: flex;
     }
 
     &__social-item {
+        @extend %text_main_gradient;
+        text-decoration: none;
         display: block;
     }
 
@@ -129,6 +135,43 @@
     }
 
     &_mobile & {
+        &__company-info,
+        &__nav-block,
+        &__subscription {
+            display: none;
+        }
+
+        &__container {
+            align-items: center;
+            flex-direction: column;
+        }
+
+        // top bar
+
+        &__top-bar {
+            border-bottom: none;
+            padding-top: 120px;
+            padding-bottom: 0;
+        }
+
+        &__company {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        // bottom bar
+
+        &__bottom-bar {
+            height: auto;
+            padding-bottom: 120px;
+        }
+
+        &__social {
+            margin-top: 26px;
+        }
+    }
+
+    @media (max-width: $desktop_min_width) {
         &__company-info,
         &__nav-block,
         &__subscription {

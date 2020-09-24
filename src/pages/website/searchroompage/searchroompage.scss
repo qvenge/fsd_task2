@@ -1,0 +1,179 @@
+@import '../../../globals/styles';
+
+.sr-page {
+    padding-top: 100px;
+    border-bottom: 1px solid $third_color_10;
+
+    &__content {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    // FILTERS
+
+    &__filters-outer-container {
+        position: relative;
+        box-sizing: border-box;
+        margin-right: 60px;
+        flex-shrink: 0;
+        flex-grow: 0;
+    }
+
+    &__filters-inner-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__filters-inner-container {
+        height: 100%;
+        position: relative;
+        z-index: 3;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        background: #ffffff;
+    }
+
+    &__filters-btn {
+        display: none;
+        position: absolute;
+        z-index: 2;
+        box-sizing: border-box;
+        top: calc(50% - 80px);
+        left: 100%;
+        height: 160px;
+        width: 34px;
+        background: #ffffff;
+        border-width: 1px 1px 1px 1px;
+        border-style: solid;
+        border-color: $third_color_10 $third_color_10 $third_color_10 #ffffff;
+        border-radius: 0 4px 4px 0;
+        box-shadow: $main_box_shadow;
+        cursor: pointer;
+    }
+
+    &__filters-btn-text {
+        @extend %font_additional;
+        font-weight: bold;
+        color: $third_color;
+        position: absolute;
+        top: 68px;
+        left: -20px;
+        text-transform: uppercase;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    &__filters-btn-text::after {
+        @extend %material-icons;
+        content: "expand_more";
+        position: absolute;
+        top: -4px;
+        left: 100%;
+        transform: rotate(180deg);
+    }
+
+    &__filters {
+        width: 266px;
+    }
+
+    &__guest-list {
+        margin-top: 20px;
+    }
+
+    &__price-range {
+        margin-top: 30px;
+    }
+
+    &__checkbox-buttons {
+        margin-top: 30px;
+    }
+
+    &__availability {
+        margin-top: 31px;
+    }
+
+    &__amenities {
+        margin-top: 30px;
+    }
+
+    &__additional-amenities {
+        margin-top: 30px;
+    }
+
+    // ROOM LIST
+    &__content-container {
+        width: 834px;
+
+        @media (max-width: 918px) {
+            width: 552px;
+        }
+
+        @media (max-width: 636px) {
+            width: 270px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 21px;
+    }
+
+    &__picked-rooms {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -10px -6px;
+    }
+
+    &__room {
+        margin: 10px 6px;
+    }
+
+    &__pagination {
+        margin-top: 40px;
+        margin-bottom: 70px;
+    }
+
+
+    // MEDIA
+
+    @media (max-width: 1179px) {
+        &__filters-outer-container {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 1px;
+            height: calc(100% - 70px);
+            z-index: 999;
+            margin-right: 0;
+            border-right: 1px solid $third_color_10;
+            box-shadow: $main_box_shadow;
+
+            transition: width .3s ease-in 0s;
+        }
+
+        &__filters-inner-container {
+            position: absolute;
+            right: 0;
+        }
+
+        &__filters-outer-container_open {
+            transition-timing-function: ease-out;
+            width: 286px;
+        }
+
+        &__filters-btn {
+            display: block;
+        }
+
+        &__filters-outer-container_open &__filters-btn-text::after {
+            transform: rotate(0deg);
+        }
+
+        &__filters-inner-container {
+            overflow: auto;
+        }
+
+        &__filters {
+            padding: 30px 10px;
+        }
+    }
+}

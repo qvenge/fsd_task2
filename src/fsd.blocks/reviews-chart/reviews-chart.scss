@@ -1,0 +1,66 @@
+@import '../../globals/styles';
+
+.reviews-chart {
+    display: flex;
+    align-items: flex-end;
+
+    &__votes {
+        position: relative;
+    }
+
+    &__votes-number {
+        @extend %font_title_h1;
+        position: absolute;
+        top: 35px;
+        left: 40px;
+        color: $main_color;
+    }
+
+    &__votes-text {
+        @extend %font_title_h3;
+        position: absolute;
+        top: 66px;
+        left: 29px;
+        color: $main_color;
+    }
+
+    &__chart {
+    }
+
+    &__legend {
+        @extend %font_body;
+        margin-left: 30px;
+        color: $third_color_75;
+        padding-left: 15px;
+        padding-bottom: 4px;
+    }
+
+    &__legend-item {
+        position: relative;
+    }
+
+    &__legend-item::before {
+        content: "";
+        position: absolute;
+        left: -15px;
+        top: 7px;
+        width: 10px;
+        height: 10px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 50%;
+    }
+
+    &__legend-item_great::before {
+        background: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%);
+    }
+    &__legend-item_good::before {
+        background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    }
+    &__legend-item_satisfying::before {
+        background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+    }
+    &__legend-item_disappointing::before {
+        background: linear-gradient(180deg, #919191 0%, #3D4975 100%);
+    }
+}

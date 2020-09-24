@@ -7,10 +7,15 @@ const BemIntegratorPlugin = require('./bem-integrator-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 const pages = [
+    setPage('./pages/index.pug'),
     setPage('./pages/uikit/formelements/formelements.pug'),
     setPage('./pages/uikit/colorsandtype/colorsandtype.pug'),
     setPage('./pages/uikit/cards/cards.pug'),
-    setPage('./pages/uikit/headersfooters/headersfooters.pug')
+    setPage('./pages/uikit/headersfooters/headersfooters.pug'),
+    setPage('./pages/website/landingpage/landingpage.pug'),
+    setPage('./pages/website/searchroompage/searchroompage.pug'),
+    setPage('./pages/website/roomdetails/roomdetails.pug'),
+    // setPage('./pages/sandbox/sandbox.pug')
 ];
 
 module.exports = {

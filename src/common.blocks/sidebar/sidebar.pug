@@ -1,0 +1,7 @@
+mixin sidebar(options={})
+    .sidebar&attributes(attributes)
+        .sidebar__btn
+            .sidebar__btn-text #{options.buttonText}
+        .sidebar__content
+            if block
+                block

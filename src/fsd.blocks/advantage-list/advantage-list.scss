@@ -1,6 +1,8 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .advantage-list {
+    width: 280px;
+    
     &__ul {
         margin: 0;
         padding: 0;

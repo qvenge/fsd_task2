@@ -1,0 +1,22 @@
+@import '../../globals/styles';
+
+.sandbox {
+    &__content {
+        padding: 70px 0;
+    }
+
+
+    // FOOTER
+
+    &__footer {
+        border-top: 1px solid $third_color_10;
+    }
+}
+
+main {
+    padding: 70px 0;
+}
+
+footer {
+    border-top: 1px solid $third_color_10;
+}

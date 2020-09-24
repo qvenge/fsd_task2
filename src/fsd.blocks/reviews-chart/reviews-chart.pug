@@ -1,0 +1,46 @@
+mixin reviewsChart(reviews={})
+    -
+        // reviews = { great: number, good: number, satisfying: number, disappointing: number}
+        var items = [
+            {
+                color: ['#FFBA9C', '#FFE39C'],
+                gradient: [Math.PI/2, 3/2*Math.PI],
+                number: reviews.great
+            },
+            {
+                color: ['#6FCF97', '#66D2EA'],
+                gradient: [0, Math.PI],
+                number: reviews.good
+            },
+            {
+                color: ['#BC9CFF', '#8BA4F9'],
+                gradient: [3/2*Math.PI, Math.PI/2],
+                number: reviews.satisfying
+            },
+            {
+                color: ['#919191', '#3D4975'],
+                gradient: [0, Math.PI],
+                number: reviews.disappointing
+            }
+        ];
+
+        var params = {
+            items: items,
+            start: (Math.PI * 3 / 2),
+            anticlockwise: true,
+            lineWidth: 4,
+            gap: 0.7,
+            radius: 120
+        };
+
+    .reviews-chart&attributes(attributes)
+        .reviews-chart__votes
+            .reviews-chart__chart
+                +pieChart(params)
+            .reviews-chart__votes-number 260
+            .reviews-chart__votes-text голосов
+        .reviews-chart__legend
+            .reviews-chart__legend-item.reviews-chart__legend-item_great Великолепно
+            .reviews-chart__legend-item.reviews-chart__legend-item_good Хорошо
+            .reviews-chart__legend-item.reviews-chart__legend-item_satisfying Удовлетворительно
+            .reviews-chart__legend-item.reviews-chart__legend-item_disappointing Разочарован

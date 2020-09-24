@@ -1,5 +1,34 @@
 mixin footer(options={})
     -
+        var nav = {
+            'main': {
+                label: 'Навигация',
+                items:[
+                    { text: 'О нас', href: '#' },
+                    { text: 'Новости', href: '#' },
+                    { text: 'Служба поддержки', href: '#' },
+                    { text: 'Услуги', href: '#' },
+                ],
+            },
+            'about-us': {
+                label: 'О нас',
+                items: [
+                    { text: 'О сервисе', href: '#' },
+                    { text: 'Наша команда', href: '#' },
+                    { text: 'Вакансии', href: '#' },
+                    { text: 'Инвесторы', href: '#' },
+                ]
+            },
+            'support-service': {
+                label: 'Служба поддержки',
+                items: [
+                    { text: 'Соглашения', href: '#' },
+                    { text: 'Сообщества', href: '#' },
+                    { text: 'Связь с нами', href: '#' },
+                ]
+            }
+        };
+
         var classes = [];
 
         if (options.mobile === true) {
@@ -8,41 +37,33 @@ mixin footer(options={})
 
     .footer(class=classes)&attributes(attributes)
         .footer__top-bar
-            .footer__container
-                .footer__company
-                    .footer__company-logo
-                        +logo({text: true})
-                    .footer__company-info Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-                .footer__nav-block
-                    .footer__nav.footer__nav_main
-                        .footer__label навигация
-                        ul.footer__nav-list
-                            li.footer__nav-item О нас
-                            li.footer__nav-item Новости
-                            li.footer__nav-item Служба поддержки
-                            li.footer__nav-item Услуги
-                    .footer__nav.footer__nav_about-us
-                        .footer__label О нас
-                        ul.footer__nav-list
-                            li.footer__nav-item О сервисе
-                            li.footer__nav-item Наша команда
-                            li.footer__nav-item Вакансии
-                            li.footer__nav-item Инвесторы
-                    .footer__nav.footer__nav_support-service
-                        .footer__label Служба поддержки
-                        ul.footer__nav-list
-                            li.footer__nav-item Соглашения
-                            li.footer__nav-item Сообщества
-                            li.footer__nav-item Связь с нами
-                .footer__subscription
-                    .footer__label Подписка
-                    .footer__subscription-info Получайте специальные предложения и новости сервиса
-                    .footer__subscription-field
-                        +subscriptionField()
+            .main-container
+                .footer__container
+                    .footer__company
+                        .footer__company-logo
+                            +logo({text: true})
+                        .footer__company-info Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+                    .footer__nav-block
+                        each item, key in nav
+                            .footer__nav(class=('footer__nav_' + key))
+                                .footer__label #{item.label}
+                                ul.footer__nav-list
+                                    each subItem in item.items
+                                        li.footer__nav-item
+                                            a.footer__nav-link(href=subItem.href) #{subItem.text}
+                    .footer__subscription
+                        .footer__label Подписка
+                        .footer__subscription-info Получайте специальные предложения и новости сервиса
+                        .footer__subscription-field
+                            +subscriptionField()
         .footer__bottom-bar
-            .footer__container.footer__container_bottom
-                .footer__copyright Copyright © 2018 Toxin отель. Все права зачищены.
-                .footer__social
-                    .footer__social-item.fab.fa-twitter
-                    .footer__social-item.fab.fa-facebook-square
-                    .footer__social-item.fab.fa-instagram
+            .main-container
+                .footer__container.footer__container_bottom
+                    .footer__copyright Copyright&nbsp;©&nbsp;2018&nbsp;Toxin&nbsp;отель. Все&nbsp;права&nbsp;зачищены.
+                    .footer__social
+                        a(href='#').footer__social-item
+                            i.fab.fa-twitter
+                        a(href='#').footer__social-item
+                            i.fab.fa-facebook-square
+                        a(href='#').footer__social-item
+                            i.fab.fa-instagram

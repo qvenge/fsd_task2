@@ -1,8 +1,13 @@
-@import '../_globals/globals';
+@import '../../globals/styles';
 
 .image-slider {
     width: 100%;
     height: 100%;
+
+    &_auto-size {
+        width: auto;
+        height: auto;
+    }
 
     &__container {
         position: relative;

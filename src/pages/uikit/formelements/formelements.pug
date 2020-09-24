@@ -1,145 +1,146 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-        title UI Form Elements
-    body.body
-        .logo-wrapper
-            +logo()
-        .main-container
-            .grid-container
-                //- first column
-                .grid-container__item
-                    .ui-form-element
-                        +labeledBlock('Text field')
-                            +input({type: 'text', placeholder: 'Email'})
+extends ../layout.pug
 
-                    .ui-form-element.ui-form-element_mt_20
-                        +guestList
+block head
+    title UI Form Elements
+    
+block content
+    .logo-wrapper
+        +logo()
+    .main-container
+        .grid-container
+            //- first column
+            .grid-container__item
+                .ui-form-element
+                    +labeledBlock('Text field')
+                        +input({type: 'text', placeholder: 'Email'})
 
-                    .ui-form-element.ui-form-element_mt_20
-                        +labeledBlock('Удобства номера')
-                            +roomList
+                .ui-form-element.ui-form-element_mt_20
+                    +guestList
 
-                    .ui-form-element.ui-form-element_mt_20
-                        +labeledBlock('Masked text field')
-                            +input({ type: 'date' })
-                    
-                    .ui-form-element.ui-form-element_mt_40
-                        +datePicker()
-                    
-                    .ui-form-element.ui-form-element_mt_40
-                        +labeledBlock('Subscription text field')
-                            +subscriptionField({ width: 266 })
+                .ui-form-element.ui-form-element_mt_20
+                    +labeledBlock('Удобства номера')
+                        +roomList
 
+                .ui-form-element.ui-form-element_mt_20
+                    +labeledBlock('Masked text field')
+                        +input({ type: 'date' })
+                
+                .ui-form-element.ui-form-element_mt_40
+                    +datePicker()
 
-                //- second column
-                .grid-container__item
-                    .ui-form-element
-                        - var checkboxes2 = ['Можно курить', 'Можно с питомцами', 'Можно пригласить гостей<br>(до 10 человек)']; 
-                        +checkboxList('Checkbox buttons', checkboxes2)
-
-                    .ui-form-element.ui-form-element_mt_40
-                        +genderSelector('Radio buttons')
-
-                    .ui-form-element.ui-form-element_mt_40
-                        +toggle('Получать спецпредложения', 'toggle')
-
-                    .ui-form-element.ui-form-element_mt_40
-                        .ui-form-element__name.title.title_h3
-                            | like button
-                        .ui-form-element__group
-                            +likeButton(2)
-                            +likeButton(12, true)
-
-                    .ui-form-element.ui-form-element_mt_40
-                        .ui-form-element__name.title.title_h3
-                            | rate button
-                        .ui-form-element__group
-                            +rateButton()
+                .ui-form-element.ui-form-element_mt_40
+                    +filterDateDropdown({ value: '19 авг - 23 авг' })
+                
+                .ui-form-element.ui-form-element_mt_40
+                    +labeledBlock('Subscription text field')
+                        +subscriptionField({ width: 266 })
 
 
-                //- third column
-                .grid-container__item
-                    .ui-form-element
-                        +priceRange()
+            //- second column
+            .grid-container__item
+                .ui-form-element
+                    - var checkboxes2 = ['Можно курить', 'Можно с питомцами', 'Можно пригласить гостей<br>(до 10 человек)']; 
+                    +checkboxList('Checkbox buttons', checkboxes2)
 
-                    .ui-form-element.ui-form-element_mt_40
-                        .ui-form-element__name.title.title_h3
-                            | buttons
-                        .ui-form-element__group
-                            +button('click me', { width: 99 })
-                            +button('click me', { type: 'second', width: 99 })
-                            +button('click me', { type: 'third' })
-                    .ui-form-element.ui-form-element_mt_30
-                        +button('Перейти к оплате', { extended: true, arrow: true })
+                .ui-form-element.ui-form-element_mt_40
+                    +genderSelector('Radio buttons')
 
-                    .ui-form-element.ui-form-element_mt_40
-                        .ui-form-element__name.title.title_h3
-                            | pagination
-                        .ui-form-element__group
-                            +goodsPagination(170, 12)
+                .ui-form-element.ui-form-element_mt_40
+                    +toggle('Получать спецпредложения', 'toggle')
+
+                .ui-form-element.ui-form-element_mt_40
+                    .ui-form-element__name.title.title_h3
+                        | like button
+                    .ui-form-element__group
+                        +likeButton(2)
+                        +likeButton(12, true)
+
+                .ui-form-element.ui-form-element_mt_40
+                    .ui-form-element__name.title.title_h3
+                        | rate button
+                    .ui-form-element__group
+                        +rateButton()
 
 
+            //- third column
+            .grid-container__item
+                .ui-form-element
+                    +priceRange()
 
+                .ui-form-element.ui-form-element_mt_40
+                    .ui-form-element__name.title.title_h3
+                        | buttons
+                    .ui-form-element__group
+                        +button('click me', { width: 99 })
+                        +button('click me', { type: 'second', width: 99 })
+                        +button('click me', { type: 'third' })
+                .ui-form-element.ui-form-element_mt_30
+                    +button('Перейти к оплате', { extended: true, arrow: true })
 
-            .grid-container
-                .grid-container__item
-                    .ui-form-element
-                        - var checkboxes1 = ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь']; 
-                        +checkboxList('Expandable checkbox list', checkboxes1, true)
-
-                .grid-container__item
-                    .ui-form-element
-                        -
-                            var checkboxes3 = [
-                                {
-                                    label: 'Широкий коридор',
-                                    rich: true,
-                                    postscript: 'Ширина коридоров в&nbspномере не&nbspменее&nbsp91&nbspсм.'
-                                },
-                                {
-                                    label: 'Помощник для инвалидов',
-                                    rich: true,
-                                    postscript: 'На&nbsp1&nbspэтаже вас&nbspвстретит специалист и&nbspпроводит до&nbspномера.'
-                                }
-                            ]; 
-
-                        +checkboxList('Rich checkbox buttons', checkboxes3)
-
-                .grid-container__item
-                    .ui-form-element
-                        - var blist = ['Нельзя с&nbsp;питомцами', 'Без&nbsp;вечеринок и&nbsp;мероприятий', 'Время прибытия — после 13:00, а&nbsp;выезд до&nbsp;12:00'];
-                        +bulletList('Bullet list', blist)
+                .ui-form-element.ui-form-element_mt_40
+                    .ui-form-element__name.title.title_h3
+                        | pagination
+                    .ui-form-element__group
+                        +goodsPagination(170, 12)
 
 
 
-            .grid-container.grid-container_1-2
-                .grid-container__item
-                    .ui-form-element
-                        -
-                            var advantages = [
-                                {
-                                    label: 'Комфорт',
-                                    text: 'Шумопоглащающие стены',
-                                    icon: 'insert_emoticon'
-                                },
-                                {
-                                    label: 'Удобство',
-                                    text: 'Окно в каждой из спален',
-                                    icon: 'location_city'
-                                },
-                                {
-                                    label: 'Уют',
-                                    text: 'Номер оснащен камином',
-                                    icon: 'whatshot'
-                                }
-                            ]; 
-                        +advantageList(advantages)
 
-                .grid-container__item
-                    .ui-form-element
-                        - var message = 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.';
-                        +commentBlock({author: 'Утегенов Биржан', date: '5 дней назад', avatar_src: '~images/avatar.jpg', message: message})
+        .grid-container
+            .grid-container__item
+                .ui-form-element
+                    - var checkboxes1 = ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь']; 
+                    +checkboxList('Expandable checkbox list', checkboxes1, true)
+
+            .grid-container__item
+                .ui-form-element
+                    -
+                        var checkboxes3 = [
+                            {
+                                label: 'Широкий коридор',
+                                rich: true,
+                                postscript: 'Ширина коридоров в&nbspномере не&nbspменее&nbsp91&nbspсм.'
+                            },
+                            {
+                                label: 'Помощник для инвалидов',
+                                rich: true,
+                                postscript: 'На&nbsp1&nbspэтаже вас&nbspвстретит специалист и&nbspпроводит до&nbspномера.'
+                            }
+                        ]; 
+
+                    +checkboxList('Rich checkbox buttons', checkboxes3)
+
+            .grid-container__item
+                .ui-form-element
+                    - var blist = ['Нельзя с&nbsp;питомцами', 'Без&nbsp;вечеринок и&nbsp;мероприятий', 'Время прибытия — после 13:00, а&nbsp;выезд до&nbsp;12:00'];
+                    +bulletList('Bullet list', blist)
+
+
+
+        .grid-container.grid-container_1-2
+            .grid-container__item
+                .ui-form-element
+                    -
+                        var advantages = [
+                            {
+                                label: 'Комфорт',
+                                text: 'Шумопоглащающие стены',
+                                icon: 'insert_emoticon'
+                            },
+                            {
+                                label: 'Удобство',
+                                text: 'Окно в каждой из спален',
+                                icon: 'location_city'
+                            },
+                            {
+                                label: 'Уют',
+                                text: 'Номер оснащен камином',
+                                icon: 'whatshot'
+                            }
+                        ]; 
+                    +advantageList(advantages)
+
+            .grid-container__item
+                .ui-form-element
+                    - var message = 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.';
+                    +commentBlock({author: 'Утегенов Биржан', date: '5 дней назад', avatar_src: 'images/avatar.jpg', message: message})
