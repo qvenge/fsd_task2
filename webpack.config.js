@@ -15,6 +15,7 @@ const pages = [
     setPage('./pages/website/landingpage/landingpage.pug'),
     setPage('./pages/website/searchroompage/searchroompage.pug'),
     setPage('./pages/website/roomdetails/roomdetails.pug'),
+    setPage('./pages/website/loginpage/loginpage.pug'),
     // setPage('./pages/sandbox/sandbox.pug')
 ];
 

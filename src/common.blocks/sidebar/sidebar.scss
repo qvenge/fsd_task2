@@ -1,46 +1,51 @@
-@import '../../../globals/styles';
+@import '../../globals/styles';
 
 .sidebar {
     position: relative;
     box-sizing: border-box;
-    transition: width .3s ease-in 0s;
 
     &_fixed {
         position: fixed;
         top: 0;
         left: 0;
         height: 100%;
-        width: 1px;
+        width: 0;
 
         z-index: 999;
-        border-right: 1px solid $third_color_10;
-        box-shadow: $main_box_shadow;
+        // border-right: 1px solid $third_color_10;
+        // box-shadow: $main_box_shadow;
+
+        transition: width 0s linear .3s;
     }
 
     &_fixed#{& + '_open'} {
-        transition-timing-function: ease-out;
-        width: 286px;
+        transition-delay: 0s;
+        width: 100%;
     }
 
-    
+
     // BUTTON
 
     &__btn {
         display: none;
-        position: absolute;
-        z-index: 2;
-        box-sizing: border-box;
-        top: calc(50% - 80px);
-        left: 100%;
         height: 160px;
         width: 34px;
-        background: #ffffff;
+        box-sizing: border-box;
+
+        position: absolute;
+        z-index: 2;
+        top: calc(50% - 80px);
+        left: 0;
+
         border-width: 1px 1px 1px 1px;
         border-style: solid;
         border-color: $third_color_10 $third_color_10 $third_color_10 #ffffff;
         border-radius: 0 4px 4px 0;
+        background: #ffffff;
         box-shadow: $main_box_shadow;
         cursor: pointer;
+
+        transition: left .3s linear 0s;
     }
 
     &_fixed &__btn {
@@ -68,29 +73,43 @@
         transform: rotate(180deg);
     }
 
-    &_fixed#{& + '_open'} &__filters-btn-text::after {
+    &_fixed#{& + '_open'} &__btn-text::after {
         transform: rotate(0deg);
     }
 
 
     // CONTENT
 
-    &__content::-webkit-scrollbar {
+    &_fixed &__scrollable-container::-webkit-scrollbar {
         display: none;
     }
 
-    &__content {
-        height: 100%;
+    &_fixed &__scrollable-container {
         position: relative;
-        z-index: 3;
+        width: 100%;
+        height: 100%;
         -ms-overflow-style: none;
         scrollbar-width: none;
-        background: #ffffff;
+        overflow: hidden;
+    }
+
+    &_fixed#{& + '_open'} &__scrollable-container {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    &__content {
+        height: auto;
+        width: auto;
+
+        transition: right .3s linear 0s;
     }
 
     &_fixed &__content {
         position: absolute;
-        right: 0;
-        overflow: auto;
+        top: 0;
+        right: 100%;
+        z-index: 3;
+        background: #ffffff;
     }
 }

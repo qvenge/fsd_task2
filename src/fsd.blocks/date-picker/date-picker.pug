@@ -8,5 +8,6 @@ mixin datePicker(options={})
             .date-picker__departure
                 .date-picker__label.title.title_h3 Выезд
                 +output({ placeholder: 'ДД.ММ.ГГГГ', value: dates[1], expandable: true })
-        .date-picker__calendar-card.dropdown
-            +calendarCard()
+        .date-picker__calendar-card
+            +hideableBlock({ animation: 'emerging' })
+                +calendarCard()

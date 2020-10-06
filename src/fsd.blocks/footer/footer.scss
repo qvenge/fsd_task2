@@ -134,44 +134,9 @@
         margin: 0 auto;
     }
 
+    .body_tablet &,
+    .body_mobile &,
     &_mobile & {
-        &__company-info,
-        &__nav-block,
-        &__subscription {
-            display: none;
-        }
-
-        &__container {
-            align-items: center;
-            flex-direction: column;
-        }
-
-        // top bar
-
-        &__top-bar {
-            border-bottom: none;
-            padding-top: 120px;
-            padding-bottom: 0;
-        }
-
-        &__company {
-            margin: 0;
-            margin-bottom: 20px;
-        }
-
-        // bottom bar
-
-        &__bottom-bar {
-            height: auto;
-            padding-bottom: 120px;
-        }
-
-        &__social {
-            margin-top: 26px;
-        }
-    }
-
-    @media (max-width: $desktop_min_width) {
         &__company-info,
         &__nav-block,
         &__subscription {

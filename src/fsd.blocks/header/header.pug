@@ -29,29 +29,30 @@ mixin header(options={})
                         .header__burger
                             span
                     .header__menu-wrapper
-                        .header__menu
-                            nav.header__nav
-                                ul.header__nav-list
-                                    each item, name in navItems
-                                        -
-                                            var classes = [];
+                        +hideableBlock({ animation: 'extending-y', yConstraint: 'bottom', closeOnOuterClick: false })
+                            .header__menu
+                                nav.header__nav
+                                    ul.header__nav-list
+                                        each item, name in navItems
+                                            -
+                                                var classes = [];
 
-                                            if (item.expandable) {
-                                                classes.push('header__nav-link_expandable');
-                                            }
+                                                if (item.expandable) {
+                                                    classes.push('header__nav-link_expandable');
+                                                }
 
-                                            if (name === options.current) {
-                                                classes.push('header__nav-link_current');
-                                            }
+                                                if (name === options.current) {
+                                                    classes.push('header__nav-link_current');
+                                                }
 
-                                        li.header__nav-item
-                                            a.header__nav-link(class=classes, href=item.href)= item.text
-                            if options.user
-                                .header__user-block
-                                    .header__username= options.user
-                            else
-                                .header__sign-block
-                                    .header__sign-in-btn
-                                        +button('Войти', { second: true, height: 34, width: 87 })
-                                    .header__sign-up-btn
-                                        +button('Зарегистрироваться', { height: 34, width: 196 })
+                                            li.header__nav-item
+                                                a.header__nav-link(class=classes, href=item.href)= item.text
+                                if options.user
+                                    .header__user-block
+                                        .header__username= options.user
+                                else
+                                    .header__sign-block
+                                        .header__sign-in-btn
+                                            +button('Войти', { second: true, height: 34, width: 87 })
+                                        .header__sign-up-btn
+                                            +button('Зарегистрироваться', { height: 34, width: 196 })

@@ -50,10 +50,14 @@
     }
 
     &__date-picker {
+        position: relative;
+        z-index: 2;
         margin-top: 18px;
     }
 
     &__guests {
+        position: relative;
+        z-index: 1;
         margin-top: 20px;
     }
 

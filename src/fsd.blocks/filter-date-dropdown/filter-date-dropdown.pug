@@ -5,5 +5,6 @@ mixin filterDateDropdown(options={})
         .filter-date-dropdown__label.title.title_h3 Даты пребывания в отеле
         .filter-date-dropdown__output
             +output({ placeholder: 'Выберете даты', value: value, expandable: true })
-        .filter-date-dropdown__calendar-card.dropdown
+        .filter-date-dropdown__calendar-card
+            +hideableBlock({ animation: 'emerging' })
                 +calendarCard()

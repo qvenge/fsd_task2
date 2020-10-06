@@ -36,6 +36,10 @@
         color: #FFFFFFFF;
     }
 
+    .body_mobile &__btn {
+        display: none;
+    }
+
     &__pages {
         @extend %font_additional;
         display: flex;

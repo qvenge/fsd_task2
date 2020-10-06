@@ -1,0 +1,82 @@
+@import '../../globals/styles';
+
+.hideable-block {
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: auto;
+        opacity: 1;
+    }
+
+    &_hidden &__container {
+        overflow: hidden;
+    }
+
+    &__content {
+        width: 100%;
+    }
+
+    // ANIMATION
+
+    &_animated &__container {
+        transition: opacity .3s ease-in-out 0s, height .3s ease-in-out 0s, width .3s ease-in-out 0s;
+    }
+
+    &_animated_emerging &__container {
+        transition-duration: .3s, 0s, 0s;
+        transition-delay: 0s, 0s, 0s;
+        opacity: 1;
+    }
+
+    &_animated_emerging#{& + '_hidden'} &__container {
+        transition-delay: 0s, .3s, .3s;
+        opacity: 0;
+    }
+
+    &_animated_extending-y &__container {
+        transition-duration: .3s, .3s, 0s;
+    }
+
+    &_animated_extending-y#{& + '_hidden'} &__container {
+        transition-delay: 0s, 0s, .3s;
+    }
+
+    &_animated_extending-x &__container {
+        transition-duration: .3s, 0s, .3s;
+    }
+
+    &_animated_extending-x#{& + '_hidden'} &__container {
+        transition-delay: 0s, .3s, 0s;
+    }
+
+    #{& + '_animated_extending-x'}#{& + '_animated_extending-y'} &__container,
+    &_animated_extending &__container {
+        transition-duration: .3s, .3s, .3s;
+    }
+
+    #{& + '_animated_extending-x'}#{& + '_animated_extending-y'}#{& + '_hidden'} &__container
+    &_animated_extending#{& + '_hidden'} &__container {
+        transition-delay: 0s, 0s, 0s;
+    }
+
+
+    // CONSTRAINTS
+
+    &_stick-left &__container {
+        justify-content: flex-start;
+    }
+
+    &_stick-right &__container {
+        justify-content: flex-end;
+    }
+
+    &_stick-top &__container {
+        align-items: flex-start;
+    }
+
+    &_stick-bottom &__container {
+        align-items: flex-end;
+    }
+}

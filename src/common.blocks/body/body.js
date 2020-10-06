@@ -1,18 +1,17 @@
+var MIN_DESKTOP_WIDTH = 980;
+var MIN_TABLET_WIDTH = 650;
+
+
 function isEmpty(obj) {
-    for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            return false;
-        }
-    }
-    return true;
+    return !Object.keys(obj).length;
 }
 
 function Body(elem, params) {
     this.elem = elem;
     this._resizeTimeout = null;
 
-    this._lockingEntities = {};
-    this._zIndexes = {};
+    this._lockingEntities = Object.create(null);
+    this._modalContainers = Object.create(null);
 
     this._init();
 }
@@ -25,33 +24,37 @@ Object.defineProperties(Body.prototype, {
     },
 
     lock: {
-        value: function(entityName, zIndex) {
-            if (this._lockingEntities.hasOwnProperty(entityName)) {
+        value: function(entityName, zIndex, modalOnclickCallback) {
+            if (entityName in this._lockingEntities) {
                 return false;
             }
 
             var self = this;
+            var modalContainer = this._modalContainers[zIndex];
 
-            if (!this._zIndexes.hasOwnProperty(zIndex)) {
-                var modal = this._createModal(zIndex);
-
-                this._zIndexes[zIndex] = {
-                    modal: modal,
+            if (!modalContainer) {
+                modalContainer = {
+                    modal: this._createModal(zIndex),
                     entities: {}
                 };
 
                 setTimeout(function() {
-                    modal.classList.add(self.id + '__modal_active');
+                    modalContainer.modal.classList.add(self.id + '__modal_active');
                 }, 15);
 
                 this.elem.classList.add(this.id + '_locked');
+                this._modalContainers[zIndex] = modalContainer;
             }
 
             // на случай если установлен таймер на удаление
-            clearTimeout(this._zIndexes[zIndex].timerId);
+            clearTimeout(modalContainer.timerId);
 
-            this._zIndexes[zIndex].entities[entityName] = true;
-            this._lockingEntities[entityName] = zIndex;
+            if (typeof modalOnclickCallback === 'function') {
+                modalContainer.modal.addEventListener('click', modalOnclickCallback);
+            }
+
+            modalContainer.entities[entityName] = true;
+            this._lockingEntities[entityName] = { zIndex: zIndex, modalOnclickCallback: modalOnclickCallback };
 
             return true;
         },
@@ -62,23 +65,30 @@ Object.defineProperties(Body.prototype, {
 
     unlock: {
         value: function(entityName) {
-            if (!this._lockingEntities.hasOwnProperty(entityName)) {
+            var entityData = this._lockingEntities[entityName];
+
+            if (!entityData) {
                 return false;
             }
             
             var self = this;
-            var prevIndex = this._lockingEntities[entityName];
-            var container = this._zIndexes[prevIndex];
+            var prevIndex = entityData.zIndex;
+            var modalContainer = this._modalContainers[prevIndex];
 
-            delete container.entities[entityName];
+            delete modalContainer.entities[entityName];
 
-            if (isEmpty(container.entities)) {
-                container.modal.classList.remove(this.id + '__modal_active');
+            if (isEmpty(modalContainer.entities)) {
+                modalContainer.modal.classList.remove(this.id + '__modal_active');
 
-                container.timerId = setTimeout(function() {
-                    container.modal.parentElement.removeChild(container.modal);
-                    delete self._zIndexes[prevIndex];
+                modalContainer.timerId = setTimeout(function() {
+                    var modal = self._modalContainers[prevIndex].modal;
+                    modal.parentElement.removeChild(modal);
+                    delete self._modalContainers[prevIndex];
                 }, 300);
+            }
+
+            if (typeof entityData.modalOnclickCallback === 'function') {
+                modalContainer.modal.removeEventListener('click', entityData.modalOnclickCallback);
             }
 
             delete this._lockingEntities[entityName];
@@ -118,6 +128,31 @@ Object.defineProperties(Body.prototype, {
     
                 resizeTimeout = setTimeout(delayed, 66);
             });
+
+
+            window.addEventListener('optimizedResize', this._resizeHandler.bind(this));
+
+            this._resizeHandler({ detail: { width: document.documentElement.clientWidth } })
+        }
+    },
+
+    _resizeHandler: {
+        value: function(event) {
+            var width = event.detail.width;
+
+            if (width >= MIN_DESKTOP_WIDTH) {
+                this.elem.classList.remove(this.id + '_mobile');
+                this.elem.classList.remove(this.id + '_tablet');
+                this.elem.classList.add(this.id + '_desktop');
+            } else if (width < MIN_DESKTOP_WIDTH && MIN_TABLET_WIDTH <= width) {
+                this.elem.classList.remove(this.id + '_mobile');
+                this.elem.classList.add(this.id + '_tablet');
+                this.elem.classList.remove(this.id + '_desktop');
+            } else {
+                this.elem.classList.add(this.id + '_mobile');
+                this.elem.classList.remove(this.id + '_tablet');
+                this.elem.classList.remove(this.id + '_desktop');
+            }
         }
     },
 
@@ -126,7 +161,7 @@ Object.defineProperties(Body.prototype, {
             var modal = document.createElement('DIV');
             modal.className = this.id + '__modal';
             modal.style.zIndex = zIndex;
-            this.elem.insertBefore(modal, this.elem.firstElementChild);
+            this.elem.appendChild(modal);
             return modal;
         }
     }

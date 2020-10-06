@@ -1,17 +1,18 @@
 @import '../../../globals/styles';
 
 .room-details {
-    padding-top: 70px;
-    border-top: 1px solid $third_color_10;
+    border-bottom: 1px solid $third_color_10;
 
     &__room-photos-wrapper {
         position: relative;
         width: 100%;
-        padding-top: 33.33%;
+        // padding-top: 33.33%;
+        height: 485px;
         margin-top: 70px;
     }
 
-    &__room-photos {
+    &__room-photos,
+    &__room-photos_mobile {
         position: absolute;
         top: 0;
         left: 0;
@@ -22,6 +23,16 @@
         flex-wrap: wrap;
         width: 100%;
         overflow: hidden;
+    }
+
+    &__room-photos {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    &__room-photos_mobile  {
+        display: none;
     }
 
     &__first-photo {
@@ -48,12 +59,13 @@
         height: 50%;
     }
 
+
+
     &__content {
-        @extend %main_container;
         position: relative;
         display: flex;
         justify-content: space-between;
-        padding: 70px 0;
+        padding: 70px 0 72px;
     }
     
 
@@ -70,28 +82,96 @@
         margin-bottom: 20px;
     }
 
-    &__advantages,
-    &__impressions {
+    &__advantages {
         width: 50%;
     }
 
+    &__impressions {
+        width: calc(50% - 6px);
+        margin-left: 6px;
+    }
+
     &__reviews {
-        margin-top: 30px;
+        margin-top: 33px;
     }
 
     &__review + &__review {
         margin-top: 23px;
     }
 
-    &__rules,
-    &__cancellation {
-        margin-top: 30px;
+    &__rules{
+        margin-top: 34px;
         width: 50%;
+    }
+
+    &__rules &__title {
+        margin-bottom: 16px;
+        margin-left: 20px;
+    }
+
+    &__cancellation {
+        margin-top: 34px;
+        width: 46%;
+        margin-left: 6px;
+    }
+
+    &__cancellation &__title {
+        margin-bottom: 16px;
     }
 
     // BOOKING BLOCK
 
     &__booking-block {
         margin-left: 70px;
+    }
+
+
+    .body_tablet &,
+    .body_mobile & {
+        &__room-photos-wrapper {
+            padding-top: 50%;
+        }
+
+        &__room-photos {
+            display: none;
+        }
+
+        &__room-photos_mobile {
+            display: block;
+        }
+
+        &__content {
+            flex-direction: column;
+        }
+
+        &__booking-block {
+            margin: 0;
+            margin: 40px auto 0;
+        }
+
+        @media (max-width: 380px) {
+            &__booking-block {
+                margin-left: -40px;
+            }
+        }
+    }
+
+
+    .body_mobile & {
+        &__advantages,
+        &__impressions {
+            width: 100%;
+        }
+
+        &__impressions,
+        &__reviews {
+            margin-top: 50px;
+        }
+
+        &__rules,
+        &__cancellation {
+            width: 100%;
+            margin-top: 50px;
+        }
     }
 }

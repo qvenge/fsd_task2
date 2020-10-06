@@ -10,10 +10,8 @@ block content
     .sr-page
         .main-container
             .sr-page__content
-                .sr-page__filters-outer-container
-                    .sr-page__filters-btn 
-                        .sr-page__filters-btn-text Фильтры
-                    .sr-page__filters-inner-container
+                .sr-page__filter-bar
+                    +sidebar({buttonText: 'Фильтры'})
                         .sr-page__filters
                             .sr-page__stay-period
                                 +filterDateDropdown({ value: '19 авг - 23 авг'})
@@ -23,7 +21,7 @@ block content
                                 +priceRange()
                             .sr-page__checkbox-buttons
                                 - var checkboxes2 = ['Можно курить', 'Можно с питомцами', 'Можно пригласить гостей<br>(до 10 человек)']; 
-                                +checkboxList('Checkbox buttons', checkboxes2)
+                                +checkboxList('Правила дома', checkboxes2)
                             .sr-page__availability
                                 -
                                     var checkboxes3 = [

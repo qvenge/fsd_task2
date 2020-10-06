@@ -5,11 +5,13 @@ mixin pagination(pages, currentPage, hint)
         }
 
         var params = JSON.stringify({
-            pages: pages,
-            currentPage: currentPage || 1
+            pagination: {
+                pages: pages,
+                currentPage: currentPage || 1
+            }
         });
 
-    .pagination(data-params=params)&attributes(attributes)
+    .pagination(data-bem=params)&attributes(attributes)
         .pagination__container
             a.pagination__btn.pagination__btn_prev.material-icons arrow_back
             .pagination__pages

@@ -1,7 +1,6 @@
 mixin roomList(label)
     .room-list&attributes(attributes)
-        if label
-            .room-list__label.title.title_h3= label
+        .room-list__label.title.title_h3 Удобства номера
         +dropdownOutput('Комнаты')
             .room-list__content
                 +quantitativeList({bedrooms: 'спальни', beds: 'кровати', bathrooms: 'ванные комнаты'})

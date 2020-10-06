@@ -1,0 +1,15 @@
+extends ../layout.pug
+
+block code
+    -
+        params.title = 'Registration | Sign in';
+
+block content
+    .loginpage
+        .loginpage__background
+            +imageSlider(['images/image4.jpg', 'images/image3.jpg'], { loop: true, slideshow: true, slideshowSpeed: 0.2 })
+        main.loginpage__content
+            .loginpage__registration-form
+                +registrationCard()
+            .loginpage__sign-in-form
+                +signInCard()

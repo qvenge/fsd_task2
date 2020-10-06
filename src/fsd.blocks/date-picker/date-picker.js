@@ -14,11 +14,11 @@ Object.defineProperties(DatePicker.prototype, {
         value: function() {
             var shownDate;
             var calendarCardElem = this.elem.querySelector('.calendar-card');
-            var dropdownElem = this.elem.querySelector('.dropdown');
+            var hideableElem = this.elem.querySelector('.hideable-block');
             var outputElems = this.elem.querySelectorAll('.output');
 
             var calendarCard = window.BEM.getEntityInstance(calendarCardElem, 'calendar-card');
-            var dropdown = window.BEM.getEntityInstance(dropdownElem, 'dropdown');
+            var hideableBlock = window.BEM.getEntityInstance(hideableElem, 'hideable-block');
             var arrival = window.BEM.getEntityInstance(outputElems[0], 'output');
             var departure = window.BEM.getEntityInstance(outputElems[1], 'output');
     
@@ -35,17 +35,14 @@ Object.defineProperties(DatePicker.prototype, {
             if (shownDate) {
                 calendarCard.calendar.displayDate(shownDate);
             }
-    
-            this.elem.addEventListener('click', function(event) {
-                if (outputElems[0].contains(event.target) || outputElems[1].contains(event.target)) {
-                    dropdown.show(true) || dropdown.hide();
-                }
-            });
+
+            hideableBlock.addController(outputElems[0]);
+            hideableBlock.addController(outputElems[1]);
     
             this.elem.addEventListener('calendarcardreset', function() {
                 arrival.value = '';
                 departure.value = '';
-                //dropdown.hide();
+                //hideableBlock.hide();
             });
     
             this.elem.addEventListener('calendarcardapply', function(event) {
@@ -54,7 +51,7 @@ Object.defineProperties(DatePicker.prototype, {
                 });
                 arrival.value = dates[0] ? dates[0] : '';
                 departure.value = dates[1] ? dates[1] : '';
-                dropdown.hide();
+                hideableBlock.hide();
             });
         }
     }

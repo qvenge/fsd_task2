@@ -1,9 +1,10 @@
 mixin dropdownOutput(placeholder)
     .dropdown-output&attributes(attributes)
-        .dropdown-output__container
-            .dropdown-output__display
-                +output({ placeholder: placeholder, expandable: true })
-            if block
-                .dropdown-output__dropdown-wrapper
-                    .dropdown-output__content.dropdown.dropdown_relative
+        .dropdown-output__display
+            +output({ placeholder: placeholder, expandable: true })
+        if block
+            .dropdown-output__container
+                .dropdown-output__shadow
+                +hideableBlock({ animation: 'emerging extending-y', yConstraint: 'bottom'  })
+                    .dropdown-output__content
                         block

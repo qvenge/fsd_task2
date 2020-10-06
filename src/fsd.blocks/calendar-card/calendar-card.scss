@@ -2,17 +2,14 @@
 
 .calendar-card {
     width: 320px;
-    margin-top: 6px;
     box-sizing: border-box;
     padding: 19px 0 15px 0;
     background: #FFFFFF;
     border: 1px solid $third_color_25;
     box-shadow: $main_box_shadow;
     border-radius: 4px;
+    overflow: hidden;
 
-    @media (max-width: 320px) {
-        width: 100%;
-    }
 
     &__container {
         width: 280px;

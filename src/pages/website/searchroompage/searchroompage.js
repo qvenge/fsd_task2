@@ -1,13 +1,22 @@
+const Sidebar = require('../../../common.blocks/sidebar/sidebar');
+
 require('./searchroompage.scss');
+
+var MAX_WIDTH = 1180;
 
 window.BEM.initAllEntities();
 
-var filterBtn = document.querySelector('.sr-page__filters-btn');
+var sidebarElem = document.querySelector('.sidebar');
+var sidebar = window.BEM.getEntityInstance(sidebarElem, 'sidebar');
 
-var filterContainer = document.querySelector('.sr-page__filters-outer-container');
-var body = window.BEM.getEntityInstance(document.body, 'body');
+if (document.documentElement.clientWidth < MAX_WIDTH) {
+    sidebar.stick();
+}
 
-filterBtn.addEventListener('click', function(event) {
-    filterContainer.classList.toggle('sr-page__filters-outer-container_open');
-    body.lock('hideable-sidebar', 998) || body.unlock('hideable-sidebar');
+window.addEventListener('optimizedResize', function(event) {
+    if (event.detail.width < MAX_WIDTH) {
+        sidebar.stick()
+    } else {
+        sidebar.unstick();
+    }
 });

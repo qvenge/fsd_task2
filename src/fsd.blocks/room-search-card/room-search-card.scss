@@ -25,10 +25,14 @@
     }
 
     &__date-picker {
+        position: relative;
+        z-index: 2;
         margin-top: 20px;
     }
     
     &__guest-list {
+        position: relative;
+        z-index: 1;
         margin-top: 21px;
     }
 

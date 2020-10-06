@@ -120,10 +120,6 @@
         transition-timing-function: ease-out;
     }
 
-    &__menu-wrapper_with-border-top {
-        border-top: 1px solid $third_color_10;
-    }
-
     &__menu {
         height: 70px;
         width: auto;
@@ -196,7 +192,8 @@
     }
 
 
-    @media (max-width: $desktop_min_width) {
+    .body_mobile &,
+    .body_tablet & {
         &__logo-burger {
             width: 100%;
         }
@@ -206,14 +203,17 @@
         }
 
         &__menu-wrapper {
-            height: 0;
             width: 100%;
         }
 
+        &__menu-wrapper_with-border-top {
+            border-top: 1px solid $third_color_10;
+        }
+
         &__menu {
-            width: 100%;
+            // width: 100%;
             height: auto;
-            bottom: 100%;
+            // bottom: 100%;
             flex-direction: column;
             justify-content: center;
             padding: 20px 0 40px 0;

@@ -10,36 +10,77 @@ Object.defineProperties(Header.prototype, {
         enumerable: true,
     },
 
+    openMenu: {
+        value: function() {
+            this.elem.classList.add(this.id + '_active');
+            this.hideableBlock.show();
+            this.menuWrapper.classList.add(this.id + '__menu-wrapper_with-border-top');
+            this.body.lock(this.id, 1000, (function() {
+                this.closeMenu();
+            }).bind(this));
+        },
+        enumerable: true,
+        writable: true,
+        configurable: true
+    },
+
+    closeMenu: {
+        value: function() {
+            this.elem.classList.remove(this.id + '_active');
+            this.hideableBlock.hide();
+            this.body.unlock(this.id);
+        },
+        enumerable: true,
+        writable: true,
+        configurable: true
+    },
+
     _init: {
         value: function() {
             var self = this;
             var burger = this.elem.querySelector('.' + this.id + '__burger');
-            var menuWrapper = this.elem.querySelector('.' + this.id + '__menu-wrapper');
-            var defaultMenuWrapperHeightStyle = menuWrapper.style.height;
-            var body = window.BEM.getEntityInstance(document.body, 'body');
+            var hideableElem = this.elem.querySelector('.hideable-block');
 
-            var timerId = null;
+            this.menuWrapper = this.elem.querySelector('.' + this.id + '__menu-wrapper');
+            this.body = window.BEM.getEntityInstance(document.body, 'body');
+            this.hideableBlock = window.BEM.getEntityInstance(hideableElem, 'hideable-block');
+
+            this._resizeHandler();
+
+            window.addEventListener('optimizedResize', this._resizeHandler.bind(this));
 
             burger.addEventListener('click', function(event) {
                 if (self.elem.classList.contains(self.id + '_active')) {
-                    self.elem.classList.remove(self.id + '_active');
-                    menuWrapper.style.height = defaultMenuWrapperHeightStyle;
-                    timerId = setTimeout(function() {
-                        menuWrapper.classList.remove(self.id + '__menu-wrapper_with-border-top');
-                    }, 300);
-                    body.unlock(self.id);
+                    self.closeMenu()
                 } else {
-                    self.elem.classList.add(self.id + '_active');
-                    menuWrapper.style.height = menuWrapper.firstElementChild.offsetHeight + 'px';
-                    menuWrapper.classList.add(self.id + '__menu-wrapper_with-border-top');
-                    clearTimeout(timerId);
-                    timerId = null;
-                    body.lock(self.id, 1000);
+                    self.openMenu();
                 }
-                
+            });
+
+            hideableElem.addEventListener('hideableblockanimationend', function() {
+                if (self.hideableBlock.isHidden) {
+                    self.menuWrapper.classList.remove(self.id + '__menu-wrapper_with-border-top');
+                }
             });
 
         }
+    },
+
+    _resizeHandler: {
+        value: function(event) {
+            if (document.body.classList.contains('body_desktop')) {
+                this.hideableBlock.show(true);
+                this.body.unlock(this.id);
+            } else if (this.elem.classList.contains(this.id + '_active')) {
+                this.hideableBlock.show(true);
+                this.body.lock(this.id, 1000, (function() {
+                    this.closeMenu();
+                }).bind(this));
+            } else  {
+                this.hideableBlock.hide(true);
+                this.body.unlock(this.id);
+            }
+        } 
     }
 });
 

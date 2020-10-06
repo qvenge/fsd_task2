@@ -1,5 +1,6 @@
-function Pagination(elem) {
+function Pagination(elem, params) {
     this.elem = elem;
+    this.params = params || {};
     this.radius = 2;
     this.currentPage = undefined;
     this.pages = [];
@@ -63,36 +64,52 @@ Pagination.prototype = {
         hint.classList.remove(this.id + '__shown-item');
     },
 
+
     _init: function() {
-        var params = this.elem.dataset.params;
+        function resizeHandler() {
+            if (document.body.classList.contains('body_mobile')) {
+                if (this.radius !== 1) {
+                    this.radius = 1;
+                    this.changePage(this.currentPage);
+                }
+            } else if (this.radius !== 2) {
+                this.radius = 2;
+                this.changePage(this.currentPage);
+            }
+        }
+
+        this._fillPageContainer();
+        this.changePage(this.params.currentPage);
+        resizeHandler.call(this);
+        window.addEventListener('optimizedResize', resizeHandler.bind(this));
+    },
+
+
+    _fillPageContainer: function() {
+        var params = this.params;
         var pageContainer = this.elem.querySelector('.' + this.id + '__pages');
 
-        if (params) {
-            params = JSON.parse(params);
+        for (var i = 0; i < params.pages.length; ++i) {
+            var number = i + 1;
+            var link = document.createElement('a');
+            
+            link.textContent = number;
+            link.href = params.pages[i];
+            link.classList.add(this.id + '__page');
 
-            for (var i = 0; i < params.pages.length; ++i) {
-                var number = i + 1;
-                var link = document.createElement('a');
-                
-                link.textContent = number;
-                link.href = params.pages[i];
-                link.classList.add(this.id + '__page');
+            pageContainer.appendChild(link);
+            this.pages.push(link);
+        }
 
-                pageContainer.appendChild(link);
-                this.pages.push(link);
-            }
+        this.pages[0].classList.add(this.id + '__page_first');
+        this.pages[this.pages.length - 1].classList.add(this.id + '__page_last');
 
-            this.pages[0].classList.add(this.id + '__page_first');
-            this.pages[this.pages.length - 1].classList.add(this.id + '__page_last');
-
-            if (this.pages.length > 2) {
-                pageContainer.insertBefore(this.leftEllipsis, this.pages[1]);
-                pageContainer.insertBefore(this.rightEllipsis, this.pages[this.pages.length - 1]);
-            }
-
-            this.changePage(params.currentPage);
+        if (this.pages.length > 2) {
+            pageContainer.insertBefore(this.leftEllipsis, this.pages[1]);
+            pageContainer.insertBefore(this.rightEllipsis, this.pages[this.pages.length - 1]);
         }
     },
+
 
     _initEvents: function() {
         var self = this;

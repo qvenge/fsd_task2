@@ -1,0 +1,31 @@
+mixin hideableBlock(options={})
+    -
+        var id = 'hideable-block';
+        var classes = [];
+        var animationTypes = ['emerging', 'extending', 'extending-x', 'extending-y'];
+
+        var animations = Array.isArray(options.animation)
+            ? options.animation
+            : typeof options.animation === 'string' 
+                ? options.animation.split(' ') : [];
+
+        animations = animations
+            .filter(function(animation) { return animationTypes.indexOf(animation) !== -1; })
+            .map(function(animation) { return id + '_animated_' + animation; });
+
+        if (animations.length) {
+            classes = [id + '_animated'].concat(animations);
+        }
+
+        if (options.xConstraint === 'left' || options.xConstraint === 'right') {
+            classes.push(id + '_stick-' + options.xConstraint);
+        }
+
+        if (options.yConstraint === 'top' || options.yConstraint === 'bottom') {
+            classes.push(id + '_stick-' + options.yConstraint);
+        }
+
+    .hideable-block(data-bem=JSON.stringify({ 'hideable-block': options }), class=classes)&attributes(attributes)
+        .hideable-block__container
+            .hideable-block__content
+                block

@@ -14,21 +14,20 @@ block content
                     +labeledBlock('Text field')
                         +input({type: 'text', placeholder: 'Email'})
 
-                .ui-form-element.ui-form-element_mt_20
+                .ui-form-element.ui-form-element_mt_20(style={'z-index': 5})
                     +guestList
 
-                .ui-form-element.ui-form-element_mt_20
-                    +labeledBlock('Удобства номера')
-                        +roomList
+                .ui-form-element.ui-form-element_mt_20(style={'z-index': 4})
+                    +roomList
 
                 .ui-form-element.ui-form-element_mt_20
                     +labeledBlock('Masked text field')
                         +input({ type: 'date' })
                 
-                .ui-form-element.ui-form-element_mt_40
+                .ui-form-element.ui-form-element_mt_40(style={'z-index': 3})
                     +datePicker()
 
-                .ui-form-element.ui-form-element_mt_40
+                .ui-form-element.ui-form-element_mt_40(style={'z-index': 2})
                     +filterDateDropdown({ value: '19 авг - 23 авг' })
                 
                 .ui-form-element.ui-form-element_mt_40

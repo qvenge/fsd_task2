@@ -15,16 +15,19 @@ Object.defineProperties(FilterDateDropdown.prototype, {
             var initialDates = [];
             var self = this;
             var calendarCardElem = this.elem.querySelector('.calendar-card');
-            var dropdownElem = this.elem.querySelector('.dropdown');
+            var hideableElem = this.elem.querySelector('.hideable-block');
             var outputElem = this.elem.querySelector('.output');
 
             var calendarCard = window.BEM.getEntityInstance(calendarCardElem, 'calendar-card');
-            var dropdown = window.BEM.getEntityInstance(dropdownElem, 'dropdown');
+            var hideableBlock = window.BEM.getEntityInstance(hideableElem, 'hideable-block');
             var output = window.BEM.getEntityInstance(outputElem, 'output');
 
             var MONTHS = calendarCard.calendar.constructor.MONTHS.map(function(month) {
                 return month.slice(0, 3).toLowerCase();
             });
+
+
+            hideableBlock.addController(outputElem);
 
             
             output.value.split(' - ').forEach(function(dateString) {
@@ -50,10 +53,7 @@ Object.defineProperties(FilterDateDropdown.prototype, {
                 calendarCard.reset();
                 output.value = '';
             }
-    
-            outputElem.addEventListener('click', function(event) {
-                dropdown.show(true) || dropdown.hide();
-            });
+            
 
             this.elem.addEventListener('calendarcardreset', function(event) {
                 output.value = '';
@@ -70,7 +70,7 @@ Object.defineProperties(FilterDateDropdown.prototype, {
                 } else {
                     output.value = '';
                 }
-                dropdown.hide();
+                hideableBlock.hide();
             });
         }
     }

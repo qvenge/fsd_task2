@@ -17,6 +17,8 @@ block content
                     +image('images/image2.jpg')
                 .room-details__third-photo
                     +image('images/image3.jpg')
+            .room-details__room-photos_mobile
+                +imageGallery(['images/image.jpg', 'images/image2.jpg', 'images/image3.jpg'], { loop: true })
         .main-container
             main.room-details__content
                 .room-details__info-block

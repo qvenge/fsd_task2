@@ -24,6 +24,4 @@ mixin button(text, options={})
             ? attributes.concat(mods)
             : (typeof attributes === 'string' ? attributes + ' ' : '') + mods.join(' ');
 
-    button(style=style).button&attributes(attributes)= text
-        if options.arrow
-            .button__arrow-icon.material-icons arrow_forward
+    button(style=style, name=options.name || '').button&attributes(attributes)= text

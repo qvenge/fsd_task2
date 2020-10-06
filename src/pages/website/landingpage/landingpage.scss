@@ -26,6 +26,16 @@
         left: 0;
     }
 
+    &__tagline {
+        @extend %font_body;
+        color:  $third_color_75;
+        position: absolute;
+        width: 297px;
+        right: -6px;
+        bottom: 21px;
+        text-align: right;
+    }
+
     @media (max-width: 380px) {
         &__room-search {
             width: calc(100% + 20px);

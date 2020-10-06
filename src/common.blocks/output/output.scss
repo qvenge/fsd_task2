@@ -11,7 +11,7 @@
     cursor: pointer;
     background: #FFFFFF;
 
-    transition: all 0.3s ease-in-out, border-color .1s ease-in-out;
+    // transition: all 0.3s ease-in-out, border-color .1s ease-in-out;
 
     &:hover {
         border-color: $third_color_50;

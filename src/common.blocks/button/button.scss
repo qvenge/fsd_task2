@@ -66,7 +66,9 @@
         padding: 0 44px;
     }
 
-    &__arrow-icon {
+    &_arrow::after {
+        @extend %material-icons;
+        content: "arrow_forward";
         position: absolute;
         top: 0;
         right: 0;

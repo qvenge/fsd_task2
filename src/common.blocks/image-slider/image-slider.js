@@ -1,11 +1,9 @@
-function ImageSlider(elem) {
-    var bemParams = elem.dataset.bem && JSON.parse(elem.dataset.bem);
-
+function ImageSlider(elem, params) {
     this.elem = elem;
     this._currentIndex = undefined;
     this._images = null;
     this._slideshowTimerId = null;
-    this.options = (bemParams && bemParams[this.id]) || {};
+    this.options = params || {};
 
     this._init();
 }
