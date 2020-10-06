@@ -1,22 +1,21 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { setPage, getEntries, getHtmlPlugins } = require('./my-utils');
+const { getEntries, getHtmlPlugins } = require('./utils');
 const BemIntegratorPlugin = require('./bem-integrator-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
 const pages = [
-    setPage('./pages/index.pug'),
-    setPage('./pages/uikit/formelements/formelements.pug'),
-    setPage('./pages/uikit/colorsandtype/colorsandtype.pug'),
-    setPage('./pages/uikit/cards/cards.pug'),
-    setPage('./pages/uikit/headersfooters/headersfooters.pug'),
-    setPage('./pages/website/landingpage/landingpage.pug'),
-    setPage('./pages/website/searchroompage/searchroompage.pug'),
-    setPage('./pages/website/roomdetails/roomdetails.pug'),
-    setPage('./pages/website/loginpage/loginpage.pug'),
-    // setPage('./pages/sandbox/sandbox.pug')
+    './pages/index.pug',
+    './pages/uikit/formelements/formelements.pug',
+    './pages/uikit/colorsandtype/colorsandtype.pug',
+    './pages/uikit/cards/cards.pug',
+    './pages/uikit/headersfooters/headersfooters.pug',
+    './pages/website/landingpage/landingpage.pug',
+    './pages/website/searchroompage/searchroompage.pug',
+    './pages/website/roomdetails/roomdetails.pug',
+    './pages/website/loginpage/loginpage.pug',
 ];
 
 module.exports = {
